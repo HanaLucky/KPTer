@@ -17,13 +17,15 @@
 		0D777C081C68A8230038462F /* KPTerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D777C071C68A8230038462F /* KPTerUITests.swift */; };
 		0D777C161C68C3BB0038462F /* BoardListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D777C151C68C3BB0038462F /* BoardListItemTableViewCell.swift */; };
 		0DBA9A351C786D6300AF036B /* BoardEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBA9A341C786D6300AF036B /* BoardEditViewController.swift */; };
+		11AAE520B7C8E468120700FD /* Pods_KPTerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07590C8BBDC73FEED1048F4 /* Pods_KPTerUITests.framework */; };
+		282D8E15FFFB96308CFB4217 /* Pods_KPTerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD39B830EE4910EC91824E04 /* Pods_KPTerTests.framework */; };
 		3AC482EB1C82CC2E00137FF5 /* Board+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E51C82CC2E00137FF5 /* Board+CoreDataProperties.swift */; };
 		3AC482EC1C82CC2E00137FF5 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E61C82CC2E00137FF5 /* Board.swift */; };
 		3AC482ED1C82CC2E00137FF5 /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E71C82CC2E00137FF5 /* Card+CoreDataProperties.swift */; };
 		3AC482EE1C82CC2E00137FF5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E81C82CC2E00137FF5 /* Card.swift */; };
 		3AC482EF1C82CC2E00137FF5 /* CardRelation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E91C82CC2E00137FF5 /* CardRelation+CoreDataProperties.swift */; };
 		3AC482F01C82CC2E00137FF5 /* CardRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482EA1C82CC2E00137FF5 /* CardRelation.swift */; };
-		86D8D774A4ED6069C30A06F9 /* libPods-KPTer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6213D3F95889E4824F6E6450 /* libPods-KPTer.a */; };
+		998227A2E321830238E6CBED /* Pods_KPTer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FFC3685761F0A85EB1C094 /* Pods_KPTer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		0D777C091C68A8230038462F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D777C151C68C3BB0038462F /* BoardListItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardListItemTableViewCell.swift; sourceTree = "<group>"; };
 		0DBA9A341C786D6300AF036B /* BoardEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardEditViewController.swift; sourceTree = "<group>"; };
+		194EC9DD107C84FD0B44641B /* Pods-KPTerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerUITests/Pods-KPTerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1A28C0E6541241ECEE6422AF /* Pods-KPTerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerTests/Pods-KPTerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		263D04873D3B1CD633C13D7F /* Pods-KPTer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTer/Pods-KPTer.debug.xcconfig"; sourceTree = "<group>"; };
 		3AC482E51C82CC2E00137FF5 /* Board+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3AC482E61C82CC2E00137FF5 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -69,7 +73,11 @@
 		3AC482E91C82CC2E00137FF5 /* CardRelation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardRelation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3AC482EA1C82CC2E00137FF5 /* CardRelation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardRelation.swift; sourceTree = "<group>"; };
 		3DC7D3F29D07B458FC8B5390 /* Pods-KPTer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTer.release.xcconfig"; path = "Pods/Target Support Files/Pods-KPTer/Pods-KPTer.release.xcconfig"; sourceTree = "<group>"; };
-		6213D3F95889E4824F6E6450 /* libPods-KPTer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KPTer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79FFC3685761F0A85EB1C094 /* Pods_KPTer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPTer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD39B830EE4910EC91824E04 /* Pods_KPTerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPTerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEBD354B6B1F3304EB5015AD /* Pods-KPTerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerUITests/Pods-KPTerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B07590C8BBDC73FEED1048F4 /* Pods_KPTerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPTerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD3C948A52015BBB4CC6CA61 /* Pods-KPTerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerTests/Pods-KPTerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86D8D774A4ED6069C30A06F9 /* libPods-KPTer.a in Frameworks */,
+				998227A2E321830238E6CBED /* Pods_KPTer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282D8E15FFFB96308CFB4217 /* Pods_KPTerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11AAE520B7C8E468120700FD /* Pods_KPTerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +176,10 @@
 			children = (
 				263D04873D3B1CD633C13D7F /* Pods-KPTer.debug.xcconfig */,
 				3DC7D3F29D07B458FC8B5390 /* Pods-KPTer.release.xcconfig */,
+				1A28C0E6541241ECEE6422AF /* Pods-KPTerTests.debug.xcconfig */,
+				FD3C948A52015BBB4CC6CA61 /* Pods-KPTerTests.release.xcconfig */,
+				194EC9DD107C84FD0B44641B /* Pods-KPTerUITests.debug.xcconfig */,
+				AEBD354B6B1F3304EB5015AD /* Pods-KPTerUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -173,7 +187,9 @@
 		71AE67C426994B647BE67C87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6213D3F95889E4824F6E6450 /* libPods-KPTer.a */,
+				79FFC3685761F0A85EB1C094 /* Pods_KPTer.framework */,
+				AD39B830EE4910EC91824E04 /* Pods_KPTerTests.framework */,
+				B07590C8BBDC73FEED1048F4 /* Pods_KPTerUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -205,9 +221,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D777C0F1C68A8230038462F /* Build configuration list for PBXNativeTarget "KPTerTests" */;
 			buildPhases = (
+				2FCD7B53DCFD1F942B8F3AC6 /* Check Pods Manifest.lock */,
 				0D777BF41C68A8230038462F /* Sources */,
 				0D777BF51C68A8230038462F /* Frameworks */,
 				0D777BF61C68A8230038462F /* Resources */,
+				A517FC9A2989C0704B1BAF5A /* Embed Pods Frameworks */,
+				DBCCA5DB20B7FFE16E33B960 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,9 +242,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D777C121C68A8230038462F /* Build configuration list for PBXNativeTarget "KPTerUITests" */;
 			buildPhases = (
+				37A04E9BE9FE8B1D02655378 /* Check Pods Manifest.lock */,
 				0D777BFF1C68A8230038462F /* Sources */,
 				0D777C001C68A8230038462F /* Frameworks */,
 				0D777C011C68A8230038462F /* Resources */,
+				5283589C1EBE4BEF8E2C9EC2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,6 +330,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2FCD7B53DCFD1F942B8F3AC6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		37A04E9BE9FE8B1D02655378 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		38C7899D880C27755620D6C3 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,6 +375,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KPTer/Pods-KPTer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5283589C1EBE4BEF8E2C9EC2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KPTerUITests/Pods-KPTerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A517FC9A2989C0704B1BAF5A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KPTerTests/Pods-KPTerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DB0CC10FB0DB7BA84F8855BE /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,6 +418,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DBCCA5DB20B7FFE16E33B960 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KPTerTests/Pods-KPTerTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ED480D4D0B6080F09BBE681E /* Embed Pods Frameworks */ = {
@@ -543,6 +639,7 @@
 		};
 		0D777C101C68A8230038462F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A28C0E6541241ECEE6422AF /* Pods-KPTerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = KPTerTests/Info.plist;
@@ -555,6 +652,7 @@
 		};
 		0D777C111C68A8230038462F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD3C948A52015BBB4CC6CA61 /* Pods-KPTerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = KPTerTests/Info.plist;
@@ -567,6 +665,7 @@
 		};
 		0D777C131C68A8230038462F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 194EC9DD107C84FD0B44641B /* Pods-KPTerUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = KPTerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -579,6 +678,7 @@
 		};
 		0D777C141C68A8230038462F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEBD354B6B1F3304EB5015AD /* Pods-KPTerUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = KPTerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
