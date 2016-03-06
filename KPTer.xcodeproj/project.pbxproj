@@ -18,14 +18,16 @@
 		0D777C161C68C3BB0038462F /* BoardListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D777C151C68C3BB0038462F /* BoardListItemTableViewCell.swift */; };
 		0DBA9A351C786D6300AF036B /* BoardEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBA9A341C786D6300AF036B /* BoardEditViewController.swift */; };
 		11AAE520B7C8E468120700FD /* Pods_KPTerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07590C8BBDC73FEED1048F4 /* Pods_KPTerUITests.framework */; };
+		19F700E9C5E7B0C5CE280CB5 /* Pods_KPTer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5469B8B5FA84843CDE22A524 /* Pods_KPTer.framework */; };
 		282D8E15FFFB96308CFB4217 /* Pods_KPTerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD39B830EE4910EC91824E04 /* Pods_KPTerTests.framework */; };
+		3AA365111C8C18370054FEC9 /* BoardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA365101C8C18370054FEC9 /* BoardSpec.swift */; };
+		3AAA73911C8C3C2D00E2F0DF /* KPTerTests in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA73901C8C3C2D00E2F0DF /* KPTerTests */; };
 		3AC482EB1C82CC2E00137FF5 /* Board+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E51C82CC2E00137FF5 /* Board+CoreDataProperties.swift */; };
 		3AC482EC1C82CC2E00137FF5 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E61C82CC2E00137FF5 /* Board.swift */; };
 		3AC482ED1C82CC2E00137FF5 /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E71C82CC2E00137FF5 /* Card+CoreDataProperties.swift */; };
 		3AC482EE1C82CC2E00137FF5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E81C82CC2E00137FF5 /* Card.swift */; };
 		3AC482EF1C82CC2E00137FF5 /* CardRelation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E91C82CC2E00137FF5 /* CardRelation+CoreDataProperties.swift */; };
 		3AC482F01C82CC2E00137FF5 /* CardRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482EA1C82CC2E00137FF5 /* CardRelation.swift */; };
-		998227A2E321830238E6CBED /* Pods_KPTer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FFC3685761F0A85EB1C094 /* Pods_KPTer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D2570C11C6F2AE000C80D0E /* KPTer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KPTer-Bridging-Header.h"; sourceTree = "<group>"; };
 		0D777BE11C68A8220038462F /* KPTer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KPTer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D777BE41C68A8220038462F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D777BE61C68A8220038462F /* BoardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +67,8 @@
 		194EC9DD107C84FD0B44641B /* Pods-KPTerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerUITests/Pods-KPTerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1A28C0E6541241ECEE6422AF /* Pods-KPTerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerTests/Pods-KPTerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		263D04873D3B1CD633C13D7F /* Pods-KPTer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTer/Pods-KPTer.debug.xcconfig"; sourceTree = "<group>"; };
+		3AA365101C8C18370054FEC9 /* BoardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardSpec.swift; sourceTree = "<group>"; };
+		3AAA73901C8C3C2D00E2F0DF /* KPTerTests */ = {isa = PBXFileReference; lastKnownFileType = folder; name = KPTerTests; sourceTree = "<group>"; };
 		3AC482E51C82CC2E00137FF5 /* Board+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3AC482E61C82CC2E00137FF5 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		3AC482E71C82CC2E00137FF5 /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -73,7 +76,7 @@
 		3AC482E91C82CC2E00137FF5 /* CardRelation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardRelation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3AC482EA1C82CC2E00137FF5 /* CardRelation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardRelation.swift; sourceTree = "<group>"; };
 		3DC7D3F29D07B458FC8B5390 /* Pods-KPTer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTer.release.xcconfig"; path = "Pods/Target Support Files/Pods-KPTer/Pods-KPTer.release.xcconfig"; sourceTree = "<group>"; };
-		79FFC3685761F0A85EB1C094 /* Pods_KPTer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPTer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5469B8B5FA84843CDE22A524 /* Pods_KPTer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPTer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD39B830EE4910EC91824E04 /* Pods_KPTerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPTerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEBD354B6B1F3304EB5015AD /* Pods-KPTerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerUITests/Pods-KPTerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B07590C8BBDC73FEED1048F4 /* Pods_KPTerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPTerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				998227A2E321830238E6CBED /* Pods_KPTer.framework in Frameworks */,
+				19F700E9C5E7B0C5CE280CB5 /* Pods_KPTer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +150,6 @@
 				0D777BF31C68A8230038462F /* Info.plist */,
 				0D777BEB1C68A8230038462F /* KPTer.xcdatamodeld */,
 				0D777C151C68C3BB0038462F /* BoardListItemTableViewCell.swift */,
-				0D2570C11C6F2AE000C80D0E /* KPTer-Bridging-Header.h */,
 				0DBA9A341C786D6300AF036B /* BoardEditViewController.swift */,
 			);
 			path = KPTer;
@@ -158,6 +160,8 @@
 			children = (
 				0D777BFC1C68A8230038462F /* KPTerTests.swift */,
 				0D777BFE1C68A8230038462F /* Info.plist */,
+				3AA365101C8C18370054FEC9 /* BoardSpec.swift */,
+				3AAA73901C8C3C2D00E2F0DF /* KPTerTests */,
 			);
 			path = KPTerTests;
 			sourceTree = "<group>";
@@ -187,9 +191,9 @@
 		71AE67C426994B647BE67C87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				79FFC3685761F0A85EB1C094 /* Pods_KPTer.framework */,
 				AD39B830EE4910EC91824E04 /* Pods_KPTerTests.framework */,
 				B07590C8BBDC73FEED1048F4 /* Pods_KPTerUITests.framework */,
+				5469B8B5FA84843CDE22A524 /* Pods_KPTer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -317,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AAA73911C8C3C2D00E2F0DF /* KPTerTests in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D777BFD1C68A8230038462F /* KPTerTests.swift in Sources */,
+				3AA365111C8C18370054FEC9 /* BoardSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,7 +622,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanalucky.KPTer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "./KPTer/KPTer-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -633,7 +639,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanalucky.KPTer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "./KPTer/KPTer-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -646,6 +652,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucky.KPTerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KPTer.app/KPTer";
 			};
 			name = Debug;
@@ -659,6 +666,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucky.KPTerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KPTer.app/KPTer";
 			};
 			name = Release;
@@ -671,6 +679,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucky.KPTerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_TARGET_NAME = KPTer;
 				USES_XCTRUNNER = YES;
 			};
@@ -684,6 +693,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucky.KPTerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_TARGET_NAME = KPTer;
 				USES_XCTRUNNER = YES;
 			};
