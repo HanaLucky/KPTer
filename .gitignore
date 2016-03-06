@@ -25,6 +25,8 @@ xcuserdata
 *.moved-aside
 *.xcuserstate
 *.xcscmblueprint
+### to use mergepbx
+.gitattributes
 
 ## Obj-C/Swift specific
 *.hmap
