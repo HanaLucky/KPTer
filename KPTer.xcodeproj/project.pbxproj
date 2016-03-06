@@ -19,6 +19,7 @@
 		0DBA9A351C786D6300AF036B /* BoardEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBA9A341C786D6300AF036B /* BoardEditViewController.swift */; };
 		11AAE520B7C8E468120700FD /* Pods_KPTerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07590C8BBDC73FEED1048F4 /* Pods_KPTerUITests.framework */; };
 		282D8E15FFFB96308CFB4217 /* Pods_KPTerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD39B830EE4910EC91824E04 /* Pods_KPTerTests.framework */; };
+		3AA365111C8C18370054FEC9 /* BoardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA365101C8C18370054FEC9 /* BoardSpec.swift */; };
 		3AC482EB1C82CC2E00137FF5 /* Board+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E51C82CC2E00137FF5 /* Board+CoreDataProperties.swift */; };
 		3AC482EC1C82CC2E00137FF5 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E61C82CC2E00137FF5 /* Board.swift */; };
 		3AC482ED1C82CC2E00137FF5 /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E71C82CC2E00137FF5 /* Card+CoreDataProperties.swift */; };
@@ -66,6 +67,7 @@
 		194EC9DD107C84FD0B44641B /* Pods-KPTerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerUITests/Pods-KPTerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1A28C0E6541241ECEE6422AF /* Pods-KPTerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerTests/Pods-KPTerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		263D04873D3B1CD633C13D7F /* Pods-KPTer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTer/Pods-KPTer.debug.xcconfig"; sourceTree = "<group>"; };
+		3AA365101C8C18370054FEC9 /* BoardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardSpec.swift; sourceTree = "<group>"; };
 		3AC482E51C82CC2E00137FF5 /* Board+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3AC482E61C82CC2E00137FF5 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		3AC482E71C82CC2E00137FF5 /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				0D777BFC1C68A8230038462F /* KPTerTests.swift */,
 				0D777BFE1C68A8230038462F /* Info.plist */,
+				3AA365101C8C18370054FEC9 /* BoardSpec.swift */,
 			);
 			path = KPTerTests;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D777BFD1C68A8230038462F /* KPTerTests.swift in Sources */,
+				3AA365111C8C18370054FEC9 /* BoardSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
