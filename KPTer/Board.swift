@@ -11,7 +11,15 @@ import CoreData
 
 
 class Board: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-
+    
+    class func create(title: String) {
+        let newBoard: Board! = Board.MR_createEntity()
+        newBoard.board_title = title
+        newBoard.managedObjectContext!.MR_saveToPersistentStoreAndWait()
+    }
+    
+    func edit(title: String){
+        board_title = title
+        managedObjectContext!.MR_saveToPersistentStoreAndWait()
+    }
 }
