@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Board List-->
+        <!--Board List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BoardListViewController" customModule="KPTer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Board List View Controller" customClass="BoardListViewController" customModule="KPTer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,27 +17,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4aL-dA-g9g">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4aL-dA-g9g">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BoardListItem" id="9AA-MD-NOF" customClass="BoardListItemTableViewCell" customModule="KPTer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BoardListItem" rowHeight="40" id="9AA-MD-NOF" customClass="BoardListItemTableViewCell" customModule="KPTer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9AA-MD-NOF" id="UWz-hk-CIb">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="FAo-of-vWV" kind="show" identifier="toKptAreaViewController" id="iOs-Ou-60Z"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4aL-dA-g9g" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="3DI-wT-gQ1"/>
-                            <constraint firstItem="4aL-dA-g9g" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4TS-es-3Jy"/>
-                            <constraint firstAttribute="trailing" secondItem="4aL-dA-g9g" secondAttribute="trailing" id="d5y-MY-le7"/>
-                            <constraint firstItem="4aL-dA-g9g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oL6-Lb-49O"/>
+                            <constraint firstItem="4aL-dA-g9g" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="D7T-LW-rCA"/>
+                            <constraint firstItem="4aL-dA-g9g" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KDt-CS-fBC"/>
+                            <constraint firstItem="4aL-dA-g9g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="e48-84-j9r"/>
+                            <constraint firstAttribute="trailing" secondItem="4aL-dA-g9g" secondAttribute="trailing" id="yXm-FL-qSU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Board List" id="kcH-AW-P1P">
@@ -55,7 +58,7 @@
         <!--Edit Board Controller-->
         <scene sceneID="9IP-QC-hAm">
             <objects>
-                <viewController id="8cP-mE-d4G" userLabel="Edit Board Controller" customClass="BoardEditViewController" customModule="KPTer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="BoardEditViewController" storyboardIdentifier="BoardEditViewController" id="8cP-mE-d4G" userLabel="Edit Board Controller" customClass="BoardEditViewController" customModule="KPTer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CIt-dg-WY0"/>
                         <viewControllerLayoutGuide type="bottom" id="jgZ-g3-D8h"/>
@@ -103,10 +106,39 @@
                     <navigationItem key="navigationItem" id="ooQ-5p-Jco">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="PJW-u2-XDd"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="boardTitleTield" destination="1uH-iy-AKP" id="cco-LN-b0K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tza-V0-mvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1833" y="295"/>
+        </scene>
+        <!--Kpt Area View Controller-->
+        <scene sceneID="iMI-PK-hrv">
+            <objects>
+                <viewController id="FAo-of-vWV" userLabel="Kpt Area View Controller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1q4-Ud-84G"/>
+                        <viewControllerLayoutGuide type="bottom" id="0wH-N4-jU4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hpO-Af-3cR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KPT AREA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gp6-8f-XPo">
+                                <rect key="frame" x="246" y="138" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mme-g7-dCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1833" y="1071"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r9E-Su-vEX">
