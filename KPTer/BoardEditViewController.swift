@@ -10,10 +10,17 @@ import UIKit
 
 class BoardEditViewController: UIViewController {
 
+    @IBOutlet weak var boardTitleTield: UITextField!
+
+    var board: Board? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // @TODO implements
+        if let boardEntity = board {
+            boardTitleTield.text = boardEntity.board_title
+        }
 
     }
 
