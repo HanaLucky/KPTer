@@ -15,22 +15,27 @@ class BoardSpec: QuickSpec {
     
     override func spec() {
         
-        var newBoard = Board.new(title: "new board title")
+        Board.MR_truncateAll()
+        Board.create("new board title")
+        let newBoard: Board? = Board.MR_findFirst()
         
         describe("新規Boardを作成する newメソッド") {
             it("新規Boardを作成できること") {
                 expect(newBoard).toNot(beNil())
             }
             it("Boardのboard_titleが引数に指定した文字列であること") {
-                expect(newBoard.board_title).to(equal("new board title"))
+                expect(newBoard!.board_title).to(equal("new board title"))
             }
         }
         
         describe("既存のBoardを編集する editメソッド") {
+            sleep(5)
             it("Boardの名前を引数に指定し、Boardの名前を変更できること") {
-                editBoard = newBoard.edit(title: "edit board title")
-                expect(editBoard.board_title).to(equal("edit board title"))
+                newBoard!.edit("edit board title")
+                let editBoard: Board? = Board.MR_findFirst()
+                expect(editBoard!.board_title).to(equal("edit board title"))
             }
         }
     }
 }
+ 
