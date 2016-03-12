@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Automatic">
     <entity name="Board" representedClassName=".Board" syncable="YES">
+        <attribute name="board_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="board_title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Card" syncable="YES"/>
     </entity>
     <entity name="Card" representedClassName=".Card" parentEntity="Board" syncable="YES">
+        <attribute name="card_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="card_title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -13,11 +15,12 @@
     </entity>
     <entity name="CardRelation" representedClassName=".CardRelation" syncable="YES">
         <attribute name="from_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="relation_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="to_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Board" positionX="-27" positionY="18" width="128" height="75"/>
-        <element name="Card" positionX="18" positionY="108" width="128" height="120"/>
-        <element name="CardRelation" positionX="54" positionY="189" width="128" height="75"/>
+        <element name="Board" positionX="-27" positionY="18" width="128" height="90"/>
+        <element name="Card" positionX="18" positionY="108" width="128" height="135"/>
+        <element name="CardRelation" positionX="54" positionY="189" width="128" height="90"/>
     </elements>
 </model>

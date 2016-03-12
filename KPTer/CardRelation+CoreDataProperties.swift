@@ -14,6 +14,7 @@ import CoreData
 
 extension CardRelation {
 
+    @NSManaged var relation_id: NSNumber?
     @NSManaged var from_id: NSNumber?
     @NSManaged var to_id: NSNumber?
 

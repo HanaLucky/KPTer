@@ -11,7 +11,12 @@ import CoreData
 
 
 class Card: Board {
-
-// Insert code here to add functionality to your managed object subclass
+    class func create(title: String, detail: String) -> Card? {
+        let newCard: Card! = Card.MR_createEntity()
+        newCard.card_title = title
+        newCard.detail = detail
+        newCard.managedObjectContext!.MR_saveToPersistentStoreAndWait()
+        return newCard
+    }
 
 }

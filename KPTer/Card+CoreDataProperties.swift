@@ -14,6 +14,7 @@ import CoreData
 
 extension Card {
 
+    @NSManaged var card_id: NSNumber?
     @NSManaged var card_title: String?
     @NSManaged var type: String?
     @NSManaged var detail: String?
