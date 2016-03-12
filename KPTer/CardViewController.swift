@@ -10,16 +10,17 @@ import UIKit
 
 class CardViewController: UIViewController {
 
+    // type label
+    @IBOutlet weak var typeLabel: UILabel!
     // card title field
     @IBOutlet weak var titleField: UITextField!
-    
     // description field
     @IBOutlet weak var descriptionField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        typeLabel.text = "Keep"
+        // Do any additional setup after loading the view.        
     }
 
     override func didReceiveMemoryWarning() {
