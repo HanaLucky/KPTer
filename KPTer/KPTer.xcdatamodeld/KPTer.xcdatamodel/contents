@@ -3,7 +3,7 @@
     <entity name="Board" representedClassName=".Board" syncable="YES">
         <attribute name="board_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="board_title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Card" syncable="YES"/>
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Card" inverseName="board" inverseEntity="Card" syncable="YES"/>
     </entity>
     <entity name="Card" representedClassName=".Card" parentEntity="Board" syncable="YES">
         <attribute name="card_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -11,7 +11,7 @@
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Board" syncable="YES"/>
+        <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Board" inverseName="cards" inverseEntity="Board" syncable="YES"/>
     </entity>
     <entity name="CardRelation" representedClassName=".CardRelation" syncable="YES">
         <attribute name="from_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
