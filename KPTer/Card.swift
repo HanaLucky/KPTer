@@ -3,7 +3,7 @@
 //  KPTer
 //
 //  Created by Kaori Sawamura on 2/28/16.
-//  Copyright © 2016 yoshikawa atsushi. All rights reserved.
+//  Copyright © 2016 HanaLucky. All rights reserved.
 //
 
 import Foundation
@@ -17,6 +17,11 @@ class Card: Board {
         newCard.detail = detail
         newCard.managedObjectContext!.MR_saveToPersistentStoreAndWait()
         return newCard
+    }
+    
+    override func edit(title: String){
+        card_title = title
+        managedObjectContext!.MR_saveToPersistentStoreAndWait()
     }
 
 }
