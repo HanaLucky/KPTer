@@ -14,7 +14,8 @@ import CoreData
 
 extension Board {
 
+    @NSManaged var board_id: NSNumber?
     @NSManaged var board_title: String?
-    @NSManaged var cards: NSSet?
+    @NSManaged var cards: Set<Card>?
 
 }
