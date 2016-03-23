@@ -7,21 +7,14 @@
 //
 
 import Foundation
-import CoreData
+import RealmSwift
 
-
-class Card: Board {
-    class func create(title: String, detail: String) -> Card? {
-        let newCard: Card! = Card.MR_createEntity()
-        newCard.card_title = title
-        newCard.detail = detail
-        newCard.managedObjectContext!.MR_saveToPersistentStoreAndWait()
-        return newCard
-    }
+class Card: Object {
     
-    override func edit(title: String){
-        card_title = title
-        managedObjectContext!.MR_saveToPersistentStoreAndWait()
-    }
+    dynamic var card_id = 0
+    dynamic var card_title = ""
+    dynamic var type = ""
+    dynamic var detail = ""
+    dynamic var order = 0
 
 }
