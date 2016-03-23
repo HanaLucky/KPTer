@@ -1,18 +1,21 @@
 PODS:
-  - MagicalRecord (2.3.2):
-    - MagicalRecord/Core (= 2.3.2)
-  - MagicalRecord/Core (2.3.2)
   - Nimble (3.0.0)
   - Quick (0.9.1)
+  - Realm (0.98.5):
+    - Realm/Headers (= 0.98.5)
+  - Realm/Headers (0.98.5)
+  - RealmSwift (0.98.5):
+    - Realm (= 0.98.5)
 
 DEPENDENCIES:
-  - MagicalRecord
   - Nimble (= 3.0.0)
   - Quick (~> 0.9.0)
+  - RealmSwift
 
 SPEC CHECKSUMS:
-  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
+  Realm: db08379969e45cea2edd1c3c0a090fe9e22d2d2f
+  RealmSwift: cb11ad1c35e15dc982f2dbf5afe2a3124193a358
 
 COCOAPODS: 0.39.0

@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class BoardListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // BoardListに表示するエンティティ
-    var boardEntities: [Board]!
+    var boardEntities: Results<Board>?
     
     // テーブルビュー
     private var boardListTableView: UITableView!
@@ -21,12 +22,11 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view, typically from a nib.
         
         // XXX test code for insert data start
-        //for var i = 0; i < 3; i++ {
-        //    let newBoard: Board! = Board.MR_createEntity()
-        //    newBoard.board_title = "board title" + String(i)
-        //    newBoard.managedObjectContext!.MR_saveToPersistentStoreAndWait()
+        //for var i = 0; i < 1; i++ {
         //}
-        boardEntities = Board.MR_findAll() as? [Board]
+        BoardViewModel.create("new board title")
+        let realm = try! Realm()
+        boardEntities = realm.objects(Board)
         // XXX test code for insert data end
         
         // Status Barの高さを取得する.
@@ -62,7 +62,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     Cellの総数を返すデータソースメソッド.(実装必須)
     */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return boardEntities.count
+        return boardEntities!.count
     }
     
     /*
@@ -74,7 +74,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         
         // Cellに値を設定する.
-        cell.textLabel!.text = boardEntities[indexPath.row].board_title
+        cell.textLabel!.text = boardEntities![indexPath.row].board_title
         
         return cell
     }
@@ -117,7 +117,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
 
             let boardEditViewController = self.storyboard?.instantiateViewControllerWithIdentifier("BoardEditViewController") as! BoardEditViewController
             
-            let board = self.boardEntities[indexPath.row]
+            let board = self.boardEntities![indexPath.row]
             
             boardEditViewController.board = board
             boardEditViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
