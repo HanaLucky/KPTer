@@ -25,12 +25,13 @@
 		282D8E15FFFB96308CFB4217 /* Pods_KPTerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD39B830EE4910EC91824E04 /* Pods_KPTerTests.framework */; };
 		3A12DEF71C8F01E8005E4E52 /* CardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A12DEF61C8F01E8005E4E52 /* CardSpec.swift */; };
 		3AA365111C8C18370054FEC9 /* BoardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA365101C8C18370054FEC9 /* BoardSpec.swift */; };
-		3AC482EB1C82CC2E00137FF5 /* Board+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E51C82CC2E00137FF5 /* Board+CoreDataProperties.swift */; };
 		3AC482EC1C82CC2E00137FF5 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E61C82CC2E00137FF5 /* Board.swift */; };
-		3AC482ED1C82CC2E00137FF5 /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E71C82CC2E00137FF5 /* Card+CoreDataProperties.swift */; };
 		3AC482EE1C82CC2E00137FF5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E81C82CC2E00137FF5 /* Card.swift */; };
-		3AC482EF1C82CC2E00137FF5 /* CardRelation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E91C82CC2E00137FF5 /* CardRelation+CoreDataProperties.swift */; };
 		3AC482F01C82CC2E00137FF5 /* CardRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482EA1C82CC2E00137FF5 /* CardRelation.swift */; };
+		3AD658261C9EEC0E0051C2F1 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD658241C9EEC0E0051C2F1 /* Realm.framework */; };
+		3AD658271C9EEC0E0051C2F1 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD658251C9EEC0E0051C2F1 /* RealmSwift.framework */; };
+		3AD6582B1CA02ABE0051C2F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD6582A1CA02ABE0051C2F1 /* BoardViewModel.swift */; };
+		3AD6582F1CA02FC50051C2F1 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD6582E1CA02FC50051C2F1 /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,12 +76,14 @@
 		263D04873D3B1CD633C13D7F /* Pods-KPTer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTer/Pods-KPTer.debug.xcconfig"; sourceTree = "<group>"; };
 		3A12DEF61C8F01E8005E4E52 /* CardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSpec.swift; sourceTree = "<group>"; };
 		3AA365101C8C18370054FEC9 /* BoardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardSpec.swift; sourceTree = "<group>"; };
-		3AC482E51C82CC2E00137FF5 /* Board+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3AC482E61C82CC2E00137FF5 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
-		3AC482E71C82CC2E00137FF5 /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3AC482E81C82CC2E00137FF5 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		3AC482E91C82CC2E00137FF5 /* CardRelation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardRelation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3AC482EA1C82CC2E00137FF5 /* CardRelation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardRelation.swift; sourceTree = "<group>"; };
+		3AD658221C9EEB3A0051C2F1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Release-iphoneos/Realm.framework"; sourceTree = "<group>"; };
+		3AD658241C9EEC0E0051C2F1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Debug-iphoneos/Realm.framework"; sourceTree = "<group>"; };
+		3AD658251C9EEC0E0051C2F1 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Pods/../build/Debug-iphoneos/RealmSwift.framework"; sourceTree = "<group>"; };
+		3AD6582A1CA02ABE0051C2F1 /* BoardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		3AD6582E1CA02FC50051C2F1 /* CardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		3DC7D3F29D07B458FC8B5390 /* Pods-KPTer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTer.release.xcconfig"; path = "Pods/Target Support Files/Pods-KPTer/Pods-KPTer.release.xcconfig"; sourceTree = "<group>"; };
 		5469B8B5FA84843CDE22A524 /* Pods_KPTer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPTer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD39B830EE4910EC91824E04 /* Pods_KPTerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPTerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AD658261C9EEC0E0051C2F1 /* Realm.framework in Frameworks */,
+				3AD658271C9EEC0E0051C2F1 /* RealmSwift.framework in Frameworks */,
 				19F700E9C5E7B0C5CE280CB5 /* Pods_KPTer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,11 +147,8 @@
 		0D777BE31C68A8220038462F /* KPTer */ = {
 			isa = PBXGroup;
 			children = (
-				3AC482E51C82CC2E00137FF5 /* Board+CoreDataProperties.swift */,
 				3AC482E61C82CC2E00137FF5 /* Board.swift */,
-				3AC482E71C82CC2E00137FF5 /* Card+CoreDataProperties.swift */,
 				3AC482E81C82CC2E00137FF5 /* Card.swift */,
-				3AC482E91C82CC2E00137FF5 /* CardRelation+CoreDataProperties.swift */,
 				3AC482EA1C82CC2E00137FF5 /* CardRelation.swift */,
 				0D777BE41C68A8220038462F /* AppDelegate.swift */,
 				0D777BE61C68A8220038462F /* BoardListViewController.swift */,
@@ -160,6 +162,8 @@
 				0DFF36041C8E4C3C00F56E3D /* KptAreaViewController.swift */,
 				0DB135321C91D95B00070613 /* CardViewController.swift */,
 				0DB135361C9410A100070613 /* UIDescriptionTextView.swift */,
+				3AD6582A1CA02ABE0051C2F1 /* BoardViewModel.swift */,
+				3AD6582E1CA02FC50051C2F1 /* CardViewModel.swift */,
 			);
 			path = KPTer;
 			sourceTree = "<group>";
@@ -200,6 +204,9 @@
 		71AE67C426994B647BE67C87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AD658241C9EEC0E0051C2F1 /* Realm.framework */,
+				3AD658251C9EEC0E0051C2F1 /* RealmSwift.framework */,
+				3AD658221C9EEB3A0051C2F1 /* Realm.framework */,
 				AD39B830EE4910EC91824E04 /* Pods_KPTerTests.framework */,
 				B07590C8BBDC73FEED1048F4 /* Pods_KPTerUITests.framework */,
 				5469B8B5FA84843CDE22A524 /* Pods_KPTer.framework */,
@@ -474,16 +481,15 @@
 				0DFF36051C8E4C3C00F56E3D /* KptAreaViewController.swift in Sources */,
 				3AC482EE1C82CC2E00137FF5 /* Card.swift in Sources */,
 				0D777BE51C68A8220038462F /* AppDelegate.swift in Sources */,
-				3AC482EB1C82CC2E00137FF5 /* Board+CoreDataProperties.swift in Sources */,
 				0DBA9A351C786D6300AF036B /* BoardEditViewController.swift in Sources */,
+				3AD6582F1CA02FC50051C2F1 /* CardViewModel.swift in Sources */,
 				0DB135371C9410A100070613 /* UIDescriptionTextView.swift in Sources */,
 				3AC482EC1C82CC2E00137FF5 /* Board.swift in Sources */,
-				3AC482ED1C82CC2E00137FF5 /* Card+CoreDataProperties.swift in Sources */,
-				3AC482EF1C82CC2E00137FF5 /* CardRelation+CoreDataProperties.swift in Sources */,
 				3AC482F01C82CC2E00137FF5 /* CardRelation.swift in Sources */,
 				0DB135331C91D95B00070613 /* CardViewController.swift in Sources */,
 				0D777C161C68C3BB0038462F /* BoardListItemTableViewCell.swift in Sources */,
 				0D777BED1C68A8230038462F /* KPTer.xcdatamodeld in Sources */,
+				3AD6582B1CA02ABE0051C2F1 /* BoardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +634,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = KPTer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -645,6 +656,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = KPTer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -687,6 +703,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 194EC9DD107C84FD0B44641B /* Pods-KPTerUITests.debug.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = ./vendor;
 				INFOPLIST_FILE = KPTerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucky.KPTerUITests;
@@ -701,6 +718,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AEBD354B6B1F3304EB5015AD /* Pods-KPTerUITests.release.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = ./vendor;
 				INFOPLIST_FILE = KPTerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucky.KPTerUITests;

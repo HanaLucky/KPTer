@@ -7,30 +7,16 @@
 //
 
 import Foundation
-import CoreData
+import RealmSwift
 
 
-class Board: NSManagedObject {
+class Board: Object {
     
-    class func create(title: String) -> Board? {
-        let newBoard: Board! = Board.MR_createEntity()
-        newBoard.board_title = title
-        newBoard.managedObjectContext!.MR_saveToPersistentStoreAndWait()
-        return newBoard
-    }
+    dynamic var board_id = 0
+    dynamic var board_title = ""
+    var cards = List<Card>()
     
-    func deleteBoard(){
-        MR_deleteEntity()
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
-    }
-    
-    func edit(title: String){
-        board_title = title
-        managedObjectContext!.MR_saveToPersistentStoreAndWait()
-    }
-    
-    func addCard(title: String, detail: String) {
-        cards!.insert(Card.create(title, detail: detail)!)
-    }
-    
+//    override static func primaryKey() -> String? {
+//        return "board_id"
+//    }
 }

@@ -7,11 +7,13 @@
 //
 
 import Foundation
-import CoreData
+import RealmSwift
 
 
-class CardRelation: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
+class CardRelation: Object {
+    
+    dynamic var relation_id = 0
+    dynamic var from_id = 0
+    dynamic var to_id = 0
 
 }
