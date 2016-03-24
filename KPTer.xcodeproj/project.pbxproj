@@ -31,7 +31,6 @@
 		3AD658261C9EEC0E0051C2F1 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD658241C9EEC0E0051C2F1 /* Realm.framework */; };
 		3AD658271C9EEC0E0051C2F1 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD658251C9EEC0E0051C2F1 /* RealmSwift.framework */; };
 		3AD6582B1CA02ABE0051C2F1 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD6582A1CA02ABE0051C2F1 /* BoardViewModel.swift */; };
-		3AD6582D1CA02B640051C2F1 /* KptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD6582C1CA02B640051C2F1 /* KptViewModel.swift */; };
 		3AD6582F1CA02FC50051C2F1 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD6582E1CA02FC50051C2F1 /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +83,6 @@
 		3AD658241C9EEC0E0051C2F1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Debug-iphoneos/Realm.framework"; sourceTree = "<group>"; };
 		3AD658251C9EEC0E0051C2F1 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Pods/../build/Debug-iphoneos/RealmSwift.framework"; sourceTree = "<group>"; };
 		3AD6582A1CA02ABE0051C2F1 /* BoardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
-		3AD6582C1CA02B640051C2F1 /* KptViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KptViewModel.swift; sourceTree = "<group>"; };
 		3AD6582E1CA02FC50051C2F1 /* CardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		3DC7D3F29D07B458FC8B5390 /* Pods-KPTer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTer.release.xcconfig"; path = "Pods/Target Support Files/Pods-KPTer/Pods-KPTer.release.xcconfig"; sourceTree = "<group>"; };
 		5469B8B5FA84843CDE22A524 /* Pods_KPTer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPTer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +163,6 @@
 				0DB135321C91D95B00070613 /* CardViewController.swift */,
 				0DB135361C9410A100070613 /* UIDescriptionTextView.swift */,
 				3AD6582A1CA02ABE0051C2F1 /* BoardViewModel.swift */,
-				3AD6582C1CA02B640051C2F1 /* KptViewModel.swift */,
 				3AD6582E1CA02FC50051C2F1 /* CardViewModel.swift */,
 			);
 			path = KPTer;
@@ -484,7 +481,6 @@
 				0DFF36051C8E4C3C00F56E3D /* KptAreaViewController.swift in Sources */,
 				3AC482EE1C82CC2E00137FF5 /* Card.swift in Sources */,
 				0D777BE51C68A8220038462F /* AppDelegate.swift in Sources */,
-				3AD6582D1CA02B640051C2F1 /* KptViewModel.swift in Sources */,
 				0DBA9A351C786D6300AF036B /* BoardEditViewController.swift in Sources */,
 				3AD6582F1CA02FC50051C2F1 /* CardViewModel.swift in Sources */,
 				0DB135371C9410A100070613 /* UIDescriptionTextView.swift in Sources */,
