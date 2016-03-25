@@ -12,11 +12,11 @@ import RealmSwift
 
 class Board: Object {
     
-    dynamic var board_id = 0
+    dynamic var id = NSUUID().UUIDString
     dynamic var board_title = ""
     var cards = List<Card>()
     
-//    override static func primaryKey() -> String? {
-//        return "board_id"
-//    }
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
