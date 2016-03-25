@@ -13,8 +13,8 @@ import RealmSwift
 class CardRelation: Object {
     
     dynamic var id: String = NSUUID().UUIDString
-    dynamic var from_id = 0
-    dynamic var to_id = 0
+    dynamic var from_id = ""
+    dynamic var to_id = ""
     
     override static func primaryKey() -> String? {
         return "id"
