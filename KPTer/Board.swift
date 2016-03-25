@@ -12,7 +12,7 @@ import RealmSwift
 
 class Board: Object {
     
-    dynamic var id: String = NSUUID().UUIDString
+    dynamic var id = NSUUID().UUIDString
     dynamic var board_title = ""
     var cards = List<Card>()
     

@@ -12,7 +12,7 @@ import RealmSwift
 
 class CardRelation: Object {
     
-    dynamic var id: String = NSUUID().UUIDString
+    dynamic var id = NSUUID().UUIDString
     dynamic var from_id = ""
     dynamic var to_id = ""
     

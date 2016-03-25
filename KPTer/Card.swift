@@ -11,7 +11,7 @@ import RealmSwift
 
 class Card: Object {
     
-    dynamic var id: String = NSUUID().UUIDString
+    dynamic var id = NSUUID().UUIDString
     dynamic var card_title = ""
     dynamic var type = ""
     dynamic var detail = ""
