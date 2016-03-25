@@ -11,10 +11,13 @@ import RealmSwift
 
 class Card: Object {
     
-    dynamic var card_id = 0
+    dynamic var id: String = NSUUID().UUIDString
     dynamic var card_title = ""
     dynamic var type = ""
     dynamic var detail = ""
     dynamic var order = 0
-
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

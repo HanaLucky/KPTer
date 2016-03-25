@@ -10,7 +10,6 @@
 		0D777BE51C68A8220038462F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D777BE41C68A8220038462F /* AppDelegate.swift */; };
 		0D777BE71C68A8220038462F /* BoardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D777BE61C68A8220038462F /* BoardListViewController.swift */; };
 		0D777BEA1C68A8230038462F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D777BE81C68A8230038462F /* Main.storyboard */; };
-		0D777BED1C68A8230038462F /* KPTer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D777BEB1C68A8230038462F /* KPTer.xcdatamodeld */; };
 		0D777BEF1C68A8230038462F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D777BEE1C68A8230038462F /* Assets.xcassets */; };
 		0D777BF21C68A8230038462F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D777BF01C68A8230038462F /* LaunchScreen.storyboard */; };
 		0D777BFD1C68A8230038462F /* KPTerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D777BFC1C68A8230038462F /* KPTerTests.swift */; };
@@ -56,7 +55,6 @@
 		0D777BE41C68A8220038462F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D777BE61C68A8220038462F /* BoardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListViewController.swift; sourceTree = "<group>"; };
 		0D777BE91C68A8230038462F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0D777BEC1C68A8230038462F /* KPTer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KPTer.xcdatamodel; sourceTree = "<group>"; };
 		0D777BEE1C68A8230038462F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D777BF11C68A8230038462F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D777BF31C68A8230038462F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 				0D777BEE1C68A8230038462F /* Assets.xcassets */,
 				0D777BF01C68A8230038462F /* LaunchScreen.storyboard */,
 				0D777BF31C68A8230038462F /* Info.plist */,
-				0D777BEB1C68A8230038462F /* KPTer.xcdatamodeld */,
 				0D777C151C68C3BB0038462F /* BoardListItemTableViewCell.swift */,
 				0DBA9A341C786D6300AF036B /* BoardEditViewController.swift */,
 				0DFF36041C8E4C3C00F56E3D /* KptAreaViewController.swift */,
@@ -488,7 +485,6 @@
 				3AC482F01C82CC2E00137FF5 /* CardRelation.swift in Sources */,
 				0DB135331C91D95B00070613 /* CardViewController.swift in Sources */,
 				0D777C161C68C3BB0038462F /* BoardListItemTableViewCell.swift in Sources */,
-				0D777BED1C68A8230038462F /* KPTer.xcdatamodeld in Sources */,
 				3AD6582B1CA02ABE0051C2F1 /* BoardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -769,19 +765,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		0D777BEB1C68A8230038462F /* KPTer.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				0D777BEC1C68A8230038462F /* KPTer.xcdatamodel */,
-			);
-			currentVersion = 0D777BEC1C68A8230038462F /* KPTer.xcdatamodel */;
-			path = KPTer.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 0D777BD91C68A8220038462F /* Project object */;
 }

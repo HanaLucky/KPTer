@@ -22,8 +22,9 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view, typically from a nib.
         
         // XXX test code for insert data start
-        //for var i = 0; i < 1; i++ {
-        //}
+        for var i = 0; i < 3; i++ {
+            BoardViewModel.create("new board title" + String(i))
+        }
         BoardViewModel.create("new board title")
         let realm = try! Realm()
         boardEntities = realm.objects(Board)
