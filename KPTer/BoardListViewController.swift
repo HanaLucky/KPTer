@@ -114,7 +114,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         } else if (segue.identifier == "fromAddButtonToBoardEdit") {
             // 追加ボタンから遷移したことを示す識別子をボード画面に渡す
             let boardEditViewController = (segue.destinationViewController as? BoardEditViewController)
-            boardEditViewController?.identifier = Identifier.BoardAdd.rawValue
+            boardEditViewController?.identifier = Identifiers.BoardAdd.rawValue
         }
     }
     
@@ -135,7 +135,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
             // ボードエンティティを渡す
             boardEditViewController.board = board
             // Editボタンから遷移したことを示す識別子をボード画面に渡す
-            boardEditViewController.identifier = Identifier.BoardEdit.rawValue
+            boardEditViewController.identifier = Identifiers.BoardEdit.rawValue
             // モーダル表示する
             boardEditViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
             self.presentViewController(boardEditViewController, animated: true, completion: nil)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum Identifier:String {
+public enum Identifiers:String {
     case BoardAdd = "add"
     case BoardEdit = "edit"
 }

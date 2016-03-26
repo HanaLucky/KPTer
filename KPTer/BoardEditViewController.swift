@@ -33,10 +33,10 @@ class BoardEditViewController: UIViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
-        if (self.identifier == Identifier.BoardAdd.rawValue) {
+        if (self.identifier == Identifiers.BoardAdd.rawValue) {
             
 
-        } else if (self.identifier == Identifier.BoardEdit.rawValue) {
+        } else if (self.identifier == Identifiers.BoardEdit.rawValue) {
 
             
         }
