@@ -47,7 +47,7 @@
                     <navigationItem key="navigationItem" title="Board List" id="kcH-AW-P1P">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dYy-JU-bXQ">
                             <connections>
-                                <segue destination="8cP-mE-d4G" kind="modal" id="oIp-E7-An1"/>
+                                <segue destination="8cP-mE-d4G" kind="modal" identifier="fromAddButtonToBoardEdit" id="oIp-E7-An1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -85,7 +85,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Board Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1uH-iy-AKP">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Board Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1uH-iy-AKP" userLabel="Board Title Field">
                                 <rect key="frame" x="171" y="138" width="258" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="258" id="aNe-vb-hst"/>
@@ -108,7 +108,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="PJW-u2-XDd"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="boardTitleTield" destination="1uH-iy-AKP" id="cco-LN-b0K"/>
+                        <outlet property="boardTitleField" destination="1uH-iy-AKP" id="xui-Z9-jks"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tza-V0-mvS" userLabel="First Responder" sceneMemberID="firstResponder"/>

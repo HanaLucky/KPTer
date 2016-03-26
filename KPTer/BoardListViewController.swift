@@ -17,18 +17,14 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     // テーブルビュー
     private var boardListTableView: UITableView!
     
+    // リフレッシュコントロール
+    var refreshControl:UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        // XXX test code for insert data start
-        for var i = 0; i < 3; i++ {
-            BoardViewModel.create("new board title" + String(i))
-        }
-        BoardViewModel.create("new board title")
         let realm = try! Realm()
         boardEntities = realm.objects(Board)
-        // XXX test code for insert data end
         
         // reference https://sites.google.com/a/gclue.jp/swift-docs/ni-yinki100-ios/uikit/006-uitableviewdeteburuwo-biao-shi
         // Status Barの高さを取得する.
@@ -52,6 +48,12 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Delegateを設定する.
         boardListTableView.delegate = self
+        
+        // 引っ張ってリロードする
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "まだできないよ〜")
+        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        boardListTableView.addSubview(refreshControl)
         
         // Viewに追加する.
         self.view.addSubview(boardListTableView)
@@ -103,9 +105,16 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     ここでKptAreaViewControllerにボード、カードを渡す
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(segue.identifier)
         if (segue.identifier == "toKptAreaViewController") {
             let toKptAreaViewController = (segue.destinationViewController as? KptAreaViewController)
-            // @TODO implements
+            // @TODO KptAreaのコントローラーにボードを渡す
+            
+            
+        } else if (segue.identifier == "fromAddButtonToBoardEdit") {
+            // 追加ボタンから遷移したことを示す識別子をボード画面に渡す
+            let boardEditViewController = (segue.destinationViewController as? BoardEditViewController)
+            boardEditViewController?.identifier = Identifier.BoardAdd.rawValue
         }
     }
     
@@ -117,14 +126,17 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         // Editボタン
         let editButton: UITableViewRowAction = UITableViewRowAction(style: .Normal, title: "Edit") { (action, index) -> Void in
             tableView.editing = false
-            print("Edit")
-            // @TODO 編集がタップされた場合の処理。Board Edit画面をモーダル表示する
-
+            
             let boardEditViewController = self.storyboard?.instantiateViewControllerWithIdentifier("BoardEditViewController") as! BoardEditViewController
             
             let board = self.boardEntities![indexPath.row]
             
+            // ボード画面をモーダル表示する
+            // ボードエンティティを渡す
             boardEditViewController.board = board
+            // Editボタンから遷移したことを示す識別子をボード画面に渡す
+            boardEditViewController.identifier = Identifier.BoardEdit.rawValue
+            // モーダル表示する
             boardEditViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
             self.presentViewController(boardEditViewController, animated: true, completion: nil)
             
@@ -135,11 +147,33 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         // Deleteボタン
         let deleteButton: UITableViewRowAction = UITableViewRowAction(style: .Normal , title: "Delete") { (action, index) -> Void in
             tableView.editing = false
-            print("delete")
+            // ボードを削除する
+            BoardViewModel.delete(self.boardEntities![indexPath.row])
+            self.viewWillAppear(true)
+            
         }
         deleteButton.backgroundColor = UIColor.redColor()
         
         return [deleteButton, editButton]
+    }
+    
+    /**
+     テーブルを下に引っ張ってリロードする
+     (次フェーズで利用予定の仕組み)
+    */
+    func refresh() {
+        self.viewWillAppear(true)
+        self.refreshControl.endRefreshing()
+    }
+    
+    /**
+     ボードリスト画面が表示されるごとに、ボードエンティティを取得して再描画する
+    */
+    override func viewWillAppear(animated: Bool) {
+        let realm = try! Realm()
+        boardEntities = realm.objects(Board)
+        boardListTableView.reloadData()
+        super.viewWillAppear(animated)
     }
 }
 

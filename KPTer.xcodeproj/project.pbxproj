@@ -15,6 +15,7 @@
 		0D777BFD1C68A8230038462F /* KPTerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D777BFC1C68A8230038462F /* KPTerTests.swift */; };
 		0D777C081C68A8230038462F /* KPTerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D777C071C68A8230038462F /* KPTerUITests.swift */; };
 		0D777C161C68C3BB0038462F /* BoardListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D777C151C68C3BB0038462F /* BoardListItemTableViewCell.swift */; };
+		0D93B05C1CA6AD8B00BA0935 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93B05B1CA6AD8B00BA0935 /* Identifier.swift */; };
 		0DB135331C91D95B00070613 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB135321C91D95B00070613 /* CardViewController.swift */; };
 		0DB135371C9410A100070613 /* UIDescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB135361C9410A100070613 /* UIDescriptionTextView.swift */; };
 		0DBA9A351C786D6300AF036B /* BoardEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBA9A341C786D6300AF036B /* BoardEditViewController.swift */; };
@@ -65,6 +66,7 @@
 		0D777C071C68A8230038462F /* KPTerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPTerUITests.swift; sourceTree = "<group>"; };
 		0D777C091C68A8230038462F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D777C151C68C3BB0038462F /* BoardListItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardListItemTableViewCell.swift; sourceTree = "<group>"; };
+		0D93B05B1CA6AD8B00BA0935 /* Identifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		0DB135321C91D95B00070613 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		0DB135361C9410A100070613 /* UIDescriptionTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDescriptionTextView.swift; sourceTree = "<group>"; };
 		0DBA9A341C786D6300AF036B /* BoardEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardEditViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				0DB135361C9410A100070613 /* UIDescriptionTextView.swift */,
 				3AD6582A1CA02ABE0051C2F1 /* BoardViewModel.swift */,
 				3AD6582E1CA02FC50051C2F1 /* CardViewModel.swift */,
+				0D93B05B1CA6AD8B00BA0935 /* Identifier.swift */,
 			);
 			path = KPTer;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				0D777BE71C68A8220038462F /* BoardListViewController.swift in Sources */,
 				0DFF36051C8E4C3C00F56E3D /* KptAreaViewController.swift in Sources */,
 				3AC482EE1C82CC2E00137FF5 /* Card.swift in Sources */,
+				0D93B05C1CA6AD8B00BA0935 /* Identifier.swift in Sources */,
 				0D777BE51C68A8220038462F /* AppDelegate.swift in Sources */,
 				0DBA9A351C786D6300AF036B /* BoardEditViewController.swift in Sources */,
 				3AD6582F1CA02FC50051C2F1 /* CardViewModel.swift in Sources */,
