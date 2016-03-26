@@ -30,15 +30,19 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         boardEntities = realm.objects(Board)
         // XXX test code for insert data end
         
+        // reference https://sites.google.com/a/gclue.jp/swift-docs/ni-yinki100-ios/uikit/006-uitableviewdeteburuwo-biao-shi
         // Status Barの高さを取得する.
         let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
+        
+        // Navigation Barの高さを取得する
+        let navigationBarHeight = self.navigationController?.navigationBar.frame.height
         
         // Viewの高さと幅を取得する.
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
         
-        // TableViewの生成する(status barの高さ分ずらして表示).
-        boardListTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
+        // TableViewの生成する(status bar, navigation barの高さ分ずらして表示).
+        boardListTableView = UITableView(frame: CGRect(x: 0, y: barHeight + navigationBarHeight!, width: displayWidth, height: displayHeight - barHeight - navigationBarHeight!))
         
         // Cell名の登録をおこなう.
         boardListTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
