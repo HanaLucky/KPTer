@@ -3,7 +3,7 @@
 //  KPTer
 //
 //  Created by yoshikawa atsushi on 2/20/16.
-//  Copyright © 2016 yoshikawa atsushi. All rights reserved.
+//  Copyright © 2016 HanaLucky. All rights reserved.
 //
 
 import UIKit
@@ -11,18 +11,20 @@ import RealmSwift
 
 class BoardEditViewController: UIViewController {
 
-    @IBOutlet weak var boardTitleTield: UITextField!
-
+    @IBOutlet weak var boardTitleField: UITextField!
+    
     var board: Board? = nil
+    
+    // 画面遷移の識別子(ボード一覧のAddから来たかEditからきたか判別)
+    var identifier: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // @TODO implements
         if let boardEntity = board {
-            boardTitleTield.text = boardEntity.board_title
+            self.boardTitleField.text = boardEntity.board_title
         }
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,19 +32,21 @@ class BoardEditViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // @TODO implements board save
-    @IBAction func save(sender: UIBarButtonItem) {
+    @IBAction func save(sender: AnyObject) {
+        if (self.identifier == Identifiers.BoardAdd.rawValue) {
+            
+
+        } else if (self.identifier == Identifiers.BoardEdit.rawValue) {
+
+            
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    // @TODO implements board cancel
-    @IBAction func cancel(sender: UIBarButtonItem) {
+    @IBAction func cancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    private func setupBoardNameTextFielsStyle() {
-        
-    }
     /*
     // MARK: - Navigation
 
