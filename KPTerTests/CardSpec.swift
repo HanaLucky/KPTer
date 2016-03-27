@@ -35,7 +35,7 @@ class CardSpec: QuickSpec {
             it("削除されたCardが取得できないこと") {
                 sleep(10)
                 CardViewModel.delete(newCard!)
-                expect(realm.objects(Card).count).to(equal(0)) //削除されたCardが取得できないこと
+                expect(realm.objects(Card).count).to(equal(0)) 
             }
         }
 
