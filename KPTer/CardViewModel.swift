@@ -10,6 +10,17 @@ import Foundation
 import RealmSwift
 
 class CardViewModel {
+    
+    enum CardType: String {
+        case Keep = "Keep"
+        case Problem = "Problem"
+        case Try = "Try"
+    }
+    
+    enum CardStatus: String {
+        case Open = "Open"
+        case Done = "Done"
+    }
 
     class func create(title: String, detail: String) -> Card? {
         let card = Card()
