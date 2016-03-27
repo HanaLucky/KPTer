@@ -18,6 +18,17 @@ class Card: Object {
     dynamic var status = ""
     dynamic var order = 0
     
+    enum CardType: String {
+        case Keep = "Keep"
+        case Problem = "Problem"
+        case Try = "Try"
+    }
+    
+    enum CardStatus: String {
+        case Open = "Open"
+        case Done = "Done"
+    }
+    
     override static func primaryKey() -> String? {
         return "id"
     }
