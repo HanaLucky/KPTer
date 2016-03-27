@@ -24,6 +24,9 @@ class BoardViewModel {
     class func delete(board: Board){
         let realm = try! Realm()
         try! realm.write {
+            for var i = board.cards.count - 1; i >= 0; i-- {
+                realm.delete(board.cards.first!)
+            }
             realm.delete(board)
         }
     }
@@ -36,7 +39,11 @@ class BoardViewModel {
     }
     
     class func addCard(board: Board, title: String, detail: String) {
-        //board.cards.append(CardViewModel.create(title, detail: detail)!)
+        let card = CardViewModel.create(title, detail: detail)
+        let realm = try! Realm()
+        try! realm.write {
+            board.cards.append(card!)
+        }
     }
 
 }

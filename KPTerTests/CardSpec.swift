@@ -4,6 +4,7 @@ import Quick
 import Nimble
 @testable import KPTer
 
+// CardViewModelのテストをする際は、BoardSpecのspec()内をコメントアウトしてください。
 class CardSpec: QuickSpec {
     override func spec() {
         
@@ -28,6 +29,16 @@ class CardSpec: QuickSpec {
                 expect(editCard!.card_title).to(equal("edit card title"))
             }
         }
+        
+        describe("Cardを削除する") {
+            
+            it("削除されたCardが取得できないこと") {
+                sleep(10)
+                CardViewModel.delete(newCard!)
+                expect(realm.objects(Card).count).to(equal(0)) //削除されたCardが取得できないこと
+            }
+        }
+
         
     }
 }

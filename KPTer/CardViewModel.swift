@@ -27,4 +27,11 @@ class CardViewModel {
             card.card_title = title
         }
     }
+    
+    class func delete(card: Card){
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(card)
+        }
+    }
 }
