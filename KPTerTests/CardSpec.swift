@@ -8,7 +8,6 @@ import Nimble
 class CardSpec: QuickSpec {
     override func spec() {
         
-        sleep(10)
         let realm = try! Realm()
         var newCard: Card? = CardViewModel.create("new card title", detail: "new card detail")
         
@@ -19,12 +18,18 @@ class CardSpec: QuickSpec {
             it("Cardのcard_titleが引数に指定した文字列であること") {
                 expect(newCard!.card_title).to(equal("new card title"))
             }
+            it("Cardのdetailが引数に指定した文字列であること") {
+                expect(newCard!.detail).to(equal("new card detail"))
+            }
+            it("Cardのstatusが'Open'であること") {
+                expect(newCard!.status).to(equal("Open"))
+            }
         }
         
         describe("既存のCardを編集する") {
-            sleep(5)
             it("Cardの名前を引数に指定し、Cardの名前を変更できること") {
-                CardViewModel.edit(newCard!, title: "edit card title", detail: "edit card title")
+                sleep(5)
+                CardViewModel.edit(newCard!, title: "edit card title", detail: "edit card detail")
                 let editCard: Card? = realm.objects(Card).first
                 expect(editCard!.card_title).to(equal("edit card title"))
             }
@@ -38,7 +43,6 @@ class CardSpec: QuickSpec {
                 expect(realm.objects(Card).count).to(equal(0)) 
             }
         }
-
         
     }
 }
