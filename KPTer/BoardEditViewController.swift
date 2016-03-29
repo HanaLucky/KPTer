@@ -34,10 +34,9 @@ class BoardEditViewController: UIViewController {
     
     @IBAction func save(sender: AnyObject) {
         if (self.identifier == Identifiers.BoardAdd.rawValue) {
-            
-
+            BoardViewModel.create(self.boardTitleField.text!)
         } else if (self.identifier == Identifiers.BoardEdit.rawValue) {
-
+            BoardViewModel.edit(board!, title: self.boardTitleField.text!)
             
         }
         self.dismissViewControllerAnimated(true, completion: nil)
