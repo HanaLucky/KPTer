@@ -11,11 +11,12 @@ import RealmSwift
 
 class CardViewModel {
 
-    class func create(title: String, detail: String) -> Card? {
+    class func create(title: String, detail: String, type: Card.CardType) -> Card? {
         let card = Card()
         card.card_title = title
         card.detail = detail
         card.status = Card.CardStatus.Open.rawValue
+        card.type = type.rawValue
         let realm = try! Realm()
         try! realm.write {
             realm.add(card)

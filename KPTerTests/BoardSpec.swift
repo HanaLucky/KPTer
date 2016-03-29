@@ -35,14 +35,52 @@ class BoardSpec: QuickSpec {
 
         describe("Cardの名前を引数に指定し、Boardに紐付いたCardを作成する") {
             sleep(2)
-            BoardViewModel.addCard(newBoard!, title: "new card title", detail: "new card detail")
-            BoardViewModel.addCard(newBoard!, title: "new card title2", detail: "new card detail")
+            BoardViewModel.addCard(newBoard!, title: "new card title", detail: "new card detail", type: Card.CardType.Keep)
+            BoardViewModel.addCard(newBoard!, title: "new card title2", detail: "new card detail", type: Card.CardType.Problem)
+            BoardViewModel.addCard(newBoard!, title: "new card title2", detail: "new card detail", type: Card.CardType.Try)
             
             it("Boardに紐付いたCardが取得できること") {
                 expect(newBoard!.cards).toNot(beNil())
             }
             
         }
+        
+        describe("Boardに紐づくKeepのCardを取得する") {
+            sleep(3)
+            let results = BoardViewModel.findKeepCard(newBoard!)
+            it("引数に指定した種別のCardであること") {
+                expect(results.first!.type).to(equal("Keep"))
+            }
+
+        }
+        
+        describe("Boardに紐づくProblemのCardを取得する") {
+            sleep(3)
+            let results = BoardViewModel.findProblemCard(newBoard!)
+            it("引数に指定した種別のCardであること") {
+                expect(results.first!.type).to(equal("Problem"))
+            }
+            
+        }
+        
+        describe("Boardに紐づくTryのCardを取得する") {
+            sleep(3)
+            let results = BoardViewModel.findTryCard(newBoard!)
+            it("引数に指定した種別のCardであること") {
+                expect(results.first!.type).to(equal("Try"))
+            }
+            
+        }
+
+//        // findCardByType(board: Board, type: Card.CardType) @BoardViewModelをテスト
+//        describe("Boardに紐づく引数に指定した種別のCardを取得する") {
+//            sleep(3)
+//            let results = BoardViewModel.findCardByType(newBoard!, type: Card.CardType.Keep)
+//            it("引数に指定した種別のCardであること") {
+//                expect(results.first!.type).to(equal("Keep"))
+//            }
+//            
+//        }
 
         describe("既存のBoardを編集する") {
             sleep(2)
