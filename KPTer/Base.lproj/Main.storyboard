@@ -249,10 +249,10 @@
             </objects>
             <point key="canvasLocation" x="107" y="295"/>
         </scene>
-        <!--View Controller-->
+        <!--Kpt Area View Controller-->
         <scene sceneID="MlF-2p-5Kc">
             <objects>
-                <viewController id="Y5D-lk-Nlk" customClass="ViewController" customModule="KPTer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y5D-lk-Nlk" customClass="KptAreaViewController" customModule="KPTer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pjk-Ke-jcf"/>
                         <viewControllerLayoutGuide type="bottom" id="lea-ic-W7Y"/>
@@ -280,7 +280,7 @@
                                                         <rect key="frame" x="0.0" y="25" width="520" height="240"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="711-kK-ET8">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KeepCard" id="711-kK-ET8" customClass="KeepCardTableViewCell" customModule="KPTer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="28" width="520" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="711-kK-ET8" id="f0E-z5-IHw">
@@ -294,7 +294,7 @@
                                                         <rect key="frame" x="0.0" y="280" width="520" height="240"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="z5m-dc-TvE">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProblemCard" id="z5m-dc-TvE" customClass="ProblemCardTableViewCell" customModule="KPTer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="28" width="520" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z5m-dc-TvE" id="ZpK-Yc-X6R">
@@ -329,7 +329,7 @@
                                                         <rect key="frame" x="0.0" y="25" width="520" height="495"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="S2m-JW-jbG">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TryCard" id="S2m-JW-jbG" customClass="TryCardTableViewCell" customModule="KPTer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="28" width="520" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S2m-JW-jbG" id="hvo-Th-e88">

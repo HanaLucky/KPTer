@@ -31,5 +31,8 @@ class KptAreaViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    /*
+    指定したカードタイプの
+    */
 }
