@@ -85,7 +85,7 @@ class BoardSpec: QuickSpec {
         describe("既存のBoardを編集する") {
             sleep(2)
             it("Boardの名前を引数に指定し、Boardの名前を変更できること") {
-                BoardViewModel.edit(newBoard!, title: "edit board title", detail: "edit board detail")
+                BoardViewModel.edit(newBoard!, title: "edit board title")
                 let editBoard: Board? = realm.objects(Board).first
                 expect(editBoard!.board_title).to(equal("edit board title"))
             }

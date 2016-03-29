@@ -31,7 +31,7 @@ class BoardViewModel {
         }
     }
     
-    class func edit(board: Board, title: String, detail: String){
+    class func edit(board: Board, title: String){
         let realm = try! Realm()
         try! realm.write {
             board.board_title = title
