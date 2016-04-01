@@ -35,12 +35,21 @@ class BoardSpec: QuickSpec {
 
         describe("Cardの名前を引数に指定し、Boardに紐付いたCardを作成する") {
             sleep(2)
-            BoardViewModel.addCard(newBoard!, title: "new card title", detail: "new card detail", type: Card.CardType.Keep)
-            BoardViewModel.addCard(newBoard!, title: "new card title2", detail: "new card detail", type: Card.CardType.Problem)
-            BoardViewModel.addCard(newBoard!, title: "new card title2", detail: "new card detail", type: Card.CardType.Try)
+            BoardViewModel.addKeepCard(newBoard!, title: "new card title", detail: "new card detail")
+            BoardViewModel.addProblemCard(newBoard!, title: "new card title2", detail: "new card detail")
+            BoardViewModel.addTryCard(newBoard!, title: "new card title3", detail: "new card detail", fromCard: newBoard!.cards.first!)
             
             it("Boardに紐付いたCardが取得できること") {
                 expect(newBoard!.cards).toNot(beNil())
+            }
+            
+        }
+        
+        describe("Cardのリレーションを処理する") {
+            sleep(3)
+                it("引数に渡したcardのidとrelationのidを比較") {
+                let realm = try! Realm()
+                expect(newBoard!.cards.first!.id).to(equal(realm.objects(CardRelation).first?.from_id))
             }
             
         }
