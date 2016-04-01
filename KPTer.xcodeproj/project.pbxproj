@@ -23,6 +23,7 @@
 		0DBB671E1CAAB69C0011288B /* KeepCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB671D1CAAB69C0011288B /* KeepCardTableViewCell.swift */; };
 		0DBB67201CAAB71E0011288B /* ProblemCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB671F1CAAB71E0011288B /* ProblemCardTableViewCell.swift */; };
 		0DBB67221CAAB7830011288B /* TryCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB67211CAAB7830011288B /* TryCardTableViewCell.swift */; };
+		0DBB67241CACA7BB0011288B /* TableViewTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB67231CACA7BB0011288B /* TableViewTags.swift */; };
 		0DFF36051C8E4C3C00F56E3D /* KptAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFF36041C8E4C3C00F56E3D /* KptAreaViewController.swift */; };
 		11AAE520B7C8E468120700FD /* Pods_KPTerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07590C8BBDC73FEED1048F4 /* Pods_KPTerUITests.framework */; };
 		19F700E9C5E7B0C5CE280CB5 /* Pods_KPTer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5469B8B5FA84843CDE22A524 /* Pods_KPTer.framework */; };
@@ -78,6 +79,7 @@
 		0DBB671D1CAAB69C0011288B /* KeepCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepCardTableViewCell.swift; sourceTree = "<group>"; };
 		0DBB671F1CAAB71E0011288B /* ProblemCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemCardTableViewCell.swift; sourceTree = "<group>"; };
 		0DBB67211CAAB7830011288B /* TryCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TryCardTableViewCell.swift; sourceTree = "<group>"; };
+		0DBB67231CACA7BB0011288B /* TableViewTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewTags.swift; sourceTree = "<group>"; };
 		0DFF36041C8E4C3C00F56E3D /* KptAreaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KptAreaViewController.swift; sourceTree = "<group>"; };
 		194EC9DD107C84FD0B44641B /* Pods-KPTerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerUITests/Pods-KPTerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1A28C0E6541241ECEE6422AF /* Pods-KPTerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerTests/Pods-KPTerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				0DBB671D1CAAB69C0011288B /* KeepCardTableViewCell.swift */,
 				0DBB671F1CAAB71E0011288B /* ProblemCardTableViewCell.swift */,
 				0DBB67211CAAB7830011288B /* TryCardTableViewCell.swift */,
+				0DBB67231CACA7BB0011288B /* TableViewTags.swift */,
 			);
 			path = KPTer;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				3AD6582F1CA02FC50051C2F1 /* CardViewModel.swift in Sources */,
 				0DBB67201CAAB71E0011288B /* ProblemCardTableViewCell.swift in Sources */,
 				0DBB671E1CAAB69C0011288B /* KeepCardTableViewCell.swift in Sources */,
+				0DBB67241CACA7BB0011288B /* TableViewTags.swift in Sources */,
 				0DB135371C9410A100070613 /* UIDescriptionTextView.swift in Sources */,
 				3AC482EC1C82CC2E00137FF5 /* Board.swift in Sources */,
 				3AC482F01C82CC2E00137FF5 /* CardRelation.swift in Sources */,

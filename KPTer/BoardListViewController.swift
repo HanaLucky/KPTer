@@ -105,11 +105,13 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     ここでKptAreaViewControllerにボード、カードを渡す
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(segue.identifier)
+
         if (segue.identifier == "toKptAreaViewController") {
-            let toKptAreaViewController = (segue.destinationViewController as? KptAreaViewController)
-            // @TODO KptAreaのコントローラーにボードを渡す
-            
+            // KptAreaのコントローラーにボードを渡す
+
+            let kptAreaViewController = (segue.destinationViewController as? KptAreaViewController)
+            let board = self.boardEntities![boardListTableView.indexPathForSelectedRow!.row]
+            kptAreaViewController!.board = board
             
         } else if (segue.identifier == "fromAddButtonToBoardEdit") {
             // 追加ボタンから遷移したことを示す識別子をボード画面に渡す
@@ -125,10 +127,11 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Editボタン
         let editButton: UITableViewRowAction = UITableViewRowAction(style: .Normal, title: "Edit") { (action, index) -> Void in
+            
             tableView.editing = false
             
+            // ボード編集画面に選択されたボードエンティティを渡す
             let boardEditViewController = self.storyboard?.instantiateViewControllerWithIdentifier("BoardEditViewController") as! BoardEditViewController
-            
             let board = self.boardEntities![indexPath.row]
             
             // ボード画面をモーダル表示する
