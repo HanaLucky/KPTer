@@ -287,6 +287,9 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="520" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
+                                                                <connections>
+                                                                    <segue destination="9uw-Zv-xGG" kind="presentation" id="XOk-n7-hpv"/>
+                                                                </connections>
                                                             </tableViewCell>
                                                         </prototypes>
                                                         <connections>
@@ -305,6 +308,9 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="520" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
+                                                                <connections>
+                                                                    <segue destination="9uw-Zv-xGG" kind="presentation" id="S1d-0F-0V6"/>
+                                                                </connections>
                                                             </tableViewCell>
                                                         </prototypes>
                                                         <connections>
@@ -344,6 +350,9 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="520" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
+                                                                <connections>
+                                                                    <segue destination="9uw-Zv-xGG" kind="presentation" id="6pW-eE-oD6"/>
+                                                                </connections>
                                                             </tableViewCell>
                                                         </prototypes>
                                                         <connections>
@@ -406,4 +415,7 @@
             <point key="canvasLocation" x="1093" y="1055"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="S1d-0F-0V6"/>
+    </inferredMetricsTieBreakers>
 </document>
