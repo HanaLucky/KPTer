@@ -17,6 +17,8 @@ class Card: Object {
     dynamic var type = ""
     dynamic var status = ""
     dynamic var order = 0
+    dynamic var created_at = NSDate()
+    dynamic var updated_at = NSDate()
     
     enum CardType: String {
         case Keep = "Keep"
