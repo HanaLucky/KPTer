@@ -72,17 +72,25 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell:UITableViewCell? = nil
+        let cell:UITableViewCell? = nil
         
         if tableView.tag == TableViewTags.keepTableViewTag.rawValue {
-            cell = tableView.dequeueReusableCellWithIdentifier("KeepCard") as! KeepCardTableViewCell
-            cell!.textLabel!.text = keepCardEntities[indexPath.row].card_title
+            let keepCell:KeepCardTableViewCell = tableView.dequeueReusableCellWithIdentifier("KeepCard") as! KeepCardTableViewCell
+            keepCell.setCell(keepCardEntities[indexPath.row])
+            
+            return keepCell
+            
         } else if tableView.tag == TableViewTags.problemTableViewTag.rawValue {
-            cell = tableView.dequeueReusableCellWithIdentifier("ProblemCard") as! ProblemCardTableViewCell
-            cell!.textLabel!.text = problemCardEntities[indexPath.row].card_title
+            let problemCell:ProblemCardTableViewCell = tableView.dequeueReusableCellWithIdentifier("ProblemCard") as! ProblemCardTableViewCell
+            problemCell.setCell(problemCardEntities[indexPath.row])
+            
+            return problemCell
+            
         } else if tableView.tag == TableViewTags.tryTableViewTag.rawValue {
-            cell = tableView.dequeueReusableCellWithIdentifier("TryCard") as! TryCardTableViewCell
-            cell!.textLabel!.text = tryCardEntities[indexPath.row].card_title
+            let tryCell:TryCardTableViewCell = tableView.dequeueReusableCellWithIdentifier("TryCard") as! TryCardTableViewCell
+            tryCell.setCell(tryCardEntities[indexPath.row])
+            
+            return tryCell
         }
         
         return cell!

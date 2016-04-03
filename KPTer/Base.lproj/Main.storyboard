@@ -286,8 +286,28 @@
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="711-kK-ET8" id="f0E-z5-IHw">
                                                                     <rect key="frame" x="0.0" y="0.0" width="520" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7G7-yh-FSf">
+                                                                            <rect key="frame" x="8" y="0.0" width="504" height="21"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehz-Z1-XPf">
+                                                                            <rect key="frame" x="8" y="22" width="504" height="21"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="7G7-yh-FSf" secondAttribute="width" id="Hcn-Lc-GUW"/>
+                                                                        <constraint firstAttribute="width" secondItem="ehz-Z1-XPf" secondAttribute="width" id="ufi-qj-ato"/>
+                                                                    </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
+                                                                    <outlet property="detail" destination="ehz-Z1-XPf" id="dOq-ng-4Jo"/>
+                                                                    <outlet property="title" destination="7G7-yh-FSf" id="RO8-Dl-Wa2"/>
                                                                     <segue destination="9uw-Zv-xGG" kind="presentation" id="XOk-n7-hpv"/>
                                                                 </connections>
                                                             </tableViewCell>
@@ -307,8 +327,28 @@
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z5m-dc-TvE" id="ZpK-Yc-X6R">
                                                                     <rect key="frame" x="0.0" y="0.0" width="520" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laL-J2-a8r">
+                                                                            <rect key="frame" x="8" y="0.0" width="504" height="21"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keO-pn-I0K">
+                                                                            <rect key="frame" x="8" y="22" width="504" height="21"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="laL-J2-a8r" secondAttribute="width" id="RhH-iW-sP4"/>
+                                                                        <constraint firstAttribute="width" secondItem="keO-pn-I0K" secondAttribute="width" id="hzp-A6-T98"/>
+                                                                    </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
+                                                                    <outlet property="detail" destination="keO-pn-I0K" id="MyH-lS-u58"/>
+                                                                    <outlet property="title" destination="laL-J2-a8r" id="1J6-XO-p2R"/>
                                                                     <segue destination="9uw-Zv-xGG" kind="presentation" id="S1d-0F-0V6"/>
                                                                 </connections>
                                                             </tableViewCell>
@@ -349,8 +389,28 @@
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S2m-JW-jbG" id="hvo-Th-e88">
                                                                     <rect key="frame" x="0.0" y="0.0" width="520" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqq-Qb-Fcv">
+                                                                            <rect key="frame" x="8" y="22" width="504" height="21"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jer-fB-ocK">
+                                                                            <rect key="frame" x="8" y="0.0" width="504" height="21"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="jer-fB-ocK" secondAttribute="width" id="XBD-Eq-eoi"/>
+                                                                        <constraint firstAttribute="width" secondItem="fqq-Qb-Fcv" secondAttribute="width" id="dFG-Qv-yhN"/>
+                                                                    </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
+                                                                    <outlet property="detail" destination="fqq-Qb-Fcv" id="wnn-An-v4U"/>
+                                                                    <outlet property="title" destination="jer-fB-ocK" id="3gx-JZ-j5Q"/>
                                                                     <segue destination="9uw-Zv-xGG" kind="presentation" id="6pW-eE-oD6"/>
                                                                 </connections>
                                                             </tableViewCell>
