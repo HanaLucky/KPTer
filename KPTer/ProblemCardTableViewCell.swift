@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 class ProblemCardTableViewCell: CardTableViewCell {
+    
     @IBOutlet weak var title: UILabel!
+    
     @IBOutlet weak var detail: UILabel!
+    
     func setCell (card: Card) {
         self.title.text = card.card_title
         self.detail.text = card.detail
