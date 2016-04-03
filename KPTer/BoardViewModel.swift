@@ -38,8 +38,33 @@ class BoardViewModel {
         }
     }
     
-    class func addCard(board: Board, title: String, detail: String, type: Card.CardType) {
+    private class func addCard(board: Board, title: String, detail: String, type: Card.CardType) {
         let card = CardViewModel.create(title, detail: detail, type: type)
+        let realm = try! Realm()
+        try! realm.write {
+            board.cards.append(card!)
+        }
+    }
+    
+    class func addKeepCard(board: Board, title: String, detail: String) {
+        let card = CardViewModel.create(title, detail: detail, type: Card.CardType.Keep)
+        let realm = try! Realm()
+        try! realm.write {
+            board.cards.append(card!)
+        }
+    }
+    
+    class func addProblemCard(board: Board, title: String, detail: String) {
+        let card = CardViewModel.create(title, detail: detail, type: Card.CardType.Problem)
+        let realm = try! Realm()
+        try! realm.write {
+            board.cards.append(card!)
+        }
+    }
+    
+    class func addTryCard(board: Board, title: String, detail: String, fromCard: Card) {
+        let card = CardViewModel.create(title, detail: detail, type: Card.CardType.Try)
+        addCardRelation(fromCard.id, toId: card!.id)
         let realm = try! Realm()
         try! realm.write {
             board.cards.append(card!)
@@ -64,6 +89,16 @@ class BoardViewModel {
     // Boardに紐づくCardをタイプ別に取得する
     private class func findCardByType(board: Board, type: Card.CardType) -> Results<Card> {
         return board.cards.filter("type = '\(type.rawValue)'")
+    }
+    
+    private class func addCardRelation(fromId: String, toId: String) {
+        let cardRelation = CardRelation()
+        cardRelation.from_id = fromId
+        cardRelation.to_id = toId
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(cardRelation)
+        }
     }
 
 }

@@ -38,4 +38,11 @@ class CardViewModel {
             realm.delete(card)
         }
     }
+    
+    class func changeStatus(card: Card, status: Card.CardStatus){
+        let realm = try! Realm()
+        try! realm.write {
+            card.status = status.rawValue
+        }
+    }
 }
