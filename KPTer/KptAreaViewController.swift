@@ -29,6 +29,7 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // experimentData()
+        self.navigationItem.title = board?.board_title
         self.keepCardEntities = BoardViewModel.findKeepCard(board!)
         self.problemCardEntities = BoardViewModel.findProblemCard(board!)
         self.tryCardEntities = BoardViewModel.findTryCard(board!)
