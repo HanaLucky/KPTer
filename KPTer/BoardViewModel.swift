@@ -38,37 +38,27 @@ class BoardViewModel {
         }
     }
     
-    private class func addCard(board: Board, title: String, detail: String, type: Card.CardType) {
-        let card = CardViewModel.create(title, detail: detail, type: type)
-        let realm = try! Realm()
-        try! realm.write {
-            board.cards.append(card!)
-        }
-    }
-    
     class func addKeepCard(board: Board, title: String, detail: String) {
-        let card = CardViewModel.create(title, detail: detail, type: Card.CardType.Keep)
-        let realm = try! Realm()
-        try! realm.write {
-            board.cards.append(card!)
-        }
+        let card = BoardViewModel.addCard(board, title: title, detail: detail, type: Card.CardType.Keep)
     }
     
     class func addProblemCard(board: Board, title: String, detail: String) {
-        let card = CardViewModel.create(title, detail: detail, type: Card.CardType.Problem)
-        let realm = try! Realm()
-        try! realm.write {
-            board.cards.append(card!)
-        }
+        let card = BoardViewModel.addCard(board, title: title, detail: detail, type: Card.CardType.Problem)
     }
     
     class func addTryCard(board: Board, title: String, detail: String, fromCard: Card) {
-        let card = CardViewModel.create(title, detail: detail, type: Card.CardType.Try)
-        addCardRelation(fromCard.id, toId: card!.id)
+        let card = BoardViewModel.addCard(board, title: title, detail: detail, type: Card.CardType.Try)
+        addCardRelation(fromCard.id, toId: card.id)
+    }
+    
+    private class func addCard(board: Board, title: String, detail: String, type: Card.CardType) -> Card{
+        let card = CardViewModel.create(title, detail: detail, type: type)
         let realm = try! Realm()
         try! realm.write {
+            card!.order = board.cards.filter("type = '\(type)'").count + 1
             board.cards.append(card!)
         }
+        return card!
     }
     
     // Boardに紐づくKeep Cardを取得する
@@ -98,6 +88,20 @@ class BoardViewModel {
         let realm = try! Realm()
         try! realm.write {
             realm.add(cardRelation)
+        }
+    }
+    
+    class func changeCardOrder(results: Results<Card>, from_card_row: Int, to_card_row: Int) {
+        var cards = Array(results)
+        let movedCard = cards[from_card_row]
+        cards.removeAtIndex(from_card_row)
+        cards.insert(movedCard, atIndex: to_card_row)
+        
+        let realm = try! Realm()
+        try! realm.write {
+            for var i = 0; i < cards.count; i++ {
+                cards[i].order = i + 1
+            }
         }
     }
 
