@@ -16,11 +16,17 @@ class CardViewController: UIViewController {
     @IBOutlet weak var titleField: UITextField!
     // description field
     @IBOutlet weak var descriptionField: UITextView!
+    // KPTエリアから受け取るボード
+    var board: Board? = nil
+    // KPTエリアから受け取るカード
+    var card: Card? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        typeLabel.text = "Keep"
-        // Do any additional setup after loading the view.        
+        // Do any additional setup after loading the view.
+        typeLabel.text = card?.type
+        titleField.text = card?.card_title
+        descriptionField.text = card?.description
     }
 
     override func didReceiveMemoryWarning() {

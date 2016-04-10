@@ -110,6 +110,21 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell!
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+        if tableView.tag == TableViewTags.keepTableViewTag.rawValue {
+            performSegueWithIdentifier(Identifiers.ToCardViewController.rawValue, sender: keepCardEntities.)
+            
+        } else if tableView.tag == TableViewTags.problemTableViewTag.rawValue {
+            
+            
+        } else if tableView.tag == TableViewTags.tryTableViewTag.rawValue {
+            
+            
+        }
+    }
+    
     // experiment: 実験データ
     private func experimentData() {
         BoardViewModel.addKeepCard(self.board!, title: "白いちご行けた", detail: "次は白いちごを狩りいく")
