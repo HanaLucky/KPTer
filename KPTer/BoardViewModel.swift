@@ -94,7 +94,7 @@ class BoardViewModel {
     
     // Boardに紐づくCardをタイプ別に取得する
     private class func findCardByType(board: Board, type: Card.CardType) -> Results<Card> {
-        return board.cards.filter("type = '\(type.rawValue)'")
+        return board.cards.filter("type = '\(type.rawValue)'").sorted("order")
     }
     
     private class func addCardRelation(fromId: String, toId: String) {

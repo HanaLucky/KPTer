@@ -85,7 +85,9 @@ class BoardSpec: QuickSpec {
             it("引数に指定した種別のCardであること") {
                 expect(results.first!.type).to(equal("Keep"))
             }
-
+            it("order順で取得できること") {
+                expect(results.first!.order).to(equal(1))
+            }
         }
         
         describe("Boardに紐づくProblemのCardを取得する") {
