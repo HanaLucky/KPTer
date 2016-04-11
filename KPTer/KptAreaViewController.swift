@@ -71,7 +71,7 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else if tableView.tag == TableViewTags.tryTableViewTag.rawValue {
             return Card.CardType.Try.rawValue
         }
-        return "Illegal Card Type"
+        return "Illegal Card Type!!"
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -111,17 +111,38 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    /*
+    Card画面に遷移する前処理
+    ここでCardViewControllerにボード、カードを渡す
+    */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // CardViewControllerに必要情報を渡す
+        let cardViewController = segue.destinationViewController as? CardViewController
 
-        if tableView.tag == TableViewTags.keepTableViewTag.rawValue {
-            performSegueWithIdentifier(Identifiers.ToCardViewController.rawValue, sender: keepCardEntities.)
+        if (segue.identifier == Identifiers.FromAddButtonToCardEdit.rawValue) {
             
-        } else if tableView.tag == TableViewTags.problemTableViewTag.rawValue {
+            cardViewController?.identifier = segue.identifier!
             
+        } else if (segue.identifier == Identifiers.FromEditButtonToCardEdit.rawValue) {
+            // 追加ボタンから遷移したことを示す識別子をボード画面に渡す
+            let cardTableViewCell = sender as! CardTableViewCell
             
-        } else if tableView.tag == TableViewTags.tryTableViewTag.rawValue {
+            var card: Card = Card()
             
+            if (cardTableViewCell is KeepCardTableViewCell) {
+                let index = self.keepTableView.indexPathForCell(cardTableViewCell)
+                card = self.keepCardEntities[index!.row]
+            } else if (cardTableViewCell is ProblemCardTableViewCell) {
+                let index = self.problemTableView.indexPathForCell(cardTableViewCell)
+                card = self.problemCardEntities[index!.row]
+            } else if (cardTableViewCell is TryCardTableViewCell) {
+                let index = self.tryTableView.indexPathForCell(cardTableViewCell)
+                card = self.tryCardEntities[index!.row]
+            }
             
+            cardViewController?.card = card
+            
+            cardViewController?.identifier = segue.identifier!
         }
     }
     

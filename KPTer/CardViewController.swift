@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CardViewController: UIViewController {
 
-    // type label
-    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var typeSegment: UISegmentedControl!
     // card title field
     @IBOutlet weak var titleField: UITextField!
     // description field
@@ -20,13 +20,20 @@ class CardViewController: UIViewController {
     var board: Board? = nil
     // KPTエリアから受け取るカード
     var card: Card? = nil
+    // 画面遷移の識別子(ボード一覧のAddから来たかEditからきたか判別)
+    var identifier: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        typeLabel.text = card?.type
-        titleField.text = card?.card_title
-        descriptionField.text = card?.description
+        // Do any additional setup after loading the view
+        // カードエンティティが渡ってきたら（基本、編集時のみ）
+        if let cardEntity = card {
+            typeSegment.selectedSegmentIndex = self.getSegmentIndexOfCardType(cardEntity)
+            titleField.text = cardEntity.card_title
+            descriptionField.text = cardEntity.detail
+        }
+        
+        // カードエンティティが渡ってこない場合は何もしない
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,5 +58,27 @@ class CardViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    /**
+    カードタイプと紐づくセグメントindexを取得する
+    
+    - parameter card: カードエンティティ
+    
+    - returns: カードタイプのセグメントindex
+    */
+    private func getSegmentIndexOfCardType (card: Card) -> Int {
+        switch card.type {
+        case Card.CardType.Keep.rawValue:
+            return 0
+        case Card.CardType.Problem.rawValue:
+            return 1
+        case Card.CardType.Try.rawValue:
+            return 2
+        default:
+            return 0
+            // FIXME: 想定外のタイプである場合例外処理とする
+            // throw NSError(domain: "illegal card type. card type is [" + card.type + "]", code: -1, userInfo: nil)
+        }
+    }
 
 }
