@@ -38,9 +38,12 @@ class CardSpec: QuickSpec {
                 let eCard = Card()
                 eCard.card_title = "edit card title"
                 eCard.detail = "edit card detail"
+                eCard.type = Card.CardType.Problem.rawValue
                 CardViewModel.edit(newCard!, editCard: eCard)
                 let editCard: Card? = realm.objects(Card).first
                 expect(editCard!.card_title).to(equal("edit card title"))
+                expect(editCard!.detail).to(equal("edit card detail"))
+                expect(editCard!.type).to(equal("Problem"))
             }
         }
         

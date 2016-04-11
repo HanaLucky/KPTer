@@ -29,6 +29,7 @@ class CardViewModel {
         try! realm.write {
             card.card_title = editCard.card_title
             card.detail = editCard.detail
+            card.type = editCard.type
         }
     }
     
