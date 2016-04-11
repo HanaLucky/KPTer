@@ -97,7 +97,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     Cellが選択された際に呼び出される.
     */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("toKptAreaViewController", sender: nil)
+        performSegueWithIdentifier(Identifiers.ToKptAreaViewController.rawValue, sender: nil)
     }
     
     /*
@@ -106,14 +106,14 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
-        if (segue.identifier == "toKptAreaViewController") {
+        if (segue.identifier == Identifiers.ToKptAreaViewController.rawValue) {
             // KptAreaのコントローラーにボードを渡す
 
             let kptAreaViewController = (segue.destinationViewController as? KptAreaViewController)
             let board = self.boardEntities![boardListTableView.indexPathForSelectedRow!.row]
             kptAreaViewController!.board = board
             
-        } else if (segue.identifier == "fromAddButtonToBoardEdit") {
+        } else if (segue.identifier == Identifiers.FromAddButtonToBoardEdit.rawValue) {
             // 追加ボタンから遷移したことを示す識別子をボード画面に渡す
             let boardEditViewController = (segue.destinationViewController as? BoardEditViewController)
             boardEditViewController?.identifier = Identifiers.BoardAdd.rawValue
