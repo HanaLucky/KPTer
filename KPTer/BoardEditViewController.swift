@@ -36,8 +36,9 @@ class BoardEditViewController: UIViewController {
         if (self.identifier == Identifiers.BoardAdd.rawValue) {
             BoardViewModel.create(self.boardTitleField.text!)
         } else if (self.identifier == Identifiers.BoardEdit.rawValue) {
-            BoardViewModel.edit(board!, title: self.boardTitleField.text!)
-            
+            let editBoard = Board()
+            editBoard.board_title = self.boardTitleField.text!
+            BoardViewModel.edit(board!, editBoard: editBoard)            
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }

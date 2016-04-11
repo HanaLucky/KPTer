@@ -11,6 +11,17 @@ import RealmSwift
 
 class BoardViewModel {
     
+    enum AscDesc: String {
+        case Asc = "true"
+        case Desc = "false"
+    }
+    
+    enum SortKey: String {
+        case Title = "board_title"
+        case CreatedAt = "created_at"
+        case UpdatedAt = "updated_at"
+    }
+    
     class func create(title: String) -> Board? {
         let board = Board()
         board.board_title = title
@@ -31,11 +42,16 @@ class BoardViewModel {
         }
     }
     
-    class func edit(board: Board, title: String){
+    class func edit(board: Board, editBoard: Board){
         let realm = try! Realm()
         try! realm.write {
-            board.board_title = title
+            board.board_title = editBoard.board_title
         }
+    }
+    
+    class func findBoards(sortKey: SortKey, ascDesc: AscDesc) -> Results<Board>{
+        let realm = try! Realm()
+        return realm.objects(Board).sorted(sortKey.rawValue, ascending: ModelViewUtilities.strToBool(ascDesc.rawValue))
     }
     
     class func addKeepCard(board: Board, title: String, detail: String) {
@@ -78,7 +94,7 @@ class BoardViewModel {
     
     // Boardに紐づくCardをタイプ別に取得する
     private class func findCardByType(board: Board, type: Card.CardType) -> Results<Card> {
-        return board.cards.filter("type = '\(type.rawValue)'")
+        return board.cards.filter("type = '\(type.rawValue)'").sorted("order")
     }
     
     private class func addCardRelation(fromId: String, toId: String) {

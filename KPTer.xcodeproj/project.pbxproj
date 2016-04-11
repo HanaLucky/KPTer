@@ -29,6 +29,7 @@
 		19F700E9C5E7B0C5CE280CB5 /* Pods_KPTer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5469B8B5FA84843CDE22A524 /* Pods_KPTer.framework */; };
 		282D8E15FFFB96308CFB4217 /* Pods_KPTerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD39B830EE4910EC91824E04 /* Pods_KPTerTests.framework */; };
 		3A12DEF71C8F01E8005E4E52 /* CardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A12DEF61C8F01E8005E4E52 /* CardSpec.swift */; };
+		3A6197851CBA697D00132D1F /* ModelViewUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6197841CBA697D00132D1F /* ModelViewUtilities.swift */; };
 		3AA365111C8C18370054FEC9 /* BoardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA365101C8C18370054FEC9 /* BoardSpec.swift */; };
 		3AC482EC1C82CC2E00137FF5 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E61C82CC2E00137FF5 /* Board.swift */; };
 		3AC482EE1C82CC2E00137FF5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC482E81C82CC2E00137FF5 /* Card.swift */; };
@@ -85,6 +86,7 @@
 		1A28C0E6541241ECEE6422AF /* Pods-KPTerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTerTests/Pods-KPTerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		263D04873D3B1CD633C13D7F /* Pods-KPTer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPTer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPTer/Pods-KPTer.debug.xcconfig"; sourceTree = "<group>"; };
 		3A12DEF61C8F01E8005E4E52 /* CardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSpec.swift; sourceTree = "<group>"; };
+		3A6197841CBA697D00132D1F /* ModelViewUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelViewUtilities.swift; sourceTree = "<group>"; };
 		3AA365101C8C18370054FEC9 /* BoardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardSpec.swift; sourceTree = "<group>"; };
 		3AC482E61C82CC2E00137FF5 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		3AC482E81C82CC2E00137FF5 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		0D777BE31C68A8220038462F /* KPTer */ = {
 			isa = PBXGroup;
 			children = (
+				3A6197831CBA692200132D1F /* Utilities */,
 				3AC482E61C82CC2E00137FF5 /* Board.swift */,
 				3AC482E81C82CC2E00137FF5 /* Card.swift */,
 				3AC482EA1C82CC2E00137FF5 /* CardRelation.swift */,
@@ -201,6 +204,14 @@
 				0D777C091C68A8230038462F /* Info.plist */,
 			);
 			path = KPTerUITests;
+			sourceTree = "<group>";
+		};
+		3A6197831CBA692200132D1F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3A6197841CBA697D00132D1F /* ModelViewUtilities.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		4FE5F6C3819345C92E2DBCE2 /* Pods */ = {
@@ -503,6 +514,7 @@
 				0DBB67201CAAB71E0011288B /* ProblemCardTableViewCell.swift in Sources */,
 				0DBB671E1CAAB69C0011288B /* KeepCardTableViewCell.swift in Sources */,
 				0DBB67241CACA7BB0011288B /* TableViewTags.swift in Sources */,
+				3A6197851CBA697D00132D1F /* ModelViewUtilities.swift in Sources */,
 				0DB135371C9410A100070613 /* UIDescriptionTextView.swift in Sources */,
 				3AC482EC1C82CC2E00137FF5 /* Board.swift in Sources */,
 				3AC482F01C82CC2E00137FF5 /* CardRelation.swift in Sources */,
