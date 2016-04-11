@@ -24,11 +24,11 @@ class CardViewModel {
         return card
     }
     
-    class func edit(card: Card, title: String, detail: String){
+    class func edit(card: Card, editCard: Card){
         let realm = try! Realm()
         try! realm.write {
-            card.card_title = title
-            card.detail = detail
+            card.card_title = editCard.card_title
+            card.detail = editCard.detail
         }
     }
     
