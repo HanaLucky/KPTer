@@ -117,12 +117,12 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // CardViewControllerに必要情報を渡す
-        let cardViewController = segue.destinationViewController as? CardViewController
+        let cardViewController = segue.destinationViewController as! CardViewController
 
         if (segue.identifier == Identifiers.FromAddButtonToCardEdit.rawValue) {
             // 追加ボタンの処理
             // 追加ボタンから遷移したことを示す識別子をカード画面に渡す
-            cardViewController?.identifier = segue.identifier!
+            cardViewController.identifier = segue.identifier!
             
         } else if (segue.identifier == Identifiers.FromEditButtonToCardEdit.rawValue) {
             // セル選択時の処理
@@ -142,12 +142,12 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
                 card = self.tryCardEntities[index!.row]
             }
             
-            cardViewController?.card = card
+            cardViewController.card = card
             
-            cardViewController?.identifier = segue.identifier!
+            cardViewController.identifier = segue.identifier!
         }
         
-        cardViewController?.board = self.board
+        cardViewController.board = self.board
     }
     
     /**
