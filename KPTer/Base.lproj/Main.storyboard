@@ -272,7 +272,7 @@
                                     <constraint firstAttribute="width" constant="600" placeholder="YES" id="Sgh-on-2xU" userLabel="[Placeholder] Width - (600) - Container View"/>
                                 </constraints>
                             </containerView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E21-Yx-79Y">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E21-Yx-79Y">
                                 <rect key="frame" x="0.0" y="0.0" width="1200" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yNV-c0-ayC">

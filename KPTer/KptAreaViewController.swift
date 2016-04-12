@@ -29,7 +29,7 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // experimentData()
-        self.navigationItem.title = board?.board_title
+        self.navigationItem.title = board!.board_title
         self.keepCardEntities = BoardViewModel.findKeepCard(board!)
         self.problemCardEntities = BoardViewModel.findProblemCard(board!)
         self.tryCardEntities = BoardViewModel.findTryCard(board!)
@@ -64,22 +64,22 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     セクションのタイトルを返す.
     */
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if tableView.tag == TableViewTags.keepTableViewTag.rawValue {
+        if tableView.tag == TableViewTags.KeepTableViewTag.rawValue {
             return Card.CardType.Keep.rawValue
-        } else if tableView.tag == TableViewTags.problemTableViewTag.rawValue {
+        } else if tableView.tag == TableViewTags.ProblemTableViewTag.rawValue {
             return Card.CardType.Problem.rawValue
-        } else if tableView.tag == TableViewTags.tryTableViewTag.rawValue {
+        } else if tableView.tag == TableViewTags.TryTableViewTag.rawValue {
             return Card.CardType.Try.rawValue
         }
         return "Illegal Card Type!!"
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView.tag == TableViewTags.keepTableViewTag.rawValue {
+        if tableView.tag == TableViewTags.KeepTableViewTag.rawValue {
             return keepCardEntities.count
-        } else if tableView.tag == TableViewTags.problemTableViewTag.rawValue {
+        } else if tableView.tag == TableViewTags.ProblemTableViewTag.rawValue {
             return problemCardEntities.count
-        } else if tableView.tag == TableViewTags.tryTableViewTag.rawValue {
+        } else if tableView.tag == TableViewTags.TryTableViewTag.rawValue {
             return tryCardEntities.count
         }
         return 0
@@ -89,19 +89,19 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell:UITableViewCell? = nil
         
-        if tableView.tag == TableViewTags.keepTableViewTag.rawValue {
+        if tableView.tag == TableViewTags.KeepTableViewTag.rawValue {
             let keepCell:KeepCardTableViewCell = tableView.dequeueReusableCellWithIdentifier("KeepCard") as! KeepCardTableViewCell
             keepCell.setCell(keepCardEntities[indexPath.row])
             
             return keepCell
             
-        } else if tableView.tag == TableViewTags.problemTableViewTag.rawValue {
+        } else if tableView.tag == TableViewTags.ProblemTableViewTag.rawValue {
             let problemCell:ProblemCardTableViewCell = tableView.dequeueReusableCellWithIdentifier("ProblemCard") as! ProblemCardTableViewCell
             problemCell.setCell(problemCardEntities[indexPath.row])
             
             return problemCell
             
-        } else if tableView.tag == TableViewTags.tryTableViewTag.rawValue {
+        } else if tableView.tag == TableViewTags.TryTableViewTag.rawValue {
             let tryCell:TryCardTableViewCell = tableView.dequeueReusableCellWithIdentifier("TryCard") as! TryCardTableViewCell
             tryCell.setCell(tryCardEntities[indexPath.row])
             
@@ -117,14 +117,16 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // CardViewControllerに必要情報を渡す
-        let cardViewController = segue.destinationViewController as? CardViewController
+        let cardViewController = segue.destinationViewController as! CardViewController
 
         if (segue.identifier == Identifiers.FromAddButtonToCardEdit.rawValue) {
-            
-            cardViewController?.identifier = segue.identifier!
+            // 追加ボタンの処理
+            // 追加ボタンから遷移したことを示す識別子をカード画面に渡す
+            cardViewController.identifier = segue.identifier!
             
         } else if (segue.identifier == Identifiers.FromEditButtonToCardEdit.rawValue) {
-            // 追加ボタンから遷移したことを示す識別子をボード画面に渡す
+            // セル選択時の処理
+            // カードとセル選択されたことを示す識別子をカード画面に渡す
             let cardTableViewCell = sender as! CardTableViewCell
             
             var card: Card = Card()
@@ -140,10 +142,32 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
                 card = self.tryCardEntities[index!.row]
             }
             
-            cardViewController?.card = card
+            cardViewController.card = card
             
-            cardViewController?.identifier = segue.identifier!
+            cardViewController.identifier = segue.identifier!
         }
+        
+        cardViewController.board = self.board
+    }
+    
+    /**
+     KPTエリア画面が表示されるごとに、カードエンティティを取得して再描画する
+     */
+    override func viewWillAppear(animated: Bool) {
+        self.refreshView()
+        super.viewWillAppear(animated)
+    }
+    
+    private func refreshView() {
+        self.navigationItem.title = self.board!.board_title
+        self.keepCardEntities = BoardViewModel.findKeepCard(self.board!)
+        self.problemCardEntities = BoardViewModel.findProblemCard(self.board!)
+        self.tryCardEntities = BoardViewModel.findTryCard(self.board!)
+        
+        self.keepTableView.reloadData()
+        self.problemTableView.reloadData()
+        self.tryTableView.reloadData()
+        
     }
     
     // experiment: 実験データ
