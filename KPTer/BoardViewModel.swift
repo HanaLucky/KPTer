@@ -64,7 +64,7 @@ class BoardViewModel {
     
     class func addTryCard(board: Board, title: String, detail: String, fromCard: Card) {
         let card = BoardViewModel.addCard(board, title: title, detail: detail, type: Card.CardType.Try)
-        addCardRelation(fromCard.id, toId: card.id)
+        CardViewModel.addCardRelation(fromCard.id, toId: card.id)
     }
     
     private class func addCard(board: Board, title: String, detail: String, type: Card.CardType) -> Card{
@@ -95,16 +95,6 @@ class BoardViewModel {
     // Boardに紐づくCardをタイプ別に取得する
     private class func findCardByType(board: Board, type: Card.CardType) -> Results<Card> {
         return board.cards.filter("type = '\(type.rawValue)'").sorted("order")
-    }
-    
-    private class func addCardRelation(fromId: String, toId: String) {
-        let cardRelation = CardRelation()
-        cardRelation.from_id = fromId
-        cardRelation.to_id = toId
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(cardRelation)
-        }
     }
     
     class func changeCardOrder(results: Results<Card>, from_card_row: Int, to_card_row: Int) {
