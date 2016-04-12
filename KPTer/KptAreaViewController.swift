@@ -158,9 +158,8 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewWillAppear(animated)
     }
     
-    
     private func refreshView() {
-        self.navigationItem.title = self.board?.board_title
+        self.navigationItem.title = self.board!.board_title
         self.keepCardEntities = BoardViewModel.findKeepCard(self.board!)
         self.problemCardEntities = BoardViewModel.findProblemCard(self.board!)
         self.tryCardEntities = BoardViewModel.findTryCard(self.board!)
