@@ -9,7 +9,7 @@
 import Foundation
 
 public enum TableViewTags: Int {
-    case keepTableViewTag = 0
-    case problemTableViewTag = 1
-    case tryTableViewTag = 2
+    case KeepTableViewTag = 0
+    case ProblemTableViewTag = 1
+    case TryTableViewTag = 2
 }

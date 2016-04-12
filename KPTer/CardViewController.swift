@@ -23,12 +23,18 @@ class CardViewController: UIViewController {
     // 画面遷移の識別子(ボード一覧のAddから来たかEditからきたか判別)
     var identifier: String = ""
     
+    enum CardTypeSegmentIndex: Int {
+        case Keep = 0
+        case Problem = 1
+        case Try = 2
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
         // カードエンティティが渡ってきたら（基本、編集時のみ）
         if let cardEntity = card {
-            typeSegment.selectedSegmentIndex = self.getSegmentIndexOfCardType(cardEntity)
+            typeSegment.selectedSegmentIndex = self.getSegmentIndexFromCardType(cardEntity)
             titleField.text = cardEntity.card_title
             descriptionField.text = cardEntity.detail
         }
@@ -46,6 +52,26 @@ class CardViewController: UIViewController {
     }
     
     @IBAction func save(sender: UIBarButtonItem) {
+        if (self.identifier == Identifiers.FromAddButtonToCardEdit.rawValue) {
+            // カード追加
+            if (self.typeSegment.selectedSegmentIndex == CardTypeSegmentIndex.Keep.rawValue) {
+                BoardViewModel.addKeepCard(self.board!, title: self.titleField.text!, detail: self.descriptionField.text)
+            } else if (self.typeSegment.selectedSegmentIndex == CardTypeSegmentIndex.Problem.rawValue) {
+                BoardViewModel.addProblemCard(self.board!, title: self.titleField.text!, detail: self.descriptionField.text)
+            } else if (self.typeSegment.selectedSegmentIndex == CardTypeSegmentIndex.Try.rawValue) {
+                // FIXME: Tryカードの紐付け元を設定する
+                //BoardViewModel.addTryCard(<#T##board: Board##Board#>, title: <#T##String#>, detail: <#T##String#>, fromCard: <#T##Card#>)
+                print("add try card!!")
+            }
+            
+        } else if (self.identifier == Identifiers.FromEditButtonToCardEdit.rawValue) {
+            // カード編集
+            let editCard: Card = Card()
+            editCard.card_title = self.titleField.text!
+            editCard.detail = self.descriptionField.text
+            editCard.type = self.getCardTypeFromSegmentIndex(self.typeSegment.selectedSegmentIndex).rawValue
+            CardViewModel.edit(self.card!, editCard: editCard)
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -60,24 +86,46 @@ class CardViewController: UIViewController {
     */
     
     /**
-    カードタイプと紐づくセグメントindexを取得する
+    カードタイプに紐づくセグメントindexを取得する
     
     - parameter card: カードエンティティ
     
     - returns: カードタイプのセグメントindex
     */
-    private func getSegmentIndexOfCardType (card: Card) -> Int {
+    private func getSegmentIndexFromCardType (card: Card) -> Int {
         switch card.type {
         case Card.CardType.Keep.rawValue:
-            return 0
+            return CardTypeSegmentIndex.Keep.rawValue
         case Card.CardType.Problem.rawValue:
-            return 1
+            return CardTypeSegmentIndex.Problem.rawValue
         case Card.CardType.Try.rawValue:
-            return 2
+            return CardTypeSegmentIndex.Try.rawValue
         default:
             return 0
             // FIXME: 想定外のタイプである場合例外処理とする
             // throw NSError(domain: "illegal card type. card type is [" + card.type + "]", code: -1, userInfo: nil)
+        }
+    }
+    
+    /**
+     セグメントindexに紐づくカードタイプを取得する
+     
+     - parameter segmentIndex: カードタイプのセグメントindex
+     
+     - returns: カードタイプ
+     */
+    private func getCardTypeFromSegmentIndex(segmentIndex: Int) -> Card.CardType {
+        switch segmentIndex {
+        case CardTypeSegmentIndex.Keep.rawValue:
+            return Card.CardType.Keep
+        case CardTypeSegmentIndex.Problem.rawValue:
+            return Card.CardType.Problem
+        case CardTypeSegmentIndex.Try.rawValue:
+            return Card.CardType.Try
+        default:
+            // FIXME: 想定外のセグメントindexである場合例外処理とする
+            // throw NSError(domain: "illegal segment index. segment index is [" + segmentIndex + "]", code: -1, userInfo: nil)
+            return Card.CardType.Keep
         }
     }
 
