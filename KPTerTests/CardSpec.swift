@@ -12,7 +12,9 @@ class CardSpec: QuickSpec {
         try! realm.write {
             realm.deleteAll()
         }
+        var newBoard: Board? = BoardViewModel.create("new board title")
         var newCard: Card? = CardViewModel.create("new card title", detail: "new card detail", type: Card.CardType.Keep)
+        BoardViewModel.addTryCard(newBoard!, title: "new card title2", detail: "new card detail2", fromCard: newCard!)
         
         describe("新規Cardを作成する") {
             it("新規Cardを作成できること") {
@@ -61,8 +63,9 @@ class CardSpec: QuickSpec {
             
             it("削除されたCardが取得できないこと") {
                 sleep(7)
-                CardViewModel.delete(newCard!)
-                expect(realm.objects(Card).count).to(equal(0)) 
+                CardViewModel.delete(BoardViewModel.findTryCard(newBoard!).first!)
+                expect(realm.objects(Card).count).to(equal(1))
+                expect(realm.objects(CardRelation).count).to(equal(1))
             }
         }
         

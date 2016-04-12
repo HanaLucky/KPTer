@@ -40,6 +40,24 @@ class CardViewModel {
         }
     }
     
+    class func addCardRelation(fromId: String, toId: String) {
+        let cardRelation = CardRelation()
+        cardRelation.from_id = fromId
+        cardRelation.to_id = toId
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(cardRelation)
+        }
+    }
+    
+    class func deleteCardRelation(tryCard: Card) {
+        let realm = try! Realm()
+        let cardRelation = realm.objects(CardRelation).filter("to_id = '\(tryCard.id)'")
+        try! realm.write {
+            realm.delete(cardRelation)
+        }
+    }
+    
     class func changeStatus(card: Card, status: Card.CardStatus){
         let realm = try! Realm()
         try! realm.write {
