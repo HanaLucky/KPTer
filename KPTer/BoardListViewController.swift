@@ -23,8 +23,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let realm = try! Realm()
-        boardEntities = realm.objects(Board)
+        boardEntities = BoardViewModel.findBoards(BoardViewModel.SortKey.CreatedAt, ascDesc: BoardViewModel.AscDesc.Desc)
         
         // reference https://sites.google.com/a/gclue.jp/swift-docs/ni-yinki100-ios/uikit/006-uitableviewdeteburuwo-biao-shi
         // Status Barの高さを取得する.
@@ -173,8 +172,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
      ボードリスト画面が表示されるごとに、ボードエンティティを取得して再描画する
     */
     override func viewWillAppear(animated: Bool) {
-        let realm = try! Realm()
-        boardEntities = realm.objects(Board)
+        boardEntities = BoardViewModel.findBoards(BoardViewModel.SortKey.CreatedAt, ascDesc: BoardViewModel.AscDesc.Desc)
         boardListTableView.reloadData()
         super.viewWillAppear(animated)
     }
