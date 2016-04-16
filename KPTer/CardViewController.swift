@@ -9,15 +9,17 @@
 import UIKit
 import RealmSwift
 
-class CardViewController: UIViewController {
+class CardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var typeSegment: UISegmentedControl!
     // card title field
     @IBOutlet weak var titleField: UITextField!
     // description field
     @IBOutlet weak var descriptionField: UITextView!
+    // relation card table view
+    @IBOutlet weak var relationCardTableView: UITableView!
     // KPTエリアから受け取るボード
-    var board: Board? = nil
+    var board: Board! = nil
     // KPTエリアから受け取るカード
     var card: Card? = nil
     // 画面遷移の識別子(ボード一覧のAddから来たかEditからきたか判別)
@@ -29,6 +31,12 @@ class CardViewController: UIViewController {
         case Try = 2
     }
     
+    let relationCardTableSections = [Card.CardType.Keep.rawValue, Card.CardType.Problem.rawValue]
+    
+    var keepCardEntities: Results<Card>!
+    
+    var problemCardEntities: Results<Card>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
@@ -38,7 +46,9 @@ class CardViewController: UIViewController {
             titleField.text = cardEntity.card_title
             descriptionField.text = cardEntity.detail
         }
-        
+        keepCardEntities = BoardViewModel.findKeepCard(self.board)
+        problemCardEntities = BoardViewModel.findKeepCard(self.board)
+
         // カードエンティティが渡ってこない場合は何もしない
     }
 
@@ -128,5 +138,70 @@ class CardViewController: UIViewController {
             return Card.CardType.Keep
         }
     }
+    
+    /*
+    segmentが切り替わったときに呼ばれるイベント
+    */
+    func segmentedControlChanged(sender: UISegmentedControl) {
+        if (sender.selectedSegmentIndex == CardTypeSegmentIndex.Try.rawValue) {
+            // relationテーブルにカードを表示する
+            keepCardEntities = BoardViewModel.findKeepCard(self.board)
+            problemCardEntities = BoardViewModel.findKeepCard(self.board)
+        } else {
+            // TODO: relationテーブルを非表示（または非活性）にする
+        }
+    }
 
+    /*
+    セクションの数を返す.
+    */
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // Keep, Problem, Tryテーブルそれぞれ1セクション固定
+        return relationCardTableSections.count
+    }
+    
+    /*
+    セクションのタイトルを返す.
+    */
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return relationCardTableSections[section]
+    }
+    
+    /*
+    Cellが選択された際に呼び出される.
+    */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // TODO: チェックがつけばいいな
+    }
+    
+    /*
+    テーブルに表示する配列の総数を返す.
+    */
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return keepCardEntities.count
+        } else if section == 1 {
+            return problemCardEntities.count
+        } else {
+            return 0
+        }
+    }
+    
+    /*
+    Cellに値を設定する.
+    */
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
+        
+        if indexPath.section == 0 {
+            cell.textLabel?.text = "\(keepCardEntities[indexPath.row].card_title)"
+            cell.detailTextLabel!.text = "\(keepCardEntities[indexPath.row].detail)"
+        } else if indexPath.section == 1 {
+            cell.textLabel?.text = "\(problemCardEntities[indexPath.row].card_title)"
+            cell.detailTextLabel!.text = "\(problemCardEntities[indexPath.row].detail)"
+        }
+        
+        return cell
+    }
 }
