@@ -25,6 +25,10 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
     // 画面遷移の識別子(ボード一覧のAddから来たかEditからきたか判別)
     var identifier: String = ""
     
+    @IBOutlet weak var cardTypeSegumentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var cardRelationLabel: UILabel!
+    
     enum CardTypeSegmentIndex: Int {
         case Keep = 0
         case Problem = 1
@@ -45,10 +49,16 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             typeSegment.selectedSegmentIndex = self.getSegmentIndexFromCardType(cardEntity)
             titleField.text = cardEntity.card_title
             descriptionField.text = cardEntity.detail
+            if (CardTypeSegmentIndex.Keep.rawValue == self.getSegmentIndexFromCardType(cardEntity)
+                || CardTypeSegmentIndex.Problem.rawValue == self.getSegmentIndexFromCardType(cardEntity)) {
+                relationCardTableView.hidden = true
+                cardRelationLabel.hidden = true
+            }
         }
         keepCardEntities = BoardViewModel.findKeepCard(self.board)
         problemCardEntities = BoardViewModel.findKeepCard(self.board)
-
+        
+        cardTypeSegumentedControl.addTarget(self, action: "segmentedControlChanged:", forControlEvents: UIControlEvents.ValueChanged)
         // カードエンティティが渡ってこない場合は何もしない
     }
 
@@ -147,8 +157,12 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             // relationテーブルにカードを表示する
             keepCardEntities = BoardViewModel.findKeepCard(self.board)
             problemCardEntities = BoardViewModel.findKeepCard(self.board)
+            relationCardTableView.hidden = false
+            cardRelationLabel.hidden = false
         } else {
-            // TODO: relationテーブルを非表示（または非活性）にする
+            // relationテーブルを非表示（または非活性）にする
+            relationCardTableView.hidden = true
+            cardRelationLabel.hidden = true
         }
     }
 

@@ -270,6 +270,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cardRelationLabel" destination="p5E-N8-fBU" id="znI-PB-T3k"/>
+                        <outlet property="cardTypeSegumentedControl" destination="4CU-H5-0tI" id="83t-yR-BFX"/>
                         <outlet property="descriptionField" destination="r8B-uR-7hS" id="TWN-AM-qWp"/>
                         <outlet property="relationCardTableView" destination="ozq-M2-yuL" id="5Ya-t9-Udm"/>
                         <outlet property="titleField" destination="ou0-ID-tNs" id="2e6-bz-lfH"/>
