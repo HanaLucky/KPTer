@@ -17,20 +17,31 @@ class CardSpec: QuickSpec {
         BoardViewModel.addTryCard(newBoard!, title: "new card title2", detail: "new card detail2", fromCard: newCard!)
         BoardViewModel.addProblemCard(newBoard!, title: "new card title2", detail: "new card detail2")
         
+        describe("Cardの関連元を取得する") {
+            it("Tryに紐づくKeepCardが取得できること") {
+                expect(CardViewModel.findCardRelation(BoardViewModel.findTryCard(newBoard!).first!).id).to(equal(newCard!.id))
+            }
+        }
+        
         describe("新規Cardを作成する") {
             it("新規Cardを作成できること") {
+                sleep(1)
                 expect(newCard).toNot(beNil())
             }
             it("Cardのcard_titleが引数に指定した文字列であること") {
+                sleep(1)
                 expect(newCard!.card_title).to(equal("new card title"))
             }
             it("Cardのdetailが引数に指定した文字列であること") {
+                sleep(1)
                 expect(newCard!.detail).to(equal("new card detail"))
             }
             it("Cardのstatusが'Open'であること") {
+                sleep(1)
                 expect(newCard!.status).to(equal("Open"))
             }
             it("Cardのtypeが'Keep'であること") {
+                sleep(1)
                 expect(newCard!.type).to(equal("Keep"))
             }
         }
@@ -59,11 +70,9 @@ class CardSpec: QuickSpec {
             }
         }
 
-        
         describe("Cardを削除する") {
-            
             it("削除されたCardが取得できないこと") {
-                sleep(7)
+                sleep(10)
                 CardViewModel.deleteCardRelation(BoardViewModel.findTryCard(newBoard!).first!)
                 CardViewModel.delete(BoardViewModel.findTryCard(newBoard!).first!)                
                 expect(realm.objects(Card).count).to(equal(2))
