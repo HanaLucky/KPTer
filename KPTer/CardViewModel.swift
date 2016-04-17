@@ -11,6 +11,12 @@ import RealmSwift
 
 class CardViewModel {
 
+    /**
+     カードを作成します。
+     - parameter title: カード名
+     - parameter detail: カード詳細
+     - returns: カード
+     */
     class func create(title: String, detail: String, type: Card.CardType) -> Card? {
         let card = Card()
         card.card_title = title
@@ -24,6 +30,11 @@ class CardViewModel {
         return card
     }
     
+    /**
+     カードを編集します。
+     - parameter card: カード
+     - parameter editCard: 編集内容を持ったカード
+     */
     class func edit(card: Card, editCard: Card){
         let realm = try! Realm()
         try! realm.write {
@@ -33,6 +44,10 @@ class CardViewModel {
         }
     }
     
+    /**
+     カードを削除します。
+     - parameter card: 削除するカード
+     */
     class func delete(card: Card){
         let realm = try! Realm()
         try! realm.write {
@@ -40,6 +55,11 @@ class CardViewModel {
         }
     }
     
+    /**
+     カードの関連を追加します。
+     - parameter fromId: ひも付け元カードのID
+     - parameter toId: ひも付け先カードのID
+     */
     class func addCardRelation(fromId: String, toId: String) {
         let cardRelation = CardRelation()
         cardRelation.from_id = fromId
@@ -50,6 +70,10 @@ class CardViewModel {
         }
     }
     
+    /**
+     カードの関連を削除します。
+     - parameter tryCard: ひも付け元カード
+     */
     class func deleteCardRelation(tryCard: Card) {
         let realm = try! Realm()
         let cardRelation = realm.objects(CardRelation).filter("to_id = '\(tryCard.id)'")
@@ -58,6 +82,11 @@ class CardViewModel {
         }
     }
     
+    /**
+     カードのステータスを変更します。
+     - parameter card: カード
+     - parameter status: 変更したいステータスのEnum値
+     */
     class func changeStatus(card: Card, status: Card.CardStatus){
         let realm = try! Realm()
         try! realm.write {
