@@ -81,7 +81,7 @@ class BoardViewModel {
      - parameter detail: カードの詳細
      */
     class func addKeepCard(board: Board, title: String, detail: String) {
-        let card = BoardViewModel.addCard(board, title: title, detail: detail, type: Card.CardType.Keep)
+        BoardViewModel.addCard(board, title: title, detail: detail, type: Card.CardType.Keep)
     }
     
     /**
@@ -91,7 +91,7 @@ class BoardViewModel {
      - parameter detail: カードの詳細
      */
     class func addProblemCard(board: Board, title: String, detail: String) {
-        let card = BoardViewModel.addCard(board, title: title, detail: detail, type: Card.CardType.Problem)
+        BoardViewModel.addCard(board, title: title, detail: detail, type: Card.CardType.Problem)
     }
     
     /**
