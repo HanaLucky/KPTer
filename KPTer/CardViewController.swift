@@ -133,9 +133,6 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             editCard.detail = self.descriptionField.text
             editCard.type = self.getCardTypeFromSegmentIndex(self.typeSegment.selectedSegmentIndex).rawValue
             CardViewModel.edit(self.card!, editCard: editCard)
-            
-            // cellを特定する
-            
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
