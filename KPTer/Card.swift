@@ -34,4 +34,16 @@ class Card: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    
+    func isKeep() -> Bool{
+        return self.type == CardType.Keep.rawValue
+    }
+    
+    func isProblem() -> Bool{
+        return self.type == CardType.Problem.rawValue
+    }
+    
+    func isTry() -> Bool{
+        return self.type == CardType.Try.rawValue
+    }
 }
