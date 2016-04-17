@@ -20,6 +20,9 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     // リフレッシュコントロール
     var refreshControl:UIRefreshControl!
     
+    // ボードリストのリフレッシュが必要かのフラグ
+    var needRefresh = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -107,15 +110,15 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
 
         if (segue.identifier == Identifiers.ToKptAreaViewController.rawValue) {
             // KptAreaのコントローラーにボードを渡す
-
             let kptAreaViewController = (segue.destinationViewController as? KptAreaViewController)
             let board = self.boardEntities![boardListTableView.indexPathForSelectedRow!.row]
             kptAreaViewController!.board = board
-            
+            self.needRefresh = false
         } else if (segue.identifier == Identifiers.FromAddButtonToBoardEdit.rawValue) {
             // 追加ボタンから遷移したことを示す識別子をボード画面に渡す
             let boardEditViewController = (segue.destinationViewController as? BoardEditViewController)
             boardEditViewController?.identifier = Identifiers.BoardAdd.rawValue
+            self.needRefresh = true
         }
     }
     
@@ -138,6 +141,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
             boardEditViewController.board = board
             // Editボタンから遷移したことを示す識別子をボード画面に渡す
             boardEditViewController.identifier = Identifiers.BoardEdit.rawValue
+            self.needRefresh = true
             // モーダル表示する
             boardEditViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
             self.presentViewController(boardEditViewController, animated: true, completion: nil)
@@ -172,9 +176,16 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
      ボードリスト画面が表示されるごとに、ボードエンティティを取得して再描画する
     */
     override func viewWillAppear(animated: Bool) {
-        boardEntities = BoardViewModel.findBoards(BoardViewModel.SortKey.CreatedAt, ascDesc: BoardViewModel.AscDesc.Desc)
-        boardListTableView.reloadData()
         super.viewWillAppear(animated)
+        
+        if let indexPathForSelectedRow = boardListTableView.indexPathForSelectedRow {
+            boardListTableView.deselectRowAtIndexPath(indexPathForSelectedRow, animated: true)
+        }
+
+        if (self.needRefresh) {
+            boardEntities = BoardViewModel.findBoards(BoardViewModel.SortKey.CreatedAt, ascDesc: BoardViewModel.AscDesc.Desc)
+            boardListTableView.reloadData()
+        }
     }
 }
 
