@@ -83,6 +83,17 @@ class CardViewModel {
     }
     
     /**
+     カードの紐付き元を取得します。
+     - parameter tryCard: ひも付け先カード
+     */
+    class func findCardRelation(tryCard: Card) -> Card {
+        let realm = try! Realm()
+        let cardRelation = realm.objects(CardRelation).filter("to_id = '\(tryCard.id)'")
+        let card = realm.objects(Card).filter("id = '\(cardRelation.first!.from_id)'").first
+        return card!
+    }
+    
+    /**
      カードのステータスを変更します。
      - parameter card: カード
      - parameter status: 変更したいステータスのEnum値
