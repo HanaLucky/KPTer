@@ -17,6 +17,13 @@ class CardSpec: QuickSpec {
         BoardViewModel.addTryCard(newBoard!, title: "new card title2", detail: "new card detail2", fromCard: newCard!)
         BoardViewModel.addProblemCard(newBoard!, title: "new card title2", detail: "new card detail2")
         
+        
+        describe("Keepカードの場合、trueを返却する") {
+            it("Keepカードの場合、trueを返却すること") {
+                expect(newCard!.isKeep()).to(equal(true))
+            }
+        }
+        
         describe("Cardの関連元を取得する") {
             it("Tryに紐づくKeepCardが取得できること") {
                 expect(CardViewModel.findCardRelation(BoardViewModel.findTryCard(newBoard!).first!).id).to(equal(newCard!.id))
