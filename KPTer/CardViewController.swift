@@ -62,7 +62,7 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
         keepCardEntities = BoardViewModel.findKeepCard(self.board)
         problemCardEntities = BoardViewModel.findProblemCard(self.board)
         
-        if let cardEntity = self.card {
+        if (self.identifier == Identifiers.FromEditButtonToCardEdit.rawValue) {
             // カードエンティティが渡ってきたら（編集時のみ）
             // FIXME: card typeは、KPTエリアで追加ボタン押下時に選択させるUIにする。
             // それまでは、変更できないように非活性にする
@@ -71,26 +71,28 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             // card情報を画面に設定
-            typeSegment.selectedSegmentIndex = self.getSegmentIndexFromCardType(cardEntity)
-            titleField.text = cardEntity.card_title
-            descriptionField.text = cardEntity.detail
+            typeSegment.selectedSegmentIndex = self.getSegmentIndexFromCardType(self.card!)
+            titleField.text = self.card!.card_title
+            descriptionField.text = self.card!.detail
             
             // カードタイプがKeep, Problemの場合、リレーションテーブルを非表示にする
-            if (cardEntity.type == Card.CardType.Keep.rawValue
-                || cardEntity.type == Card.CardType.Problem.rawValue) {
+            if (self.card!.isKeep()
+                || self.card!.isProblem()) {
                 relationCardTableView.hidden = true
                 cardRelationLabel.hidden = true
             }
             
             // カードタイプがTryの場合、リレーションカードに値を設定する
-            if (cardEntity.type == Card.CardType.Try.rawValue) {
-                self.selectedRelationCard = CardViewModel.findCardRelation(cardEntity)
+            if (self.card!.isTry()) {
+                self.selectedRelationCard = CardViewModel.findCardRelation(self.card!)
             }
             
-        } else {
+        } else if (self.identifier == Identifiers.FromAddButtonToCardEdit.rawValue) {
             // 新規作成の場合、relationカードは非表示
             relationCardTableView.hidden = true
             cardRelationLabel.hidden = true
+        } else {
+            // FIXME: 例外処理したい
         }
         
         // CardTypeのセグメントのイベントを設定する
@@ -123,6 +125,8 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
                     alertController.addAction(defaultAction)
                     presentViewController(alertController, animated: true, completion: nil)
+                    
+                    return
                 }
             }
             
@@ -235,7 +239,7 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         // チェックをつける
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
     }
     
     /*
@@ -268,8 +272,8 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         
         if indexPath.section == CardTypeSectionIndex.Keep.rawValue {
-            cell.textLabel?.text = "\(keepCardEntities[indexPath.row].card_title)"
-            cell.detailTextLabel!.text = "\(keepCardEntities[indexPath.row].detail)"
+            cell.textLabel!.text = keepCardEntities[indexPath.row].card_title
+            cell.detailTextLabel!.text = keepCardEntities[indexPath.row].detail
             
             if let relationCard = self.selectedRelationCard {
                 if (relationCard.id == keepCardEntities[indexPath.row].id) {
@@ -279,8 +283,8 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
         } else if indexPath.section == CardTypeSectionIndex.Problem.rawValue {
-            cell.textLabel?.text = "\(problemCardEntities[indexPath.row].card_title)"
-            cell.detailTextLabel!.text = "\(problemCardEntities[indexPath.row].detail)"
+            cell.textLabel!.text = problemCardEntities[indexPath.row].card_title
+            cell.detailTextLabel!.text = problemCardEntities[indexPath.row].detail
             
             if let relationCard = self.selectedRelationCard {
                 if (relationCard.id == problemCardEntities[indexPath.row].id) {
