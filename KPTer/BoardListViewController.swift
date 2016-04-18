@@ -148,16 +148,29 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Deleteボタン
         let deleteButton: UITableViewRowAction = UITableViewRowAction(style: .Normal , title: "Delete") { (action, index) -> Void in
-            tableView.editing = false
-            // ボードを削除する
-            BoardViewModel.delete(self.boardEntities![indexPath.row])
-            self.viewWillAppear(true)
+            // 削除確認アラートを表示する
+            let alertController = UIAlertController(title: "Caution!", message: "Are you sure that you are deleting '\(self.boardEntities![index.row].board_title)'.", preferredStyle: .Alert)
             
+            // OKボタン押下時
+            let defaultAction = UIAlertAction(title: "OK", style: .Default) {
+                action in BoardViewModel.delete(self.boardEntities![indexPath.row])
+                self.viewWillAppear(true)
+            }
+            
+            // CANCELボタン押下時
+            let cancelAction = UIAlertAction(title: "CANCEL", style: .Cancel) {
+                action in tableView.editing = false
+            }
+            
+            alertController.addAction(defaultAction)
+            alertController.addAction(cancelAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
         deleteButton.backgroundColor = UIColor.redColor()
         
         return [deleteButton, editButton]
     }
+    
     
     /**
      テーブルを下に引っ張ってリロードする
