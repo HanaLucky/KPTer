@@ -79,7 +79,6 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             // カードタイプがKeep, Problemの場合、リレーションテーブルを非表示にする
             if (self.card!.isKeep()
                 || self.card!.isProblem()) {
-
                 relationCardTableView.hidden = true
                 cardRelationLabel.hidden = true
             }
@@ -130,7 +129,6 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
                     presentViewController(alertController, animated: true, completion: nil)
 
                     return
-
                 }
             }
             
@@ -244,7 +242,6 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
         // チェックをつける
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-
     }
     
     /*
@@ -277,9 +274,11 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         
         if (indexPath.section == CardTypeSectionIndex.Keep.rawValue) {
+            // Keepカードセクションの場合、Keepカードエンティティのタイトル、詳細をセルに設定する
             cell.textLabel!.text = keepCardEntities[indexPath.row].card_title
             cell.detailTextLabel!.text = keepCardEntities[indexPath.row].detail
             
+            // 紐付けたカードのセルにチェックマークをつける
             if let relationCard = self.selectedRelationCard {
                 if (relationCard.id == keepCardEntities[indexPath.row].id) {
                     // チェックをつける
@@ -288,10 +287,11 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
         } else if (indexPath.section == CardTypeSectionIndex.Problem.rawValue) {
+            // Problemカードセクションの場合、Problemカードエンティティのタイトル、詳細をセルに設定する
             cell.textLabel!.text = problemCardEntities[indexPath.row].card_title
             cell.detailTextLabel!.text = problemCardEntities[indexPath.row].detail
-
             
+            // 紐付けたカードのセルにチェックマークをつける
             if let relationCard = self.selectedRelationCard {
                 if (relationCard.id == problemCardEntities[indexPath.row].id) {
                     // チェックをつける
@@ -299,7 +299,6 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
-        
         return cell
     }
     
