@@ -123,7 +123,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     /*
-    Butonを拡張する
+    Buttonを拡張する
     */
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
@@ -158,6 +158,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
             // OKボタン押下時
             let defaultAction = UIAlertAction(title: "OK", style: .Default) {
                 action in BoardViewModel.delete(self.boardEntities![indexPath.row])
+                self.needRefresh = true
                 self.viewWillAppear(true)
             }
             
@@ -174,7 +175,6 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         return [deleteButton, editButton]
     }
-    
     
     /**
      テーブルを下に引っ張ってリロードする

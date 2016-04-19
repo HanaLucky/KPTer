@@ -23,5 +23,4 @@ public enum Identifiers:String {
     case FromAddButtonToCardEdit = "fromAddButtonToCardEdit"
     // カード編集ボタンからカード編集画面へ遷移したことを示す識別子
     case FromEditButtonToCardEdit = "fromEditButtonToCardEdit"
-    
 }
