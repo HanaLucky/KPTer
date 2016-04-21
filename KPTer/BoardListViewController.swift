@@ -103,18 +103,17 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     /*
-    KPTAreaに遷移する前処理
-    ここでKptAreaViewControllerにボード、カードを渡す
+    画面遷移する前処理
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
-        if (segue.identifier == Identifiers.ToKptAreaViewController.rawValue) {
+        if (Identifiers.isToKptAreaViewController(segue.identifier!)) {
             // KptAreaのコントローラーにボードを渡す
             let kptAreaViewController = (segue.destinationViewController as? KptAreaViewController)
             let board = self.boardEntities![boardListTableView.indexPathForSelectedRow!.row]
             kptAreaViewController!.board = board
             self.needRefresh = false
-        } else if (segue.identifier == Identifiers.FromAddButtonToBoardEdit.rawValue) {
+        } else if (Identifiers.isBoardAdd(segue.identifier!)) {
             // 追加ボタンから遷移したことを示す識別子をボード画面に渡す
             let boardEditViewController = (segue.destinationViewController as? BoardEditViewController)
             boardEditViewController?.identifier = Identifiers.FromAddButtonToBoardEdit.rawValue
