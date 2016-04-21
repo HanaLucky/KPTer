@@ -32,16 +32,15 @@ class BoardSpec: QuickSpec {
                 expect(newBoard!.board_title).to(equal("new board title"))
             }
         }
-        
-        //deleteのテストをする際はコメントアウト
-//        describe("Boardの一覧を取得する") {
+
+        describe("Boardの一覧を取得する") {
 //            it("登録日の順で降順にソートされて取得できること") {
 //                var newBoard2: Board? = BoardViewModel.create("new board title2")
 //                var newBoard3: Board? = BoardViewModel.create("new board title3")
 //                let boards = BoardViewModel.findBoards(BoardViewModel.SortKey.CreatedAt, ascDesc: BoardViewModel.AscDesc.Desc)
 //                expect(boards[2].created_at).to(equal(newBoard!.created_at))
 //            }
-//        }
+        }
 
         describe("Cardの名前と種別を引数に指定し、Boardに紐付いたCardを作成する") {
             sleep(2)
@@ -139,7 +138,8 @@ class BoardSpec: QuickSpec {
 //            }
 //        }
 
-//        // "登録日の順で降順にソートされて取得できること" のテストを実行すると、通らなくなるため、一時的にコメントアウト
+        // "登録日の順で降順にソートされて取得できること" のテストを実行すると、通らなくなるため、一時的にコメントアウト
+
         describe("Boardを削除する") {
             
             it("削除されたBoardが取得できないこと/削除されたBoardに紐づくcardsが取得できないこと") {
