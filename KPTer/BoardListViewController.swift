@@ -20,6 +20,9 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     // リフレッシュコントロール
     var refreshControl:UIRefreshControl!
     
+    // ボードリストのリフレッシュが必要かのフラグ
+    var needRefresh = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -100,27 +103,26 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     /*
-    KPTAreaに遷移する前処理
-    ここでKptAreaViewControllerにボード、カードを渡す
+    画面遷移する前処理
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
-        if (segue.identifier == Identifiers.ToKptAreaViewController.rawValue) {
+        if (Identifiers.isToKptAreaViewController(segue.identifier!)) {
             // KptAreaのコントローラーにボードを渡す
-
             let kptAreaViewController = (segue.destinationViewController as? KptAreaViewController)
             let board = self.boardEntities![boardListTableView.indexPathForSelectedRow!.row]
             kptAreaViewController!.board = board
-            
-        } else if (segue.identifier == Identifiers.FromAddButtonToBoardEdit.rawValue) {
+            self.needRefresh = false
+        } else if (Identifiers.isBoardAdd(segue.identifier!)) {
             // 追加ボタンから遷移したことを示す識別子をボード画面に渡す
             let boardEditViewController = (segue.destinationViewController as? BoardEditViewController)
-            boardEditViewController?.identifier = Identifiers.BoardAdd.rawValue
+            boardEditViewController?.identifier = Identifiers.FromAddButtonToBoardEdit.rawValue
+            self.needRefresh = true
         }
     }
     
     /*
-    Butonを拡張する
+    Buttonを拡張する
     */
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
@@ -137,7 +139,8 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
             // ボードエンティティを渡す
             boardEditViewController.board = board
             // Editボタンから遷移したことを示す識別子をボード画面に渡す
-            boardEditViewController.identifier = Identifiers.BoardEdit.rawValue
+            boardEditViewController.identifier = Identifiers.FromEditButtonToBoardEdit.rawValue
+            self.needRefresh = true
             // モーダル表示する
             boardEditViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
             self.presentViewController(boardEditViewController, animated: true, completion: nil)
@@ -154,6 +157,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
             // OKボタン押下時
             let defaultAction = UIAlertAction(title: "OK", style: .Default) {
                 action in BoardViewModel.delete(self.boardEntities![indexPath.row])
+                self.needRefresh = true
                 self.viewWillAppear(true)
             }
             
@@ -171,7 +175,6 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         return [deleteButton, editButton]
     }
     
-    
     /**
      テーブルを下に引っ張ってリロードする
      (次フェーズで利用予定の仕組み)
@@ -185,9 +188,16 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
      ボードリスト画面が表示されるごとに、ボードエンティティを取得して再描画する
     */
     override func viewWillAppear(animated: Bool) {
-        boardEntities = BoardViewModel.findBoards(BoardViewModel.SortKey.CreatedAt, ascDesc: BoardViewModel.AscDesc.Desc)
-        boardListTableView.reloadData()
         super.viewWillAppear(animated)
+        
+        if let indexPathForSelectedRow = boardListTableView.indexPathForSelectedRow {
+            boardListTableView.deselectRowAtIndexPath(indexPathForSelectedRow, animated: true)
+        }
+
+        if (self.needRefresh) {
+            boardEntities = BoardViewModel.findBoards(BoardViewModel.SortKey.CreatedAt, ascDesc: BoardViewModel.AscDesc.Desc)
+            boardListTableView.reloadData()
+        }
     }
 }
 

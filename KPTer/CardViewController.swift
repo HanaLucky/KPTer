@@ -9,37 +9,96 @@
 import UIKit
 import RealmSwift
 
-class CardViewController: UIViewController {
-
+class CardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    // 画面内オブジェクト
+    // card typeセグメント
     @IBOutlet weak var typeSegment: UISegmentedControl!
-    // card title field
+    // card titleフィールド
     @IBOutlet weak var titleField: UITextField!
-    // description field
+    // descriptionフィールド
     @IBOutlet weak var descriptionField: UITextView!
+    // relation card table view
+    @IBOutlet weak var relationCardTableView: UITableView!
+    // cart typeセグメントコントローラー
+    @IBOutlet weak var cardTypeSegumentedControl: UISegmentedControl!
+    // relation card ラベル
+    @IBOutlet weak var cardRelationLabel: UILabel!
+    
+    // KPTエリアから受け取るパラメーター
     // KPTエリアから受け取るボード
-    var board: Board? = nil
+    var board: Board! = nil
     // KPTエリアから受け取るカード
     var card: Card? = nil
     // 画面遷移の識別子(ボード一覧のAddから来たかEditからきたか判別)
     var identifier: String = ""
     
+    // 内部利用変数
+    // リレーション選択テーブルのセクション（Keep, Problem）
+    let relationCardTableSections = [Card.CardType.Keep.rawValue, Card.CardType.Problem.rawValue]
+    // リレーション選択テーブルに表示するKeepカードリスト
+    var keepCardEntities: Results<Card>!
+    // リレーション選択テーブルに表示するProblemカードリスト
+    var problemCardEntities: Results<Card>!
+    // リレーション選択テーブルで選択されたカード
+    var selectedRelationCard: Card? = nil
+    // セグメントに割り当てたカードタイプの値
     enum CardTypeSegmentIndex: Int {
         case Keep = 0
         case Problem = 1
         case Try = 2
     }
+    // relation cardセクション
+    enum CardTypeSectionIndex: Int {
+        case Keep = 0
+        case Problem = 1
+        // Tryはリレーションで使わないので不要
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
-        // カードエンティティが渡ってきたら（基本、編集時のみ）
-        if let cardEntity = card {
-            typeSegment.selectedSegmentIndex = self.getSegmentIndexFromCardType(cardEntity)
-            titleField.text = cardEntity.card_title
-            descriptionField.text = cardEntity.detail
+        
+        // relationテーブルにKeep, Problemカードを設定する
+        keepCardEntities = BoardViewModel.findKeepCard(self.board)
+        problemCardEntities = BoardViewModel.findProblemCard(self.board)
+        
+        if (Identifiers.isCardEdit(self.identifier)) {
+
+            // カードエンティティが渡ってきたら（編集時のみ）
+            // FIXME: card typeは、KPTエリアで追加ボタン押下時に選択させるUIにする。
+            // それまでは、変更できないように非活性にする
+            for (var i = 0; i < typeSegment.numberOfSegments; i++) {
+                typeSegment.setEnabled(false, forSegmentAtIndex: i)
+            }
+            
+            // card情報を画面に設定
+            typeSegment.selectedSegmentIndex = self.getSegmentIndexFromCardType(self.card!)
+            titleField.text = self.card!.card_title
+            descriptionField.text = self.card!.detail
+            
+            // カードタイプがKeep, Problemの場合、リレーションテーブルを非表示にする
+            if (self.card!.isKeep()
+                || self.card!.isProblem()) {
+                relationCardTableView.hidden = true
+                cardRelationLabel.hidden = true
+            }
+            
+            // カードタイプがTryの場合、リレーションカードに値を設定する
+            if (self.card!.isTry()) {
+                self.selectedRelationCard = CardViewModel.findCardRelation(self.card!)
+            }
+            
+        } else if (Identifiers.isCardAdd(self.identifier)) {
+            // 新規作成の場合、relationカードは非表示
+            relationCardTableView.hidden = true
+            cardRelationLabel.hidden = true
+        } else {
+            // FIXME: 例外処理したい
+
         }
         
-        // カードエンティティが渡ってこない場合は何もしない
+        // CardTypeのセグメントのイベントを設定する
+        cardTypeSegumentedControl.addTarget(self, action: "segmentedControlChanged:", forControlEvents: UIControlEvents.ValueChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,19 +111,31 @@ class CardViewController: UIViewController {
     }
     
     @IBAction func save(sender: UIBarButtonItem) {
-        if (self.identifier == Identifiers.FromAddButtonToCardEdit.rawValue) {
-            // カード追加
-            if (self.typeSegment.selectedSegmentIndex == CardTypeSegmentIndex.Keep.rawValue) {
+        if (Identifiers.isCardAdd(self.identifier)) {
+            // カード追加の場合
+            if (self.isKeepSegment(self.typeSegment)) {
+                // Keepカード追加
                 BoardViewModel.addKeepCard(self.board!, title: self.titleField.text!, detail: self.descriptionField.text)
-            } else if (self.typeSegment.selectedSegmentIndex == CardTypeSegmentIndex.Problem.rawValue) {
+            } else if (self.isProblemSegment(self.typeSegment)) {
+                // Problemカード追加
                 BoardViewModel.addProblemCard(self.board!, title: self.titleField.text!, detail: self.descriptionField.text)
-            } else if (self.typeSegment.selectedSegmentIndex == CardTypeSegmentIndex.Try.rawValue) {
-                // FIXME: Tryカードの紐付け元を設定する
-                //BoardViewModel.addTryCard(<#T##board: Board##Board#>, title: <#T##String#>, detail: <#T##String#>, fromCard: <#T##Card#>)
-                print("add try card!!")
+            } else if (self.isTrySegment(self.typeSegment)) {
+                // Tryカード追加
+                // Tryカードの紐付け元を設定する
+                if let relationCard = self.selectedRelationCard {
+                    BoardViewModel.addTryCard(self.board, title: self.titleField.text!, detail: self.descriptionField.text, fromCard: relationCard)
+                } else {
+                    // リレーションカードが選択されていない場合、エラーポップアップ表示
+                    let alertController = UIAlertController(title: "Not selected relation card.", message: "Please select a relation card on relation table.", preferredStyle: .Alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    alertController.addAction(defaultAction)
+                    presentViewController(alertController, animated: true, completion: nil)
+
+                    return
+                }
             }
             
-        } else if (self.identifier == Identifiers.FromEditButtonToCardEdit.rawValue) {
+        } else if (Identifiers.isCardEdit(self.identifier)) {
             // カード編集
             let editCard: Card = Card()
             editCard.card_title = self.titleField.text!
@@ -128,5 +199,154 @@ class CardViewController: UIViewController {
             return Card.CardType.Keep
         }
     }
+    
+    /*
+    segmentが切り替わったときに呼ばれるイベント
+    */
+    func segmentedControlChanged(sender: UISegmentedControl) {
+        if (self.isTrySegment(sender)) {
+            // relationテーブルにカードを表示する
+            keepCardEntities = BoardViewModel.findKeepCard(self.board)
+            problemCardEntities = BoardViewModel.findProblemCard(self.board)
+            relationCardTableView.hidden = false
+            cardRelationLabel.hidden = false
+        } else {
+            // relationテーブルを非表示（または非活性）にする
+            relationCardTableView.hidden = true
+            cardRelationLabel.hidden = true
+        }
+    }
 
+    /*
+    セクションの数を返す.
+    */
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // Keep, Problem, Tryテーブルそれぞれ1セクション固定
+        return relationCardTableSections.count
+    }
+    
+    /*
+    セクションのタイトルを返す.
+    */
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return relationCardTableSections[section]
+    }
+    
+    /*
+    Cellが選択された際に呼び出される.
+    */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // 選択されたCardを保持しておく
+        if (self.isKeepSection(indexPath.section)) {
+            selectedRelationCard = keepCardEntities[indexPath.row]
+        } else if(self.isProblemSection(indexPath.section)) {
+            selectedRelationCard = problemCardEntities[indexPath.row]
+        }
+        // チェックをつける
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+    }
+    
+    /*
+    Cellの選択が外れた時に呼び出される
+    */
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        // チェックを外す
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell!.accessoryType = UITableViewCellAccessoryType.None
+    }
+    
+    /*
+    テーブルに表示する配列の総数を返す.
+    */
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (self.isKeepSection(section)) {
+            return keepCardEntities.count
+        } else if (self.isProblemSection(section)) {
+            return problemCardEntities.count
+        } else {
+            return 0
+        }
+    }
+    
+    /*
+    Cellに値を設定する.
+    */
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
+        
+        if (self.isKeepSection(indexPath.section)) {
+            // Keepカードセクションの場合、Keepカードエンティティのタイトル、詳細をセルに設定する
+            cell.textLabel!.text = keepCardEntities[indexPath.row].card_title
+            cell.detailTextLabel!.text = keepCardEntities[indexPath.row].detail
+            
+            // 紐付けたカードのセルにチェックマークをつける
+            if let relationCard = self.selectedRelationCard {
+                if (relationCard.id == keepCardEntities[indexPath.row].id) {
+                    // チェックをつける
+                    cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                }
+            }
+            
+        } else if (self.isProblemSection(indexPath.section)) {
+            // Problemカードセクションの場合、Problemカードエンティティのタイトル、詳細をセルに設定する
+            cell.textLabel!.text = problemCardEntities[indexPath.row].card_title
+            cell.detailTextLabel!.text = problemCardEntities[indexPath.row].detail
+            
+            // 紐付けたカードのセルにチェックマークをつける
+            if let relationCard = self.selectedRelationCard {
+                if (relationCard.id == problemCardEntities[indexPath.row].id) {
+                    // チェックをつける
+                    cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                }
+            }
+        }
+        return cell
+    }
+    
+    /**
+     カードタイプにKeepが選択されているか
+     - parameter segment: セグメントコントロール
+     - returns: true YES、false No
+     */
+    private func isKeepSegment(segment: UISegmentedControl) -> Bool {
+        return segment.selectedSegmentIndex == CardTypeSegmentIndex.Keep.rawValue
+    }
+    
+    /**
+     カードタイプにProblemが選択されているか
+     - parameter segment: セグメントコントロール
+     - returns: true YES、false No
+     */
+    private func isProblemSegment(segment: UISegmentedControl) -> Bool {
+        return segment.selectedSegmentIndex == CardTypeSegmentIndex.Problem.rawValue
+    }
+    
+    /**
+     カードタイプにTryが選択されているか
+     - parameter segment: セグメントコントロール
+     - returns: true YES、false No
+     */
+    private func isTrySegment(segment: UISegmentedControl) -> Bool {
+        return segment.selectedSegmentIndex == CardTypeSegmentIndex.Try.rawValue
+    }
+    
+    /**
+     リレーションカード選択テーブルの中のKeepカードセクションかどうか
+     - parameter section: セクション番号
+     - returns: true YES、false No
+     */
+    private func isKeepSection(section: Int) -> Bool {
+        return section == CardTypeSectionIndex.Keep.rawValue
+    }
+    
+    /**
+     リレーションカード選択テーブルの中のProblemカードセクションかどうか
+     - parameter section: セクション番号
+     - returns: true YES、false No
+     */
+    private func isProblemSection(section: Int) -> Bool {
+        return section == CardTypeSectionIndex.Problem.rawValue
+    }
 }

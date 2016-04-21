@@ -64,22 +64,22 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     セクションのタイトルを返す.
     */
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if tableView.tag == TableViewTags.KeepTableViewTag.rawValue {
+        if (TableViewTags.isKeepTableView(tableView)) {
             return Card.CardType.Keep.rawValue
-        } else if tableView.tag == TableViewTags.ProblemTableViewTag.rawValue {
+        } else if (TableViewTags.isProblemTableView(tableView)) {
             return Card.CardType.Problem.rawValue
-        } else if tableView.tag == TableViewTags.TryTableViewTag.rawValue {
+        } else if (TableViewTags.isTryTableView(tableView)) {
             return Card.CardType.Try.rawValue
         }
         return "Illegal Card Type!!"
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView.tag == TableViewTags.KeepTableViewTag.rawValue {
+        if (TableViewTags.isKeepTableView(tableView)) {
             return keepCardEntities.count
-        } else if tableView.tag == TableViewTags.ProblemTableViewTag.rawValue {
+        } else if (TableViewTags.isProblemTableView(tableView)) {
             return problemCardEntities.count
-        } else if tableView.tag == TableViewTags.TryTableViewTag.rawValue {
+        } else if (TableViewTags.isTryTableView(tableView)) {
             return tryCardEntities.count
         }
         return 0
@@ -89,19 +89,19 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell:UITableViewCell? = nil
         
-        if tableView.tag == TableViewTags.KeepTableViewTag.rawValue {
+        if (TableViewTags.isKeepTableView(tableView)) {
             let keepCell:KeepCardTableViewCell = tableView.dequeueReusableCellWithIdentifier("KeepCard") as! KeepCardTableViewCell
             keepCell.setCell(keepCardEntities[indexPath.row])
             
             return keepCell
             
-        } else if tableView.tag == TableViewTags.ProblemTableViewTag.rawValue {
+        } else if (TableViewTags.isProblemTableView(tableView)) {
             let problemCell:ProblemCardTableViewCell = tableView.dequeueReusableCellWithIdentifier("ProblemCard") as! ProblemCardTableViewCell
             problemCell.setCell(problemCardEntities[indexPath.row])
             
             return problemCell
             
-        } else if tableView.tag == TableViewTags.TryTableViewTag.rawValue {
+        } else if (TableViewTags.isTryTableView(tableView)) {
             let tryCell:TryCardTableViewCell = tableView.dequeueReusableCellWithIdentifier("TryCard") as! TryCardTableViewCell
             tryCell.setCell(tryCardEntities[indexPath.row])
             
@@ -119,12 +119,12 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         // CardViewControllerに必要情報を渡す
         let cardViewController = segue.destinationViewController as! CardViewController
 
-        if (segue.identifier == Identifiers.FromAddButtonToCardEdit.rawValue) {
+        if (Identifiers.isCardAdd(segue.identifier!)) {
             // 追加ボタンの処理
             // 追加ボタンから遷移したことを示す識別子をカード画面に渡す
             cardViewController.identifier = segue.identifier!
             
-        } else if (segue.identifier == Identifiers.FromEditButtonToCardEdit.rawValue) {
+        } else if (Identifiers.isCardEdit(segue.identifier!)) {
             // セル選択時の処理
             // カードとセル選択されたことを示す識別子をカード画面に渡す
             let cardTableViewCell = sender as! CardTableViewCell
@@ -168,23 +168,5 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.problemTableView.reloadData()
         self.tryTableView.reloadData()
         
-    }
-    
-    // experiment: 実験データ
-    private func experimentData() {
-        BoardViewModel.addKeepCard(self.board!, title: "白いちご行けた", detail: "次は白いちごを狩りいく")
-        BoardViewModel.addKeepCard(self.board!, title: "ブランケットから飴ちゃん出てきた(*ﾉ´∀`*)ﾉ", detail: "おいしい")
-        BoardViewModel.addKeepCard(self.board!, title: "KPTer開発に動き出せた", detail: "誰かがよろこんでくれたら嬉しい")
-        BoardViewModel.addProblemCard(self.board!, title: "休日のごはん事情", detail: "餓死しちゃう")
-        BoardViewModel.addProblemCard(self.board!, title: "【悲報】エクセルは私達だけのものではなかった・・・！", detail: "エクセル利用者がすぐそこにいた")
-        
-        self.keepCardEntities = BoardViewModel.findKeepCard(board!)
-        self.problemCardEntities = BoardViewModel.findProblemCard(board!)
-        
-        
-        BoardViewModel.addTryCard(self.board!, title: "休日のごはん事情", detail: "はやく起きて、朝・昼ちゃんと食べる", fromCard: self.problemCardEntities[0])
-        BoardViewModel.addTryCard(self.board!, title: "エクセル", detail: "鉢合わせても仕方ないくらいのノリか？", fromCard: self.problemCardEntities[1])
-        
-        self.tryCardEntities = BoardViewModel.findTryCard(board!)
     }
 }
