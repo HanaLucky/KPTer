@@ -33,9 +33,9 @@ class BoardEditViewController: UIViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
-        if (self.identifier == Identifiers.BoardAdd.rawValue) {
+        if (self.identifier == Identifiers.FromAddButtonToBoardEdit.rawValue) {
             BoardViewModel.create(self.boardTitleField.text!)
-        } else if (self.identifier == Identifiers.BoardEdit.rawValue) {
+        } else if (self.identifier == Identifiers.FromEditButtonToBoardEdit.rawValue) {
             let editBoard = Board()
             editBoard.board_title = self.boardTitleField.text!
             BoardViewModel.edit(board!, editBoard: editBoard)            

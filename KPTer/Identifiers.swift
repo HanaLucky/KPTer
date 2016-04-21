@@ -7,20 +7,19 @@
 //
 
 import Foundation
+import UIKit
 
 public enum Identifiers:String {
-    // ボード追加ボタン
-    case BoardAdd = "add"
-    // ボード編集ボタン
-    case BoardEdit = "edit"
     // ボード追加ボタンからボード編集画面へ遷移したことを示す識別子
     case FromAddButtonToBoardEdit = "fromAddButtonToBoardEdit"
+    // ボード追加ボタンからボード編集画面へ遷移したことを示す識別子
+    case FromEditButtonToBoardEdit = "fromEditButtonToBoardEdit"
     // ボード選択→KPTエリア画面遷移
     case ToKptAreaViewController = "toKptAreaViewController"
     // KPTエリア画面遷移→カード画面遷移
     case ToCardViewController = "toCardViewController"
     // カード追加ボタンからカード編集画面へ遷移したことを示す識別子
     case FromAddButtonToCardEdit = "fromAddButtonToCardEdit"
-    // カード編集ボタンからカード編集画面へ遷移したことを示す識別子
+    // カード編集(セル選択)からカード編集画面へ遷移したことを示す識別子
     case FromEditButtonToCardEdit = "fromEditButtonToCardEdit"
 }
