@@ -237,9 +237,9 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
     */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // 選択されたCardを保持しておく
-        if (self.isKeepSection(indexPath)) {
+        if (self.isKeepSection(indexPath.section)) {
             selectedRelationCard = keepCardEntities[indexPath.row]
-        } else if(self.isProblemSection(indexPath)) {
+        } else if(self.isProblemSection(indexPath.section)) {
             selectedRelationCard = problemCardEntities[indexPath.row]
         }
         // チェックをつける
@@ -260,9 +260,9 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
     テーブルに表示する配列の総数を返す.
     */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == CardTypeSectionIndex.Keep.rawValue) {
+        if (self.isKeepSection(section)) {
             return keepCardEntities.count
-        } else if (section == CardTypeSectionIndex.Problem.rawValue) {
+        } else if (self.isProblemSection(section)) {
             return problemCardEntities.count
         } else {
             return 0
@@ -276,7 +276,7 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         
-        if (self.isKeepSection(indexPath)) {
+        if (self.isKeepSection(indexPath.section)) {
             // Keepカードセクションの場合、Keepカードエンティティのタイトル、詳細をセルに設定する
             cell.textLabel!.text = keepCardEntities[indexPath.row].card_title
             cell.detailTextLabel!.text = keepCardEntities[indexPath.row].detail
@@ -289,7 +289,7 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
             
-        } else if (self.isProblemSection(indexPath)) {
+        } else if (self.isProblemSection(indexPath.section)) {
             // Problemカードセクションの場合、Problemカードエンティティのタイトル、詳細をセルに設定する
             cell.textLabel!.text = problemCardEntities[indexPath.row].card_title
             cell.detailTextLabel!.text = problemCardEntities[indexPath.row].detail
@@ -334,19 +334,19 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /**
      リレーションカード選択テーブルの中のKeepカードセクションかどうか
-     - parameter nsIndex: インデックスパス
+     - parameter section: セクション番号
      - returns: true YES、false No
      */
-    private func isKeepSection(nsIndex: NSIndexPath) -> Bool {
-        return nsIndex.section == CardTypeSectionIndex.Keep.rawValue
+    private func isKeepSection(section: Int) -> Bool {
+        return section == CardTypeSectionIndex.Keep.rawValue
     }
     
     /**
      リレーションカード選択テーブルの中のProblemカードセクションかどうか
-     - parameter nsIndex: インデックスパス
+     - parameter section: セクション番号
      - returns: true YES、false No
      */
-    private func isProblemSection(nsIndex: NSIndexPath) -> Bool {
-        return nsIndex.section == CardTypeSectionIndex.Problem.rawValue
+    private func isProblemSection(section: Int) -> Bool {
+        return section == CardTypeSectionIndex.Problem.rawValue
     }
 }
