@@ -112,7 +112,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="boardTitleField" destination="1uH-iy-AKP" id="xui-Z9-jks"/>
-                        <outlet property="save" destination="GK4-Di-u11" id="UTV-Ty-DiU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tza-V0-mvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -275,6 +274,7 @@
                         <outlet property="cardTypeSegumentedControl" destination="4CU-H5-0tI" id="83t-yR-BFX"/>
                         <outlet property="descriptionField" destination="r8B-uR-7hS" id="TWN-AM-qWp"/>
                         <outlet property="relationCardTableView" destination="ozq-M2-yuL" id="5Ya-t9-Udm"/>
+                        <outlet property="save" destination="RET-XI-Iq4" id="Yjh-Yo-PRd"/>
                         <outlet property="titleField" destination="ou0-ID-tNs" id="2e6-bz-lfH"/>
                         <outlet property="typeSegment" destination="4CU-H5-0tI" id="7fs-if-esC"/>
                     </connections>

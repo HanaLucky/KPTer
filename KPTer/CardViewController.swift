@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class CardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     // 画面内オブジェクト
     // card typeセグメント
     @IBOutlet weak var typeSegment: UISegmentedControl!
@@ -23,6 +23,8 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var cardTypeSegumentedControl: UISegmentedControl!
     // relation card ラベル
     @IBOutlet weak var cardRelationLabel: UILabel!
+    // saveボタン
+    @IBOutlet weak var save: UIBarButtonItem!
     
     // KPTエリアから受け取るパラメーター
     // KPTエリアから受け取るボード
@@ -57,6 +59,9 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
+        
+        // selfをデリゲートにする
+        self.titleField.delegate = self
         
         // relationテーブルにKeep, Problemカードを設定する
         keepCardEntities = BoardViewModel.findKeepCard(self.board)
@@ -97,6 +102,11 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         }
         
+        // saveボタン非活性
+        if (titleField.text! == "") {
+            save.enabled = false
+        }
+        
         // CardTypeのセグメントのイベントを設定する
         cardTypeSegumentedControl.addTarget(self, action: "segmentedControlChanged:", forControlEvents: UIControlEvents.ValueChanged)
     }
@@ -104,6 +114,19 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // UITextFieldが編集されると呼ばれるデリゲートメソッド
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        var textLength: Int;
+        textLength = ( textField.text!.characters.count - range.length ) + string.characters.count;
+        if (textLength != 0) {
+            save.enabled = true
+        } else {
+            save.enabled = false
+        }
+        print(titleField.text)
+        return true
     }
     
     @IBAction func cancel(sender: UIBarButtonItem) {
