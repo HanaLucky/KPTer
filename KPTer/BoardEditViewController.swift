@@ -48,7 +48,6 @@ class BoardEditViewController: UIViewController, UITextFieldDelegate {
         } else {
             save.enabled = false
         }
-        print(boardTitleField.text)
         return true
     }
     

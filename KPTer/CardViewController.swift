@@ -125,7 +125,6 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             save.enabled = false
         }
-        print(titleField.text)
         return true
     }
     
