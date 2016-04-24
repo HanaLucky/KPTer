@@ -28,19 +28,19 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        // experimentData()
         self.navigationItem.title = board!.board_title
         self.keepCardEntities = BoardViewModel.findKeepCard(board!)
         self.problemCardEntities = BoardViewModel.findProblemCard(board!)
         self.tryCardEntities = BoardViewModel.findTryCard(board!)
+        
+        // ナビゲーションバー右上に編集ボタン配置
+        navigationItem.rightBarButtonItem = editButtonItem()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
     }
-    
     
     /*
     // MARK: - Navigation
@@ -51,6 +51,58 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     // Pass the selected object to the new view controller.
     }
     */
+    
+    /*
+    編集モードを有効にする
+    */
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.keepTableView.setEditing(editing, animated: animated)
+        self.problemTableView.setEditing(editing, animated: animated)
+        self.tryTableView.setEditing(editing, animated: animated)
+    }
+    
+    /*
+    Keep, Problem, Tryテーブルのセルを移動可能なセルに指定する（三本ラインの表示）
+    */
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    /*
+    セルが移動された時に呼び出される
+    */
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        // TODO: 並び順を更新する
+    }
+    
+    /*
+    セルの編集を許可する
+    */
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+
+    /*
+    削除された時に呼び出される
+    */
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // 先にデータを更新する
+        if (TableViewTags.isKeepTableView(tableView)) {
+            CardViewModel.delete(self.keepCardEntities[indexPath.row])
+        } else if (TableViewTags.isProblemTableView(tableView)) {
+            CardViewModel.delete(self.problemCardEntities[indexPath.row])
+        } else if (TableViewTags.isTryTableView(tableView)) {
+            CardViewModel.delete(self.tryCardEntities[indexPath.row])
+        } else {
+            // XXX: アプリケーション上不正な挙動なので例外処理したい
+        }
+        
+        // それからテーブルの更新
+        tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: 0)],
+            withRowAnimation: UITableViewRowAnimation.Fade)
+    }
     
     /*
     セクションの数を返す.
@@ -74,6 +126,9 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         return "Illegal Card Type!!"
     }
     
+    /*
+    セクション内のセルの総数を設定する
+    */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (TableViewTags.isKeepTableView(tableView)) {
             return keepCardEntities.count
@@ -85,6 +140,9 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 0
     }
     
+    /*
+    セルに表示する内容を設定する
+    */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:UITableViewCell? = nil
@@ -158,6 +216,9 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewWillAppear(animated)
     }
     
+    /*
+    画面内の値をリフレッシュする
+    */
     private func refreshView() {
         self.navigationItem.title = self.board!.board_title
         self.keepCardEntities = BoardViewModel.findKeepCard(self.board!)

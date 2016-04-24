@@ -15,7 +15,6 @@ class BoardEditViewController: UIViewController, UITextFieldDelegate {
     
     var board: Board? = nil
     
-    // saveボタン
     @IBOutlet weak var save: UIBarButtonItem!
     
     // 画面遷移の識別子(ボード一覧のAddから来たかEditからきたか判別)
