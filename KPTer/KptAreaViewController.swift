@@ -255,6 +255,9 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                     // それからテーブルビューの更新
                     tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: 0)],withRowAnimation: UITableViewRowAnimation.Fade)
+                    // Tryカードテーブルビューに削除されたTryカードの表示が残らないように、Tryテーブルビューも更新する
+                    self.tryCardEntities = BoardViewModel.findTryCard(self.board!)
+                    self.tryTableView.reloadData()
                 }
             
                 // CANCELボタン押下時
