@@ -152,7 +152,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         // Deleteボタン
         let deleteButton: UITableViewRowAction = UITableViewRowAction(style: .Normal , title: "Delete") { (action, index) -> Void in
             // 削除確認アラートを表示する
-            let alertController = UIAlertController(title: "Caution!", message: "Are you sure that you are deleting '\(self.boardEntities![index.row].board_title)'.", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Caution!", message: "Are you sure you want to delete '\(self.boardEntities![index.row].board_title)'.", preferredStyle: .Alert)
             
             // OKボタン押下時
             let defaultAction = UIAlertAction(title: "OK", style: .Default) {
