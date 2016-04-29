@@ -88,20 +88,19 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     */
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        // 先にデータを更新する
+        var targetCard:Card? = nil
+
         if (TableViewTags.isKeepTableView(tableView)) {
-            CardViewModel.delete(self.keepCardEntities[indexPath.row])
+            targetCard = keepCardEntities[indexPath.row]
         } else if (TableViewTags.isProblemTableView(tableView)) {
-            CardViewModel.delete(self.problemCardEntities[indexPath.row])
+            targetCard = problemCardEntities[indexPath.row]
         } else if (TableViewTags.isTryTableView(tableView)) {
-            CardViewModel.delete(self.tryCardEntities[indexPath.row])
+            targetCard = tryCardEntities[indexPath.row]
         } else {
             // XXX: アプリケーション上不正な挙動なので例外処理したい
         }
         
-        // それからテーブルの更新
-        tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: 0)],
-            withRowAnimation: UITableViewRowAnimation.Fade)
+        cardDeleteAction(tableView, indexPath: indexPath, targetCard: targetCard!)
     }
     
     /*
@@ -229,5 +228,61 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.problemTableView.reloadData()
         self.tryTableView.reloadData()
         
+    }
+    
+    /*
+    カード削除
+    - parameter tableView: 処理対象のテーブルビュー
+    - parameter indexPath: 削除対象のセルインデックス
+    - parameter targetCard: 削除対象のカード
+    */
+    private func cardDeleteAction(tableView: UITableView, indexPath: NSIndexPath, targetCard: Card) {
+
+        if (targetCard.isKeep() || targetCard.isProblem()) {
+            // Keep, Problemカードの場合、リレーションが存在するか確認。確認後リレーション先のTryカードも同時に削除する
+            
+            if let tryCard:Card = CardViewModel.findFromCardRelation(targetCard) {
+                // 紐付け先のTryカードが存在する場合、警告ポップアップを表示する
+                // 削除確認アラートを表示する
+                let alertController = UIAlertController(title: "Caution!", message: "Related Try card will be deleted. Are you sure you want to delete this card?", preferredStyle: .Alert)
+            
+                // OKボタン押下時
+                let defaultAction = UIAlertAction(title: "OK", style: .Default) {
+                    // OKの場合、紐付け先のTryカード、リレーション、Keepカードを削除する。
+                    action in CardViewModel.deleteCardRelation(tryCard)
+                    CardViewModel.delete(tryCard)
+                    CardViewModel.delete(targetCard)
+                
+                    // それからテーブルビューの更新
+                    tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: 0)],withRowAnimation: UITableViewRowAnimation.Fade)
+                    // Tryカードテーブルビューに削除されたTryカードの表示が残らないように、Tryテーブルビューも更新する
+                    self.tryCardEntities = BoardViewModel.findTryCard(self.board!)
+                    self.tryTableView.reloadData()
+                }
+            
+                // CANCELボタン押下時
+                let cancelAction = UIAlertAction(title: "CANCEL", style: .Cancel) {
+                    action in // 何もしない
+                }
+                
+                alertController.addAction(defaultAction)
+                alertController.addAction(cancelAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+            } else {
+                CardViewModel.delete(targetCard)
+                // それからテーブルビューの更新
+                tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: 0)],withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+            
+        } else if (targetCard.isTry()) {
+            // Tryカードの場合、リレーションと自分自身を削除する
+            CardViewModel.deleteCardRelation(targetCard)
+            CardViewModel.delete(targetCard)
+            
+            // それからテーブルビューの更新
+            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: 0)],withRowAnimation: UITableViewRowAnimation.Fade)
+        } else {
+            // XXX: 例外処理
+        }
     }
 }
