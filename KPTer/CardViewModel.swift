@@ -95,12 +95,16 @@ class CardViewModel {
     
     /**
      カードの紐付き先を取得します。
+     紐付き先が存在しない場合はnilを返却する。
      - parameter card: ひも付け元カード
      */
-    class func findFromCardRelation(card: Card) -> Card {
+    class func findFromCardRelation(card: Card) -> Card? {
         let realm = try! Realm()
-        let cardRelation = realm.objects(CardRelation).filter("from_id = '\(card.id)'")
-        let card = realm.objects(Card).filter("id = '\(cardRelation.first!.to_id)'").first
+        let cardRelations: Results! = realm.objects(CardRelation).filter("from_id = '\(card.id)'")
+        if (cardRelations.isEmpty) {
+            return nil
+        }
+        let card = realm.objects(Card).filter("id = '\(cardRelations!.first!.to_id)'").first
         return card!
     }
     
