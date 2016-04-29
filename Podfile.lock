@@ -1,4 +1,5 @@
 PODS:
+  - FlatUIKit (1.6.2)
   - Nimble (3.0.0)
   - Quick (0.9.1)
   - Realm (0.98.5):
@@ -8,11 +9,13 @@ PODS:
     - Realm (= 0.98.5)
 
 DEPENDENCIES:
+  - FlatUIKit
   - Nimble (= 3.0.0)
   - Quick (~> 0.9.0)
   - RealmSwift
 
 SPEC CHECKSUMS:
+  FlatUIKit: 1b41f0d4952ce8d970d8479ce79df54a960242c4
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
   Realm: db08379969e45cea2edd1c3c0a090fe9e22d2d2f

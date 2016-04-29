@@ -7,10 +7,12 @@ use_frameworks!
 
 target 'KPTer' do
   pod 'RealmSwift'
+  pod 'FlatUIKit'
 end
 
 def testing_pods
     pod 'RealmSwift'
+    pod 'FlatUIKit'
     pod 'Quick', '~> 0.9.0'
     pod 'Nimble', '3.0.0'
 end
