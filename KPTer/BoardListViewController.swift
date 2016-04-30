@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FlatUIKit
 import RealmSwift
 
 class BoardListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -35,6 +36,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         // Navigation Barの高さを取得する
         let navigationBarHeight = self.navigationController?.navigationBar.frame.height
         
+        
         // Viewの高さと幅を取得する.
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
@@ -50,6 +52,8 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Delegateを設定する.
         boardListTableView.delegate = self
+        
+        boardListTableView.separatorColor = .clearColor()
         
         // 引っ張ってリロードする
         refreshControl = UIRefreshControl()
@@ -80,13 +84,22 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // 再利用するCellを取得する.
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
+        
+        // cellに対し、UIFlatKit適応
+        let corners = UIRectCorner.AllCorners
+        cell.configureFlatCellWithColor(UIColor(red: 251/255, green: 168/255, blue: 72/255, alpha: 1.0), selectedColor: .whiteColor(), roundingCorners: corners)
+        cell.cornerRadius = 5;
+        cell.separatorHeight = 2;
         
         // Cellに値を設定する.
         cell.textLabel!.text = boardEntities![indexPath.row].board_title
         
         return cell
     }
+    
+    
     
     // @TODO implementes seque to KPT Area
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
