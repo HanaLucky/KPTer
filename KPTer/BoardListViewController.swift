@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FlatUIKit
 import RealmSwift
 
 class BoardListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -15,8 +16,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     var boardEntities: Results<Board>?
     
     // テーブルビュー
-    private var boardListTableView: UITableView!
-    
+    @IBOutlet weak var boardListTableView: UITableView!
     // リフレッシュコントロール
     var refreshControl:UIRefreshControl!
     
@@ -27,29 +27,6 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         boardEntities = BoardViewModel.findBoards(BoardViewModel.SortKey.CreatedAt, ascDesc: BoardViewModel.AscDesc.Desc)
-        
-        // reference https://sites.google.com/a/gclue.jp/swift-docs/ni-yinki100-ios/uikit/006-uitableviewdeteburuwo-biao-shi
-        // Status Barの高さを取得する.
-        let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
-        
-        // Navigation Barの高さを取得する
-        let navigationBarHeight = self.navigationController?.navigationBar.frame.height
-        
-        // Viewの高さと幅を取得する.
-        let displayWidth: CGFloat = self.view.frame.width
-        let displayHeight: CGFloat = self.view.frame.height
-        
-        // TableViewの生成する(status bar, navigation barの高さ分ずらして表示).
-        boardListTableView = UITableView(frame: CGRect(x: 0, y: barHeight + navigationBarHeight!, width: displayWidth, height: displayHeight - barHeight - navigationBarHeight!))
-        
-        // Cell名の登録をおこなう.
-        boardListTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-        
-        // DataSourceの設定をする.
-        boardListTableView.dataSource = self
-        
-        // Delegateを設定する.
-        boardListTableView.delegate = self
         
         // 引っ張ってリロードする
         refreshControl = UIRefreshControl()
@@ -80,7 +57,14 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // 再利用するCellを取得する.
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("BoardListItem", forIndexPath: indexPath)
+        
+        // cellに対し、UIFlatKit適応
+        let corners = UIRectCorner.AllCorners
+        cell.configureFlatCellWithColor(UIColor(red: 251/255, green: 168/255, blue: 72/255, alpha: 1.0), selectedColor: .whiteColor(), roundingCorners: corners)
+        cell.cornerRadius = 5;
+        cell.separatorHeight = 2;
         
         // Cellに値を設定する.
         cell.textLabel!.text = boardEntities![indexPath.row].board_title
@@ -88,18 +72,13 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
+    
+    
     // @TODO implementes seque to KPT Area
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             tableView.reloadData()
         }
-    }
-    
-    /*
-    Cellが選択された際に呼び出される.
-    */
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(Identifiers.ToKptAreaViewController.rawValue, sender: nil)
     }
     
     /*
@@ -157,8 +136,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
             // OKボタン押下時
             let defaultAction = UIAlertAction(title: "OK", style: .Default) {
                 action in BoardViewModel.delete(self.boardEntities![indexPath.row])
-                self.needRefresh = true
-                self.viewWillAppear(true)
+                tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: 0)],withRowAnimation: UITableViewRowAnimation.Fade)
             }
             
             // CANCELボタン押下時
