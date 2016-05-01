@@ -136,8 +136,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
             // OKボタン押下時
             let defaultAction = UIAlertAction(title: "OK", style: .Default) {
                 action in BoardViewModel.delete(self.boardEntities![indexPath.row])
-                self.needRefresh = true
-                self.viewWillAppear(true)
+                tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: 0)],withRowAnimation: UITableViewRowAnimation.Fade)
             }
             
             // CANCELボタン押下時
