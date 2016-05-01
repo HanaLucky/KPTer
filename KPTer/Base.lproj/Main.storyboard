@@ -34,6 +34,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="VgO-AH-mvO"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="3be-47-8mj"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -54,6 +58,9 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Tcv-FR-mVF"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Board List" id="kcH-AW-P1P"/>
+                    <connections>
+                        <outlet property="boardListTableView" destination="4aL-dA-g9g" id="GGA-Ty-nhJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
