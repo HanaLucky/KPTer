@@ -292,4 +292,5 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
             // XXX: 例外処理
         }
     }
+    
 }
