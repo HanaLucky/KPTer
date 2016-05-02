@@ -313,7 +313,7 @@
             </objects>
             <point key="canvasLocation" x="107" y="295"/>
         </scene>
-        <!--Board Name-->
+        <!--Delegate-->
         <scene sceneID="MlF-2p-5Kc">
             <objects>
                 <viewController storyboardIdentifier="KptAreaViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y5D-lk-Nlk" customClass="KptAreaViewController" customModule="KPTer" customModuleProvider="target" sceneMemberID="viewController">
@@ -500,6 +500,9 @@
                                                                                     <exclude reference="V1q-OI-H4S"/>
                                                                                 </mask>
                                                                             </variation>
+                                                                            <connections>
+                                                                                <outlet property="delegate" destination="Y5D-lk-Nlk" id="3aO-ve-XMX"/>
+                                                                            </connections>
                                                                         </view>
                                                                     </subviews>
                                                                     <constraints>

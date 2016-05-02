@@ -8,8 +8,9 @@
 
 import UIKit
 import RealmSwift
+import BEMCheckBox
 
-class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,BEMCheckBoxDelegate {
     
     @IBOutlet weak var keepTableView: UITableView!
     
@@ -293,4 +294,21 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    /*
+    チェックボックスがタップされたときに呼ばれる。
+    - parameter checkBox: 完了チェックボックス
+    */
+    func didTapCheckBox(checkBox: BEMCheckBox) {
+        // ステータス変更対象のカードを特定する
+        let cell = checkBox.superview?.superview as! TryCardTableViewCell
+        let row = tryTableView.indexPathForCell(cell)!.row
+        let card:Card = tryCardEntities[row]
+        
+        // チェックがONに変更された場合はDoneに、OFFに変更された場合はOpenに更新する
+        if (checkBox.on == true) {
+            CardViewModel.changeStatus(card, status: Card.CardStatus.Done)
+        } else {
+            CardViewModel.changeStatus(card, status: Card.CardStatus.Open)
+        }
+    }
 }
