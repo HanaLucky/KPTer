@@ -454,22 +454,60 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="520" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqq-Qb-Fcv">
-                                                                            <rect key="frame" x="8" y="22" width="504" height="21"/>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vc-Ob-nTZ" customClass="BEMCheckBox">
+                                                                            <rect key="frame" x="0.0" y="8" width="39" height="27"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="208" id="V1q-OI-H4S"/>
+                                                                            </constraints>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                                                    <real key="value" value="2"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                                                    <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
+                                                                                    <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="color" keyPath="onCheckColor">
+                                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                            <variation key="default">
+                                                                                <mask key="constraints">
+                                                                                    <exclude reference="V1q-OI-H4S"/>
+                                                                                </mask>
+                                                                            </variation>
+                                                                        </view>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqq-Qb-Fcv">
+                                                                            <rect key="frame" x="47" y="22" width="465" height="21"/>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jer-fB-ocK">
-                                                                            <rect key="frame" x="8" y="0.0" width="504" height="21"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jer-fB-ocK">
+                                                                            <rect key="frame" x="47" y="0.0" width="465" height="19"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="19" id="ogT-yz-Bjd"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" secondItem="jer-fB-ocK" secondAttribute="width" id="XBD-Eq-eoi"/>
-                                                                        <constraint firstAttribute="width" secondItem="fqq-Qb-Fcv" secondAttribute="width" id="dFG-Qv-yhN"/>
+                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="leading" secondItem="fqq-Qb-Fcv" secondAttribute="leading" id="6Iu-OA-xNm"/>
+                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="bottom" secondItem="hvo-Th-e88" secondAttribute="bottomMargin" id="B7k-U8-dPO"/>
+                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="leading" secondItem="hvo-Th-e88" secondAttribute="leading" id="Mqn-fY-2ox"/>
+                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="leading" secondItem="hvo-Th-e88" secondAttribute="leadingMargin" constant="39" id="P4H-wn-7zB"/>
+                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="top" secondItem="hvo-Th-e88" secondAttribute="topMargin" id="Rac-Xf-Ln4"/>
+                                                                        <constraint firstItem="fqq-Qb-Fcv" firstAttribute="trailing" secondItem="jer-fB-ocK" secondAttribute="trailing" id="Sf4-v4-8rf"/>
+                                                                        <constraint firstItem="fqq-Qb-Fcv" firstAttribute="top" secondItem="jer-fB-ocK" secondAttribute="bottom" constant="3" id="Vdz-nJ-8Fn"/>
+                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="leading" secondItem="3Vc-Ob-nTZ" secondAttribute="trailing" constant="8" symbolic="YES" id="fe0-2a-HUy"/>
+                                                                        <constraint firstItem="fqq-Qb-Fcv" firstAttribute="trailing" secondItem="hvo-Th-e88" secondAttribute="trailingMargin" id="sFW-8o-x6m"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="fqq-Qb-Fcv" secondAttribute="bottom" id="uLJ-s7-Dq2"/>
+                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="top" secondItem="hvo-Th-e88" secondAttribute="top" id="ybh-AF-v3s"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>

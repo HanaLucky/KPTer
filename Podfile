@@ -7,6 +7,7 @@ use_frameworks!
 
 target 'KPTer' do
   pod 'RealmSwift'
+  pod 'BEMCheckBox'
 end
 
 def testing_pods
