@@ -73,7 +73,14 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     セルが移動された時に呼び出される
     */
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        // TODO: 並び順を更新する
+        // 並び順を更新する
+        if (TableViewTags.isKeepTableView(tableView)) {
+            BoardViewModel.changeCardOrder(keepCardEntities, from_card_row: sourceIndexPath.row, to_card_row: destinationIndexPath.row)
+        } else if (TableViewTags.isProblemTableView(tableView)) {
+            BoardViewModel.changeCardOrder(problemCardEntities, from_card_row: sourceIndexPath.row, to_card_row: destinationIndexPath.row)
+        } else if (TableViewTags.isTryTableView(tableView)) {
+            BoardViewModel.changeCardOrder(tryCardEntities, from_card_row: sourceIndexPath.row, to_card_row: destinationIndexPath.row)
+        }
     }
     
     /*
