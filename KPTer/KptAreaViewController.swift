@@ -17,6 +17,8 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tryTableView: UITableView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+
     var board: Board? = nil
     
     var keepCardEntities: Results<Card>!
@@ -24,6 +26,8 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     var problemCardEntities: Results<Card>!
     
     var tryCardEntities: Results<Card>!
+    
+    private var pageControl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +39,45 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // ナビゲーションバー右上に編集ボタン配置
         navigationItem.rightBarButtonItem = editButtonItem()
+        
+        //-- ページコントロール配置
+        let width = self.view.frame.maxX
+        let height = self.view.frame.maxY
+        // ページコントロールの高さ
+        let pageViewControlHeight = CGFloat(10)
+        //　ページコントロールオブジェクト作成
+        self.pageControl = UIPageControl(frame: CGRectMake(0, height - self.navigationController!.toolbar.frame.height - pageViewControlHeight, width, pageViewControlHeight))
+        // 背景を透明に設定
+        self.pageControl.backgroundColor = UIColor.clearColor()
+        // ページ数を設定する(KPページ、Tページの２ページ固定)
+        self.pageControl.numberOfPages = 2
+        // 現在ページを初期設定する(0ページ目)
+        self.pageControl.currentPage = 0
+        // ページの色
+        self.pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+        // 現在ページの色
+        self.pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
+        
+        // タップしても反応しないように指定
+        self.pageControl.userInteractionEnabled = false
+
+        self.view.addSubview(self.pageControl)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /*
+    スクロールが完了したときに呼ばれる
+    */
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        // スクロール数が1ページ分になったら時
+        if fmod(self.scrollView.contentOffset.x, self.scrollView.frame.maxX) == 0 {
+            // ページの場所を切り替える(左端からの移動幅 / 1ページ分の幅)
+            pageControl.currentPage = Int(self.scrollView.contentOffset.x / self.scrollView.frame.maxX)
+        }
     }
     
     /*
