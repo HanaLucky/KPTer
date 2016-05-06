@@ -12,7 +12,7 @@ import RealmSwift
 class BoardListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // BoardListに表示するエンティティ
-    var boardEntities: Results<Board>?
+    var boardEntities: Results<Board>!
     
     // テーブルビュー
     @IBOutlet weak var boardListTableView: UITableView!
