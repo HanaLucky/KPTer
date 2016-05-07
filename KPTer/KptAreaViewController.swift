@@ -8,8 +8,9 @@
 
 import UIKit
 import RealmSwift
+import BEMCheckBox
 
-class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,BEMCheckBoxDelegate {
     
     @IBOutlet weak var keepTableView: UITableView!
     
@@ -37,8 +38,8 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.problemCardEntities = BoardViewModel.findProblemCard(board!)
         self.tryCardEntities = BoardViewModel.findTryCard(board!)
         
-        // ナビゲーションバー右上に編集ボタン配置
-        navigationItem.rightBarButtonItem = editButtonItem()
+        //-- ナビゲーションバー右上に編集ボタン配置
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: Selector("edit:"))
         
         //-- ページコントロール配置
         let width = self.view.frame.maxX
@@ -57,16 +58,57 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
         // 現在ページの色
         self.pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
-        
         // タップしても反応しないように指定
         self.pageControl.userInteractionEnabled = false
-
+        // ビューに追加
         self.view.addSubview(self.pageControl)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /*
+    ナビゲーションバーeditをタップした時のアクション
+    - parameter sender: ナビゲーションボタン
+    */
+    func edit(sender: UIBarButtonItem) {
+        // セルを編集モードにする
+        self.keepTableView.setEditing(true, animated: true)
+        self.problemTableView.setEditing(true, animated: true)
+        self.tryTableView.setEditing(true, animated: true)
+        
+        // Tryカードテーブル内のセルに対して、statusのチェックマークを非表示に、title/descriptionをstatusの位置に移動させる
+        for (var i:NSInteger = 0; i < tryTableView.numberOfRowsInSection(0); i++) {
+            let cell:TryCardTableViewCell = tryTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! TryCardTableViewCell
+            cell.status.hidden = true
+            cell.title.frame.origin.x = cell.status.frame.origin.x
+            cell.detail.frame.origin.x = cell.status.frame.origin.x
+        }
+        
+        // 編集ボタンのタイトルをdoneにし、アクションにdoneメソッドを指定する
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: Selector("done:"))
+    }
+    
+    /*
+    ナビゲーションバーdoneをタップした時のアクション
+    - parameter sender: ナビゲーションボタン
+    */
+    func done(sender: UIBarButtonItem) {
+        // セルの編集モードを解除する
+        self.keepTableView.setEditing(false, animated: true)
+        self.problemTableView.setEditing(false, animated: true)
+        self.tryTableView.setEditing(false, animated: true)
+        
+        // Tryカードテーブル内のセルに対して、statusのチェックマークを表示する
+        for (var i:NSInteger = 0; i < tryTableView.numberOfRowsInSection(0); i++) {
+            let cell:TryCardTableViewCell = tryTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! TryCardTableViewCell
+            cell.status.hidden = false
+        }
+        
+        // 編集ボタンのタイトルをeditにし、アクションにeditメソッドを指定する
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: Selector("edit:"))
     }
     
     /*
@@ -328,6 +370,24 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: 0)],withRowAnimation: UITableViewRowAnimation.Fade)
         } else {
             // XXX: 例外処理
+        }
+    }
+    
+    /*
+    チェックボックスがタップされたときに呼ばれる。
+    - parameter checkBox: 完了チェックボックス
+    */
+    func didTapCheckBox(checkBox: BEMCheckBox) {
+        // ステータス変更対象のカードを特定する
+        let cell = checkBox.superview?.superview as! TryCardTableViewCell
+        let row = tryTableView.indexPathForCell(cell)!.row
+        let card:Card = tryCardEntities[row]
+        
+        // チェックがONに変更された場合はDoneに、OFFに変更された場合はOpenに更新する
+        if (checkBox.on == true) {
+            CardViewModel.changeStatus(card, status: Card.CardStatus.Done)
+        } else {
+            CardViewModel.changeStatus(card, status: Card.CardStatus.Open)
         }
     }
 }

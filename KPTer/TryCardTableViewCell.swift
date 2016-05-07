@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import BEMCheckBox
 
 class TryCardTableViewCell: CardTableViewCell {
     
@@ -15,8 +16,19 @@ class TryCardTableViewCell: CardTableViewCell {
     
     @IBOutlet weak var detail: UILabel!
     
+    @IBOutlet weak var status: BEMCheckBox!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        self.status.onAnimationType = BEMAnimationType.Bounce
+        self.status.offAnimationType = BEMAnimationType.Bounce
+    }
+    
     func setCell (card: Card) {
         self.title.text = card.card_title
         self.detail.text = card.detail
+
+        self.status.on = (card.status == Card.CardStatus.Open.rawValue) ? false : true
     }
 }
