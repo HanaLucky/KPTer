@@ -34,6 +34,8 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
         boardListTableView.addSubview(refreshControl)
         
+        boardListTableView.separatorColor = .clearColor()
+        
         // Viewに追加する.
         self.view.addSubview(boardListTableView)
     }
@@ -62,7 +64,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // cellに対し、UIFlatKit適応
         let corners = UIRectCorner.AllCorners
-        cell.configureFlatCellWithColor(UIColor(red: 251/255, green: 168/255, blue: 72/255, alpha: 1.0), selectedColor: .whiteColor(), roundingCorners: corners)
+        cell.configureFlatCellWithColor(UIColor(red: 245/255, green: 241/255, blue: 233/255, alpha: 1.0), selectedColor: UIColor(red: 44/255, green: 83/255, blue: 121/255, alpha: 1.0), roundingCorners: corners)
         cell.cornerRadius = 5;
         cell.separatorHeight = 2;
         
