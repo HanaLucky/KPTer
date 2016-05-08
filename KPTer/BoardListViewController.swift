@@ -66,7 +66,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // cellに対し、UIFlatKit適応
         let corners = UIRectCorner.AllCorners
-        cell.configureFlatCellWithColor(.whiteColor(), selectedColor: UIColor(red: 44/255, green: 83/255, blue: 121/255, alpha: 1.0), roundingCorners: corners)
+        cell.configureFlatCellWithColor(.whiteColor(), selectedColor: UIColor(red: 18/255, green: 83/255, blue: 164/255, alpha: 1.0), roundingCorners: corners)
         cell.cornerRadius = 5;
         cell.separatorHeight = 2;
         cell.backgroundColor = UIColor(red: 255/255, green: 228/255, blue: 122/255, alpha: 1.0)
