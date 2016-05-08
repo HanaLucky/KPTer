@@ -35,8 +35,8 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         boardListTableView.addSubview(refreshControl)
         
         boardListTableView.separatorColor = .clearColor()
-        boardListTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
-        self.view.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        boardListTableView.backgroundColor = UIColor(red: 255/255, green: 239/255, blue: 169/255, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 255/255, green: 239/255, blue: 169/255, alpha: 1.0)
         
         // Viewに追加する.
         self.view.addSubview(boardListTableView)
@@ -66,10 +66,10 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // cellに対し、UIFlatKit適応
         let corners = UIRectCorner.AllCorners
-        cell.configureFlatCellWithColor(.whiteColor(), selectedColor: UIColor(red: 56/255, green: 56/255, blue: 56/255, alpha: 1.0), roundingCorners: corners)
+        cell.configureFlatCellWithColor(.whiteColor(), selectedColor: UIColor(red: 18/255, green: 83/255, blue: 164/255, alpha: 1.0), roundingCorners: corners)
         cell.cornerRadius = 5;
         cell.separatorHeight = 2;
-        cell.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        cell.backgroundColor = UIColor(red: 255/255, green: 239/255, blue: 169/255, alpha: 1.0)
         
         // Cellに値を設定する.
         cell.textLabel!.text = boardEntities![indexPath.row].board_title
