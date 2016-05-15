@@ -199,7 +199,7 @@
                                 <rect key="frame" x="16" y="417" width="568" height="163"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyCell" textLabel="bYJ-Ap-ihl" detailTextLabel="Ns3-DR-7jZ" style="IBUITableViewCellStyleSubtitle" id="dE9-4N-Kjw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RelationCardCell" textLabel="bYJ-Ap-ihl" detailTextLabel="Ns3-DR-7jZ" style="IBUITableViewCellStyleSubtitle" id="dE9-4N-Kjw">
                                         <rect key="frame" x="0.0" y="28" width="568" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dE9-4N-Kjw" id="hpE-AD-psb">
