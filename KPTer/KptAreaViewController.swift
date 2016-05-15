@@ -328,7 +328,7 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         if (targetCard.isKeep() || targetCard.isProblem()) {
             // Keep, Problemカードの場合、リレーションが存在するか確認。確認後リレーション先のTryカードも同時に削除する
             
-            if let tryCard:Card = CardViewModel.findFromCardRelation(targetCard) {
+            if let tryCards:Array<Card> = CardViewModel.findFromCardRelations(targetCard) {
                 // 紐付け先のTryカードが存在する場合、警告ポップアップを表示する
                 // 削除確認アラートを表示する
                 let alertController = UIAlertController(title: "Caution!", message: "Related Try card will be deleted. Are you sure you want to delete this card?", preferredStyle: .Alert)
@@ -336,8 +336,10 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
                 // OKボタン押下時
                 let defaultAction = UIAlertAction(title: "OK", style: .Default) {
                     // OKの場合、紐付け先のTryカード、リレーション、Keepカードを削除する。
-                    action in CardViewModel.deleteCardRelation(tryCard)
-                    CardViewModel.delete(tryCard)
+                    action in CardViewModel.deleteCardRelations(tryCards)
+                    for tryCard in tryCards {
+                        CardViewModel.delete(tryCard)
+                    }
                     CardViewModel.delete(targetCard)
                 
                     // それからテーブルビューの更新

@@ -83,6 +83,20 @@ class CardViewModel {
     }
     
     /**
+     カードの関連を複数削除します。
+     - parameter tryCard: ひも付け元カード
+     */
+    class func deleteCardRelations(tryCards: Array<Card>) {
+        let realm = try! Realm()
+        for tryCard in tryCards {
+            let cardRelations = realm.objects(CardRelation).filter("to_id = '\(tryCard.id)'")
+            try! realm.write {
+                realm.delete(cardRelations)
+            }
+        }
+    }
+    
+    /**
      カードの紐付き元を取得します。
      - parameter tryCard: ひも付け先カード
      */
@@ -98,14 +112,18 @@ class CardViewModel {
      紐付き先が存在しない場合はnilを返却する。
      - parameter card: ひも付け元カード
      */
-    class func findFromCardRelation(card: Card) -> Card? {
+    class func findFromCardRelations(card: Card) -> Array<Card>? {
         let realm = try! Realm()
         let cardRelations: Results! = realm.objects(CardRelation).filter("from_id = '\(card.id)'")
         if (cardRelations.isEmpty) {
             return nil
         }
-        let card = realm.objects(Card).filter("id = '\(cardRelations!.first!.to_id)'").first
-        return card!
+        var cards: Array = [Card]()
+        for cardRelation in cardRelations {
+            let card = realm.objects(Card).filter("id = '\(cardRelation.to_id)'").first
+            cards.append(card!)
+        }
+        return cards
     }
     
     /**
