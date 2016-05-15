@@ -164,6 +164,14 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             editCard.detail = self.descriptionField.text
             editCard.type = self.getCardTypeFromSegmentIndex(self.typeSegment.selectedSegmentIndex).rawValue
             CardViewModel.edit(self.card!, editCard: editCard)
+
+            // 編集対象のカードがTryカードの場合、リレーションを更新する
+            if (self.card!.isTry()) {
+                // 元のリレーションを削除する
+                CardViewModel.deleteCardRelation(self.card!)
+                // 今の選択されているカードにリレーションをはる
+                CardViewModel.addCardRelation(self.selectedRelationCard!.id, toId: self.card!.id)
+            }
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
