@@ -164,7 +164,7 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             editCard.detail = self.descriptionField.text
             editCard.type = self.getCardTypeFromSegmentIndex(self.typeSegment.selectedSegmentIndex).rawValue
             CardViewModel.edit(self.card!, editCard: editCard)
-
+            
             // 編集対象のカードがTryカードの場合、リレーションを更新する
             if (self.card!.isTry()) {
                 // 元のリレーションを削除する
@@ -265,7 +265,7 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
     /*
     Cellが選択された際に呼び出される.
     */
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         // 選択されたCardを保持しておく
         if (self.isKeepSection(indexPath.section)) {
             selectedRelationCard = keepCardEntities[indexPath.row]
@@ -273,17 +273,17 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             selectedRelationCard = problemCardEntities[indexPath.row]
         }
         // チェックをつける
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        if (cell == nil) {
+            cell = UITableViewCell(style: .Default, reuseIdentifier: "RelationCardCell")
+        }
+        
         cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-    }
-    
-    /*
-    Cellの選択が外れた時に呼び出される
-    */
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        // チェックを外す
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell!.accessoryType = UITableViewCellAccessoryType.None
+        
+        tableView.reloadData()
+        
+        return indexPath
     }
     
     /*
@@ -304,35 +304,39 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
+        // 使い回しできるセルがあればそのセルを取得する
+        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("RelationCardCell", forIndexPath: indexPath)
+        
+        // 使い回しできるセルがなかったら新しいセルをつくる
+        if (cell == nil) {
+            cell = UITableViewCell(style: .Default, reuseIdentifier: "RelationCardCell")
+        }
+        
+        // セルに設定する対象のカードを取得する
+        var settingCard: Card!
         
         if (self.isKeepSection(indexPath.section)) {
-            // Keepカードセクションの場合、Keepカードエンティティのタイトル、詳細をセルに設定する
-            cell.textLabel!.text = keepCardEntities[indexPath.row].card_title
-            cell.detailTextLabel!.text = keepCardEntities[indexPath.row].detail
-            
-            // 紐付けたカードのセルにチェックマークをつける
-            if let relationCard = self.selectedRelationCard {
-                if (relationCard.id == keepCardEntities[indexPath.row].id) {
-                    // チェックをつける
-                    cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-                }
-            }
-            
+            settingCard = keepCardEntities[indexPath.row]
         } else if (self.isProblemSection(indexPath.section)) {
-            // Problemカードセクションの場合、Problemカードエンティティのタイトル、詳細をセルに設定する
-            cell.textLabel!.text = problemCardEntities[indexPath.row].card_title
-            cell.detailTextLabel!.text = problemCardEntities[indexPath.row].detail
-            
-            // 紐付けたカードのセルにチェックマークをつける
-            if let relationCard = self.selectedRelationCard {
-                if (relationCard.id == problemCardEntities[indexPath.row].id) {
-                    // チェックをつける
-                    cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-                }
+            settingCard = problemCardEntities[indexPath.row]
+        }
+        
+        // セルにタイトル、詳細をセルに設定する
+        cell!.textLabel!.text = settingCard.card_title
+        cell!.detailTextLabel!.text = settingCard.detail
+        
+        // 紐付いている状態のカードである場合、セルにチェックマークをつける
+        if let relationCard = self.selectedRelationCard {
+            // 設定するセルが、紐付きを持っている場合
+            if (relationCard.id == settingCard.id) {
+                // 持っている場合、チェックありでセルを表示
+                cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+            } else {
+                // 持っていない場合、チェックなしでセルを表示
+                cell!.accessoryType = UITableViewCellAccessoryType.None
             }
         }
-        return cell
+        return cell!
     }
     
     /**
