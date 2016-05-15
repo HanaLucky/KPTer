@@ -167,10 +167,10 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             // 編集対象のカードがTryカードの場合、リレーションを更新する
             if (self.card!.isTry()) {
-                // TODO: 元のリレーションを削除する
-                
-                
-                // TODO: 今の選択されているカードにリレーションをはる
+                // 元のリレーションを削除する
+                CardViewModel.deleteCardRelation(self.card!)
+                // 今の選択されているカードにリレーションをはる
+                CardViewModel.addCardRelation(self.selectedRelationCard!.id, toId: self.card!.id)
             }
         }
         self.dismissViewControllerAnimated(true, completion: nil)
