@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="92" width="560" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9AA-MD-NOF" id="UWz-hk-CIb">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="39.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -95,10 +95,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Board Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1uH-iy-AKP" userLabel="Board Title Field">
-                                <rect key="frame" x="171" y="138" width="258" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="New Board Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1uH-iy-AKP" userLabel="Board Title Field" customClass="FUITextField">
+                                <rect key="frame" x="171" y="138" width="258" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="258" id="aNe-vb-hst"/>
+                                    <constraint firstAttribute="height" constant="58" id="aYx-Rb-zZC"/>
+                                    <constraint firstAttribute="width" constant="258" id="lAz-0p-UJ6"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -107,9 +108,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1uH-iy-AKP" firstAttribute="top" secondItem="ncD-Vh-bxX" secondAttribute="bottom" constant="74" id="BgG-Zp-qii"/>
+                            <constraint firstItem="1uH-iy-AKP" firstAttribute="centerX" secondItem="ncD-Vh-bxX" secondAttribute="centerX" id="AQ4-mc-Wmc"/>
                             <constraint firstItem="ncD-Vh-bxX" firstAttribute="top" secondItem="CIt-dg-WY0" secondAttribute="bottom" id="a9q-b5-2cO"/>
-                            <constraint firstItem="ncD-Vh-bxX" firstAttribute="centerX" secondItem="1uH-iy-AKP" secondAttribute="centerX" id="ch5-ML-7jd"/>
+                            <constraint firstItem="1uH-iy-AKP" firstAttribute="top" secondItem="ncD-Vh-bxX" secondAttribute="bottom" constant="74" id="fmy-mC-vGI"/>
                             <constraint firstAttribute="trailing" secondItem="ncD-Vh-bxX" secondAttribute="trailing" id="oah-fs-cUy"/>
                             <constraint firstItem="ncD-Vh-bxX" firstAttribute="leading" secondItem="dHO-8U-Bla" secondAttribute="leading" id="wQi-Aj-bJ4"/>
                         </constraints>
@@ -118,7 +119,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="PJW-u2-XDd"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="boardTitleField" destination="1uH-iy-AKP" id="xui-Z9-jks"/>
+                        <outlet property="boardTitleField" destination="1uH-iy-AKP" id="8d5-lb-iBQ"/>
                         <outlet property="save" destination="GK4-Di-u11" id="mi2-Ge-ALX"/>
                     </connections>
                 </viewController>
