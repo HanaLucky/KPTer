@@ -28,6 +28,9 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var tryCardEntities: Results<Card>!
     
+    @IBOutlet weak var kpView: UIView!
+    @IBOutlet weak var tView: UIView!
+    
     private var pageControl: UIPageControl!
     
     override func viewDidLoad() {
@@ -62,6 +65,20 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.pageControl.userInteractionEnabled = false
         // ビューに追加
         self.view.addSubview(self.pageControl)
+        // ビューにUIFlatカラー適応
+        kpView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        tView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        // keepテーブルに対し、FlatUI適応
+        keepTableView.separatorColor = .clearColor()
+        keepTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        // problemテーブルに対し、FlatUI適応
+        problemTableView.separatorColor = .clearColor()
+        problemTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        // tryテーブルに対し、FlatUI適応
+        tryTableView.separatorColor = .clearColor()
+        tryTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        
     }
     
     override func didReceiveMemoryWarning() {
