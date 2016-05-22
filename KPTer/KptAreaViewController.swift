@@ -78,7 +78,6 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         // tryテーブルに対し、FlatUI適応
         tryTableView.separatorColor = .clearColor()
         tryTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -227,6 +226,23 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
             return Card.CardType.Try.rawValue
         }
         return "Illegal Card Type!!"
+    }
+    
+    /*
+    この関数内でセクションの設定を行う
+    */
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label : UILabel = UILabel()
+        label.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        label.textColor = .whiteColor()
+        if (TableViewTags.isKeepTableView(tableView)) {
+            label.text = "- \(Card.CardType.Keep.rawValue) -"
+        } else if (TableViewTags.isProblemTableView(tableView)) {
+            label.text = "- \(Card.CardType.Problem.rawValue) -"
+        } else if (TableViewTags.isTryTableView(tableView)) {
+            label.text = "- \(Card.CardType.Try.rawValue) -"
+        }
+        return label
     }
     
     /*
