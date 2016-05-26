@@ -26,4 +26,10 @@ class CardTableViewCell: UITableViewCell {
         self.separatorHeight = 2;
         self.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
     }
+    
+    func setCell (card: Card) {
+        self.textLabel?.text = card.card_title
+        self.detailTextLabel?.text = card.detail
+    }
+    
 }
