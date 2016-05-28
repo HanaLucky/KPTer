@@ -316,7 +316,7 @@
 				TargetAttributes = {
 					0D777BE01C68A8220038462F = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 3RM2UR6FJV;
+						DevelopmentTeam = EDE9X326QH;
 					};
 					0D777BF71C68A8230038462F = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -674,7 +674,7 @@
 				INFOPLIST_FILE = KPTer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hanalucky.KPTer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanalucky.kepter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -696,7 +696,7 @@
 				INFOPLIST_FILE = KPTer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hanalucky.KPTer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanalucky.kepter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
