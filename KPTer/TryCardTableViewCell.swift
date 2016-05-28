@@ -25,7 +25,7 @@ class TryCardTableViewCell: CardTableViewCell {
         self.status.offAnimationType = BEMAnimationType.Bounce
     }
     
-    func setCell (card: Card) {
+    override func setCell (card: Card) {
         self.title.text = card.card_title
         self.detail.text = card.detail
 
