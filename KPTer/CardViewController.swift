@@ -340,6 +340,14 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     /**
+     タップイベント
+     画面外をタップされた時に、編集モードを完了させる（keyboardが表示されなくなる）
+     - parameter sender: ジェスチャー
+     */
+    @IBAction func tapScreen(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    /**
      カードタイプにKeepが選択されているか
      - parameter segment: セグメントコントロール
      - returns: true YES、false No
