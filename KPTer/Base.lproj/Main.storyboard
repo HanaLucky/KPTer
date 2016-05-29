@@ -95,7 +95,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="New Board Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1uH-iy-AKP" userLabel="Board Title Field" customClass="FUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Board Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1uH-iy-AKP" userLabel="Board Title Field" customClass="FUITextField">
                                 <rect key="frame" x="171" y="138" width="258" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="aYx-Rb-zZC"/>
@@ -148,7 +148,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="card title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ou0-ID-tNs" customClass="FUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ou0-ID-tNs" customClass="FUITextField">
                                 <rect key="frame" x="16" y="152" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
