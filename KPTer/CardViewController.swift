@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FlatUIKit
 import RealmSwift
 
 class CardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
@@ -14,13 +15,13 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
     // card typeセグメント
     @IBOutlet weak var typeSegment: UISegmentedControl!
     // card titleフィールド
-    @IBOutlet weak var titleField: UITextField!
+    @IBOutlet weak var titleField: FUITextField!
     // descriptionフィールド
     @IBOutlet weak var descriptionField: UITextView!
     // relation card table view
     @IBOutlet weak var relationCardTableView: UITableView!
     // cart typeセグメントコントローラー
-    @IBOutlet weak var cardTypeSegumentedControl: UISegmentedControl!
+    @IBOutlet weak var cardTypeSegumentedControl: FUISegmentedControl!
     // relation card ラベル
     @IBOutlet weak var cardRelationLabel: UILabel!
     // saveボタン
@@ -101,6 +102,29 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
             // FIXME: 例外処理したい
 
         }
+        
+        self.view.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        
+        // TextFieldにUIFlatKitを適応
+        titleField.font = .flatFontOfSize(16)
+        self.titleField.backgroundColor = .whiteColor()
+        self.titleField.edgeInsets = UIEdgeInsetsMake(4, 15, 4, 15);
+        self.titleField.textFieldColor = .whiteColor()
+        self.titleField.borderColor = UIColor(red: 56/255, green: 56/255, blue: 56/255, alpha: 1.0)
+        self.titleField.borderWidth = 2
+        self.titleField.cornerRadius = 3
+        
+        // cardTypeSegumentedControlにFlatUI適応
+        cardTypeSegumentedControl.selectedFont = .boldFlatFontOfSize(16)
+        cardTypeSegumentedControl.selectedFontColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        cardTypeSegumentedControl.deselectedFontColor = .whiteColor()
+        cardTypeSegumentedControl.selectedColor = .whiteColor()
+        cardTypeSegumentedControl.deselectedColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        cardTypeSegumentedControl.dividerColor = .whiteColor()
+        cardTypeSegumentedControl.borderColor = .whiteColor()
+        cardTypeSegumentedControl.borderWidth = 1
+        cardTypeSegumentedControl.cornerRadius = 15
+        
         
         // saveボタン非活性
         if (titleField.text! == "") {
