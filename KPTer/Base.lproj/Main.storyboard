@@ -482,8 +482,8 @@
                                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Vc-Ob-nTZ" customClass="BEMCheckBox">
-                                                                            <rect key="frame" x="0.0" y="11" width="30" height="22"/>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vc-Ob-nTZ" customClass="BEMCheckBox">
+                                                                            <rect key="frame" x="9" y="11" width="30" height="22"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="208" id="V1q-OI-H4S"/>
@@ -525,16 +525,16 @@
                                                                         </label>
                                                                     </subviews>
                                                                     <constraints>
+                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="leading" secondItem="hvo-Th-e88" secondAttribute="leadingMargin" constant="1" id="1kU-a7-2pQ"/>
                                                                         <constraint firstItem="jer-fB-ocK" firstAttribute="leading" secondItem="fqq-Qb-Fcv" secondAttribute="leading" id="6Iu-OA-xNm"/>
-                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="top" secondItem="hvo-Th-e88" secondAttribute="topMargin" constant="3" id="Kev-Ac-xe8"/>
                                                                         <constraint firstItem="jer-fB-ocK" firstAttribute="leading" secondItem="hvo-Th-e88" secondAttribute="leadingMargin" constant="39" id="P4H-wn-7zB"/>
                                                                         <constraint firstItem="fqq-Qb-Fcv" firstAttribute="trailing" secondItem="jer-fB-ocK" secondAttribute="trailing" id="Sf4-v4-8rf"/>
                                                                         <constraint firstItem="fqq-Qb-Fcv" firstAttribute="top" secondItem="jer-fB-ocK" secondAttribute="bottom" constant="3" id="Vdz-nJ-8Fn"/>
-                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="leading" secondItem="3Vc-Ob-nTZ" secondAttribute="trailing" constant="8" symbolic="YES" id="Yhd-vv-zzA"/>
-                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="leading" secondItem="hvo-Th-e88" secondAttribute="leading" id="ioj-3n-7Ri"/>
+                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="centerY" secondItem="hvo-Th-e88" secondAttribute="centerY" id="k6s-K2-rJa"/>
+                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="top" secondItem="hvo-Th-e88" secondAttribute="topMargin" constant="3" id="sBa-V3-gS3"/>
                                                                         <constraint firstItem="fqq-Qb-Fcv" firstAttribute="trailing" secondItem="hvo-Th-e88" secondAttribute="trailingMargin" id="sFW-8o-x6m"/>
                                                                         <constraint firstAttribute="bottom" secondItem="fqq-Qb-Fcv" secondAttribute="bottom" id="uLJ-s7-Dq2"/>
-                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="centerY" secondItem="hvo-Th-e88" secondAttribute="centerY" id="yZj-Au-Vfb"/>
+                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="leading" secondItem="3Vc-Ob-nTZ" secondAttribute="trailing" constant="8" symbolic="YES" id="y25-1S-eP6"/>
                                                                         <constraint firstItem="jer-fB-ocK" firstAttribute="top" secondItem="hvo-Th-e88" secondAttribute="top" id="ybh-AF-v3s"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
