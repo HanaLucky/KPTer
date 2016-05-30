@@ -484,10 +484,10 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vc-Ob-nTZ" customClass="BEMCheckBox">
-                                                                            <rect key="frame" x="12" y="12" width="30" height="20"/>
+                                                                            <rect key="frame" x="12" y="11" width="30" height="21"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" secondItem="3Vc-Ob-nTZ" secondAttribute="height" multiplier="1:1" constant="10" id="yc9-Fx-bWf"/>
+                                                                                <constraint firstAttribute="width" secondItem="3Vc-Ob-nTZ" secondAttribute="height" multiplier="1:1" constant="9" id="yc9-Fx-bWf"/>
                                                                             </constraints>
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
@@ -524,7 +524,7 @@
                                                                         <constraint firstItem="fqq-Qb-Fcv" firstAttribute="leading" secondItem="jer-fB-ocK" secondAttribute="leading" id="JmX-mR-MXn"/>
                                                                         <constraint firstItem="fqq-Qb-Fcv" firstAttribute="trailing" secondItem="hvo-Th-e88" secondAttribute="trailingMargin" id="k4z-yX-m9P"/>
                                                                         <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="leading" secondItem="hvo-Th-e88" secondAttribute="leadingMargin" constant="4" id="nbh-UU-qwM"/>
-                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="top" secondItem="hvo-Th-e88" secondAttribute="topMargin" constant="4" id="uZ8-cg-f1z"/>
+                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="top" secondItem="hvo-Th-e88" secondAttribute="topMargin" constant="3" id="uZ8-cg-f1z"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
