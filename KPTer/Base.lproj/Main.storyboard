@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -384,7 +385,6 @@
                                                                             <rect key="frame" x="15" y="25" width="41" height="14"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
@@ -473,20 +473,21 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="520" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jer-fB-ocK">
-                                                                            <rect key="frame" x="47" y="0.0" width="465" height="19"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="19" id="ogT-yz-Bjd"/>
-                                                                            </constraints>
-                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="465" translatesAutoresizingMaskIntoConstraints="NO" id="jer-fB-ocK">
+                                                                            <rect key="frame" x="50" y="5" width="462" height="20"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqq-Qb-Fcv">
+                                                                            <rect key="frame" x="50" y="25" width="462" height="14"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vc-Ob-nTZ" customClass="BEMCheckBox">
-                                                                            <rect key="frame" x="9" y="11" width="30" height="22"/>
+                                                                            <rect key="frame" x="12" y="12" width="30" height="20"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="208" id="V1q-OI-H4S"/>
+                                                                                <constraint firstAttribute="width" secondItem="3Vc-Ob-nTZ" secondAttribute="height" multiplier="1:1" constant="10" id="yc9-Fx-bWf"/>
                                                                             </constraints>
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
@@ -507,35 +508,23 @@
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
                                                                                     <real key="value" value="0.25"/>
                                                                                 </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="NO"/>
                                                                             </userDefinedRuntimeAttributes>
-                                                                            <variation key="default">
-                                                                                <mask key="constraints">
-                                                                                    <exclude reference="V1q-OI-H4S"/>
-                                                                                </mask>
-                                                                            </variation>
                                                                             <connections>
                                                                                 <outlet property="delegate" destination="Y5D-lk-Nlk" id="3aO-ve-XMX"/>
                                                                             </connections>
                                                                         </view>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqq-Qb-Fcv">
-                                                                            <rect key="frame" x="47" y="22" width="465" height="21"/>
-                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="leading" secondItem="hvo-Th-e88" secondAttribute="leadingMargin" constant="1" id="1kU-a7-2pQ"/>
-                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="leading" secondItem="fqq-Qb-Fcv" secondAttribute="leading" id="6Iu-OA-xNm"/>
-                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="leading" secondItem="hvo-Th-e88" secondAttribute="leadingMargin" constant="39" id="P4H-wn-7zB"/>
-                                                                        <constraint firstItem="fqq-Qb-Fcv" firstAttribute="trailing" secondItem="jer-fB-ocK" secondAttribute="trailing" id="Sf4-v4-8rf"/>
-                                                                        <constraint firstItem="fqq-Qb-Fcv" firstAttribute="top" secondItem="jer-fB-ocK" secondAttribute="bottom" constant="3" id="Vdz-nJ-8Fn"/>
-                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="centerY" secondItem="hvo-Th-e88" secondAttribute="centerY" id="k6s-K2-rJa"/>
-                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="top" secondItem="hvo-Th-e88" secondAttribute="topMargin" constant="3" id="sBa-V3-gS3"/>
-                                                                        <constraint firstItem="fqq-Qb-Fcv" firstAttribute="trailing" secondItem="hvo-Th-e88" secondAttribute="trailingMargin" id="sFW-8o-x6m"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="fqq-Qb-Fcv" secondAttribute="bottom" id="uLJ-s7-Dq2"/>
-                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="leading" secondItem="3Vc-Ob-nTZ" secondAttribute="trailing" constant="8" symbolic="YES" id="y25-1S-eP6"/>
-                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="top" secondItem="hvo-Th-e88" secondAttribute="top" id="ybh-AF-v3s"/>
+                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="centerY" secondItem="hvo-Th-e88" secondAttribute="centerY" id="4mZ-xE-iE2"/>
+                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="top" secondItem="hvo-Th-e88" secondAttribute="topMargin" constant="-3" id="9ZL-4E-Cl0"/>
+                                                                        <constraint firstItem="jer-fB-ocK" firstAttribute="leading" secondItem="3Vc-Ob-nTZ" secondAttribute="trailing" constant="8" symbolic="YES" id="DGu-4p-xwL"/>
+                                                                        <constraint firstItem="fqq-Qb-Fcv" firstAttribute="trailing" secondItem="jer-fB-ocK" secondAttribute="trailing" id="HKL-X3-wP4"/>
+                                                                        <constraint firstItem="fqq-Qb-Fcv" firstAttribute="top" secondItem="jer-fB-ocK" secondAttribute="bottom" id="IHR-vu-9Xc"/>
+                                                                        <constraint firstItem="fqq-Qb-Fcv" firstAttribute="leading" secondItem="jer-fB-ocK" secondAttribute="leading" id="JmX-mR-MXn"/>
+                                                                        <constraint firstItem="fqq-Qb-Fcv" firstAttribute="trailing" secondItem="hvo-Th-e88" secondAttribute="trailingMargin" id="k4z-yX-m9P"/>
+                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="leading" secondItem="hvo-Th-e88" secondAttribute="leadingMargin" constant="4" id="nbh-UU-qwM"/>
+                                                                        <constraint firstItem="3Vc-Ob-nTZ" firstAttribute="top" secondItem="hvo-Th-e88" secondAttribute="topMargin" constant="4" id="uZ8-cg-f1z"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
