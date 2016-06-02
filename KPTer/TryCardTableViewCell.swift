@@ -31,6 +31,9 @@ class TryCardTableViewCell: CardTableViewCell {
         // cellに対し、UIFlatKit適応
         self.title.textColor = UIColor(red: 56/255, green: 56/255, blue: 56/255, alpha: 1.0)
         self.detail.textColor = UIColor(red: 56/255, green: 56/255, blue: 56/255, alpha: 1.0)
+        // 反転時の文字色設定
+        self.title.highlightedTextColor = .whiteColor()
+        self.detail.highlightedTextColor = .whiteColor()        
     }
     
     override func setCell (card: Card) {
