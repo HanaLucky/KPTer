@@ -369,8 +369,16 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
      - parameter sender: ジェスチャー
      */
     @IBAction func tapScreen(sender: UITapGestureRecognizer) {
+        // 編集モードを終了させる（キーボードを下ろすことで、リレーションテーブルが隠れないようにする）
         self.view.endEditing(true)
+        
+        // タップジェスチャーを設定するとテーブル選択できなくなるので、このイベントの中でテーブル選択イベントを呼ぶ
+        let touch = sender.locationInView(self.relationCardTableView)
+        if let indexPath = self.relationCardTableView.indexPathForRowAtPoint(touch) {
+            self.tableView(self.relationCardTableView, willSelectRowAtIndexPath: indexPath)
+        }
     }
+    
     /**
      カードタイプにKeepが選択されているか
      - parameter segment: セグメントコントロール

@@ -99,8 +99,8 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         for (var i:NSInteger = 0; i < tryTableView.numberOfRowsInSection(0); i++) {
             let cell:TryCardTableViewCell = tryTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! TryCardTableViewCell
             cell.status.hidden = true
-            cell.textLabel!.frame.origin.x = cell.status.frame.origin.x
-            cell.detailTextLabel!.frame.origin.x = cell.status.frame.origin.x
+            cell.title!.frame.origin.x = cell.status.frame.origin.x
+            cell.detail!.frame.origin.x = cell.status.frame.origin.x
         }
         
         // 編集ボタンのタイトルをdoneにし、アクションにdoneメソッドを指定する

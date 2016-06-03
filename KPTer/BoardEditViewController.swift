@@ -82,7 +82,7 @@ class BoardEditViewController: UIViewController, UITextFieldDelegate {
     @IBAction func cancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     /**
      タップイベント
      画面外をタップされた時に、編集モードを完了させる（keyboardが表示されなくなる）
@@ -91,6 +91,7 @@ class BoardEditViewController: UIViewController, UITextFieldDelegate {
     @IBAction func tapScreen(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
+
     /*
     // MARK: - Navigation
 
