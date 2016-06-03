@@ -22,9 +22,11 @@ class CardTableViewCell: UITableViewCell {
         // cellに対し、UIFlatKit適応
         let corners = UIRectCorner.AllCorners
         self.configureFlatCellWithColor(.whiteColor(), selectedColor: UIColor(red: 56/255, green: 56/255, blue: 56/255, alpha: 1.0), roundingCorners: corners)
-        self.cornerRadius = 5;
-        self.separatorHeight = 2;
+        self.cornerRadius = 5
+        self.separatorHeight = 2
         self.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        // 反転時にも角丸にする
+        self.selectedBackgroundView?.layer.cornerRadius = 5
     }
     
     func setCell (card: Card) {
