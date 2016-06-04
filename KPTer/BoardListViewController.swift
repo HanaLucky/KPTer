@@ -19,7 +19,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var boardListTableView: UITableView!
     
     // リフレッシュコントロール
-    var refreshControl:UIRefreshControl!
+//    var refreshControl:UIRefreshControl!
     
     // ボードリストのリフレッシュが必要かのフラグ
     var needRefresh = false
@@ -29,10 +29,10 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view, typically from a nib.
         boardEntities = BoardViewModel.findBoards(BoardViewModel.SortKey.CreatedAt, ascDesc: BoardViewModel.AscDesc.Desc)
         // 引っ張ってリロードする
-        refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "まだできないよ〜")
-        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
-        boardListTableView.addSubview(refreshControl)
+//        refreshControl = UIRefreshControl()
+//        refreshControl.attributedTitle = NSAttributedString(string: "まだできないよ〜")
+//        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+//        boardListTableView.addSubview(refreshControl)
         
         boardListTableView.separatorColor = .clearColor()
         boardListTableView.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
@@ -153,10 +153,10 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
      テーブルを下に引っ張ってリロードする
      (次フェーズで利用予定の仕組み)
     */
-    func refresh() {
-        self.viewWillAppear(true)
-        self.refreshControl.endRefreshing()
-    }
+//    func refresh() {
+//        self.viewWillAppear(true)
+//        self.refreshControl.endRefreshing()
+//    }
     
     /**
      ボードリスト画面が表示されるごとに、ボードエンティティを取得して再描画する
