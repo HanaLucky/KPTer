@@ -34,8 +34,6 @@ class BoardEditViewController: UIViewController, UITextFieldDelegate {
         self.boardTitleField.backgroundColor = .clearColor()
         self.boardTitleField.edgeInsets = UIEdgeInsetsMake(4, 15, 4, 15);
         self.boardTitleField.textFieldColor = .whiteColor()
-        self.boardTitleField.borderColor = UIColor(red: 18/255, green: 83/255, blue: 164/255, alpha: 1.0)
-        self.boardTitleField.borderWidth = 2
         self.boardTitleField.cornerRadius = 3
         
         // Do any additional setup after loading the view.
