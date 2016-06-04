@@ -35,8 +35,8 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         boardListTableView.addSubview(refreshControl)
         
         boardListTableView.separatorColor = .clearColor()
-        boardListTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
-        self.view.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        boardListTableView.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
         
         // Viewに追加する.
         self.view.addSubview(boardListTableView)
