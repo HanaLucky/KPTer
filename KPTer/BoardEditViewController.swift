@@ -24,7 +24,7 @@ class BoardEditViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
         
         // selfをデリゲートにする
         self.boardTitleField.delegate = self
@@ -34,7 +34,7 @@ class BoardEditViewController: UIViewController, UITextFieldDelegate {
         self.boardTitleField.backgroundColor = .clearColor()
         self.boardTitleField.edgeInsets = UIEdgeInsetsMake(4, 15, 4, 15);
         self.boardTitleField.textFieldColor = .whiteColor()
-        self.boardTitleField.borderColor = UIColor(red: 56/255, green: 56/255, blue: 56/255, alpha: 1.0)
+        self.boardTitleField.borderColor = UIColor(red: 18/255, green: 83/255, blue: 164/255, alpha: 1.0)
         self.boardTitleField.borderWidth = 2
         self.boardTitleField.cornerRadius = 3
         

@@ -103,23 +103,23 @@ class CardViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         }
         
-        self.view.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
         
         // TextFieldにUIFlatKitを適応
         titleField.font = .flatFontOfSize(16)
         self.titleField.backgroundColor = .whiteColor()
         self.titleField.edgeInsets = UIEdgeInsetsMake(4, 15, 4, 15);
         self.titleField.textFieldColor = .whiteColor()
-        self.titleField.borderColor = UIColor(red: 56/255, green: 56/255, blue: 56/255, alpha: 1.0)
+        self.titleField.borderColor = UIColor(red: 18/255, green: 83/255, blue: 164/255, alpha: 1.0)
         self.titleField.borderWidth = 2
         self.titleField.cornerRadius = 3
         
         // cardTypeSegumentedControlにFlatUI適応
         cardTypeSegumentedControl.selectedFont = .boldFlatFontOfSize(16)
-        cardTypeSegumentedControl.selectedFontColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        cardTypeSegumentedControl.selectedFontColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
         cardTypeSegumentedControl.deselectedFontColor = .whiteColor()
         cardTypeSegumentedControl.selectedColor = .whiteColor()
-        cardTypeSegumentedControl.deselectedColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        cardTypeSegumentedControl.deselectedColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
         cardTypeSegumentedControl.dividerColor = .whiteColor()
         cardTypeSegumentedControl.borderColor = .whiteColor()
         cardTypeSegumentedControl.borderWidth = 1

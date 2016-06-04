@@ -66,18 +66,18 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         // ビューに追加
         self.view.addSubview(self.pageControl)
         // ビューにUIFlatカラー適応
-        kpView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
-        tView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        kpView.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
+        tView.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
         // keepテーブルに対し、FlatUI適応
         keepTableView.separatorColor = .clearColor()
-        keepTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
-        self.view.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        keepTableView.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
         // problemテーブルに対し、FlatUI適応
         problemTableView.separatorColor = .clearColor()
-        problemTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        problemTableView.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
         // tryテーブルに対し、FlatUI適応
         tryTableView.separatorColor = .clearColor()
-        tryTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        tryTableView.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -233,7 +233,7 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     */
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label : UILabel = UILabel()
-        label.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        label.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
         label.textColor = .whiteColor()
         if (TableViewTags.isKeepTableView(tableView)) {
             label.text = "- \(Card.CardType.Keep.rawValue) -"
