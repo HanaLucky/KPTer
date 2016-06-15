@@ -57,10 +57,6 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.pageControl.numberOfPages = 2
         // 現在ページを初期設定する(0ページ目)
         self.pageControl.currentPage = 0
-        // ページの色
-        self.pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-        // 現在ページの色
-        self.pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
         // タップしても反応しないように指定
         self.pageControl.userInteractionEnabled = false
         // ビューに追加
