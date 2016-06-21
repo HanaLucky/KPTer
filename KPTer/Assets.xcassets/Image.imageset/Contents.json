@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "splash_750_1334.png",
+      "filename" : "750x1334.png",
       "scale" : "1x"
     },
     {
