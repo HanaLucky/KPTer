@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import FlatUIKit
 import RealmSwift
 
 class BoardEditViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var boardTitleField: UITextField!
+    @IBOutlet weak var boardTitleField: FUITextField!
     
     var board: Board? = nil
     
@@ -23,8 +24,17 @@ class BoardEditViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        
         // selfをデリゲートにする
         self.boardTitleField.delegate = self
+        
+        // TextFieldにUIFlatKitを適応
+        boardTitleField.font = .flatFontOfSize(16)
+        self.boardTitleField.backgroundColor = .clearColor()
+        self.boardTitleField.edgeInsets = UIEdgeInsetsMake(4, 15, 4, 15);
+        self.boardTitleField.textFieldColor = .whiteColor()
+        self.boardTitleField.cornerRadius = 3
         
         // Do any additional setup after loading the view.
         // @TODO implements
@@ -70,7 +80,7 @@ class BoardEditViewController: UIViewController, UITextFieldDelegate {
     @IBAction func cancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     /**
      タップイベント
      画面外をタップされた時に、編集モードを完了させる（keyboardが表示されなくなる）
@@ -79,6 +89,7 @@ class BoardEditViewController: UIViewController, UITextFieldDelegate {
     @IBAction func tapScreen(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
+
     /*
     // MARK: - Navigation
 

@@ -28,6 +28,9 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var tryCardEntities: Results<Card>!
     
+    @IBOutlet weak var kpView: UIView!
+    @IBOutlet weak var tView: UIView!
+    
     private var pageControl: UIPageControl!
     
     override func viewDidLoad() {
@@ -54,14 +57,23 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.pageControl.numberOfPages = 2
         // 現在ページを初期設定する(0ページ目)
         self.pageControl.currentPage = 0
-        // ページの色
-        self.pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-        // 現在ページの色
-        self.pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
         // タップしても反応しないように指定
         self.pageControl.userInteractionEnabled = false
         // ビューに追加
         self.view.addSubview(self.pageControl)
+        // ビューにUIFlatカラー適応
+        kpView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        tView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        // keepテーブルに対し、FlatUI適応
+        keepTableView.separatorColor = .clearColor()
+        keepTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        // problemテーブルに対し、FlatUI適応
+        problemTableView.separatorColor = .clearColor()
+        problemTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        // tryテーブルに対し、FlatUI適応
+        tryTableView.separatorColor = .clearColor()
+        tryTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,8 +95,8 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
         for (var i:NSInteger = 0; i < tryTableView.numberOfRowsInSection(0); i++) {
             let cell:TryCardTableViewCell = tryTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! TryCardTableViewCell
             cell.status.hidden = true
-            cell.title.frame.origin.x = cell.status.frame.origin.x
-            cell.detail.frame.origin.x = cell.status.frame.origin.x
+            cell.title!.frame.origin.x = cell.status.frame.origin.x
+            cell.detail!.frame.origin.x = cell.status.frame.origin.x
         }
         
         // 編集ボタンのタイトルをdoneにし、アクションにdoneメソッドを指定する
@@ -210,6 +222,23 @@ class KptAreaViewController: UIViewController, UITableViewDelegate, UITableViewD
             return Card.CardType.Try.rawValue
         }
         return "Illegal Card Type!!"
+    }
+    
+    /*
+    この関数内でセクションの設定を行う
+    */
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label : UILabel = UILabel()
+        label.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        label.textColor = .whiteColor()
+        if (TableViewTags.isKeepTableView(tableView)) {
+            label.text = "- \(Card.CardType.Keep.rawValue) -"
+        } else if (TableViewTags.isProblemTableView(tableView)) {
+            label.text = "- \(Card.CardType.Problem.rawValue) -"
+        } else if (TableViewTags.isTryTableView(tableView)) {
+            label.text = "- \(Card.CardType.Try.rawValue) -"
+        }
+        return label
     }
     
     /*

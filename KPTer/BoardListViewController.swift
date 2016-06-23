@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FlatUIKit
 import RealmSwift
 
 class BoardListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -17,8 +18,8 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     // テーブルビュー
     @IBOutlet weak var boardListTableView: UITableView!
     
-    // リフレッシュコントロール
-    var refreshControl:UIRefreshControl!
+//    // リフレッシュコントロール
+//    var refreshControl:UIRefreshControl!
     
     // ボードリストのリフレッシュが必要かのフラグ
     var needRefresh = false
@@ -27,11 +28,15 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         boardEntities = BoardViewModel.findBoards(BoardViewModel.SortKey.CreatedAt, ascDesc: BoardViewModel.AscDesc.Desc)
-        // 引っ張ってリロードする
-        refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "まだできないよ〜")
-        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
-        boardListTableView.addSubview(refreshControl)
+//        // 引っ張ってリロードする
+//        refreshControl = UIRefreshControl()
+//        refreshControl.attributedTitle = NSAttributedString(string: "まだできないよ〜")
+//        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+//        boardListTableView.addSubview(refreshControl)
+        
+        boardListTableView.separatorColor = .clearColor()
+        boardListTableView.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 33/255, green: 183/255, blue: 182/255, alpha: 1.0)
         
         // Viewに追加する.
         self.view.addSubview(boardListTableView)
@@ -56,6 +61,7 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // 再利用するCellを取得する.
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("BoardListItem", forIndexPath: indexPath)
         
         // Cellに値を設定する.
@@ -147,10 +153,10 @@ class BoardListViewController: UIViewController, UITableViewDelegate, UITableVie
      テーブルを下に引っ張ってリロードする
      (次フェーズで利用予定の仕組み)
     */
-    func refresh() {
-        self.viewWillAppear(true)
-        self.refreshControl.endRefreshing()
-    }
+//    func refresh() {
+//        self.viewWillAppear(true)
+//        self.refreshControl.endRefreshing()
+//    }
     
     /**
      ボードリスト画面が表示されるごとに、ボードエンティティを取得して再描画する
